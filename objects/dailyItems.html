@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工具类页面 - Tools</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>工具类对象 🧰</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🛒", name: "购物车" },
+            { icon: "🛍️", name: "购物袋" },
+            { icon: "🧼", name: "肥皂" },
+            { icon: "🚿", name: "淋浴" },
+            { icon: "🛁", name: "浴缸" },
+            { icon: "🧻", name: "卫生纸" },
+            { icon: "🪥", name: "牙刷" },
+            { icon: "🪒", name: "剃刀" },
+            { icon: "🪮", name: "美发梳" },
+            { icon: "🧴", name: "润肤瓶" },
+            { icon: "🪣", name: "水桶" },
+            { icon: "🧽", name: "海绵" },
+            { icon: "🗝️", name: "老式钥匙" },
+            { icon: "🚪", name: "门" },
+            { icon: "🔑", name: "钥匙" },
+            { icon: "🪑", name: "椅子" },
+            { icon: "🛏️", name: "床" },
+            { icon: "🧸", name: "泰迪熊" },
+            { icon: "🛋️", name: "沙发和灯" },
+            { icon: "🪞", name: "镜子" },
+            { icon: "🪟", name: "窗户" },
+            { icon: "🖼️", name: "画框" },
+            { icon: "🛎️", name: "服务铃" },
+            { icon: "🎁", name: "礼物盒" },
+            { icon: "🎀", name: "丝带" },
+            { icon: "🎉", name: "拉炮" },
+            { icon: "🎊", name: "彩球" },
+            { icon: "🎎", name: "日本娃娃" },
+            { icon: "🏮", name: "红灯笼" },
+            { icon: "🪭", name: "折扇" },
+            { icon: "🎐", name: "风铃" },
+            { icon: "🪩", name: "镜面球" },
+            { icon: "🎎", name: "日本娃娃" },
+            { icon: "🏮", name: "红灯笼" },
+            { icon: "🪭", name: "折扇" },
+            { icon: "🎐", name: "风铃" },
+            { icon: "🪩", name: "镜面球" },
+            { icon: "🧧", name: "红包" },
+            { icon: "🎀", name: "丝带" },
+            { icon: "🎉", name: "拉炮" },
+            { icon: "🎊", name: "彩球" },
+            { icon: "🎁", name: "礼物盒" },
+            { icon: "🪅", name: "彩球装饰" },
+            { icon: "🪄", name: "魔杖" },
+            { icon: "🏺", name: "陶罐" },
+            { icon: "🖼️", name: "画框" },
+            { icon: "🪞", name: "镜子" },
+            { icon: "🪆", name: "套娃" },
+            { icon: "🧸", name: "泰迪熊" },
+            { icon: "🎨", name: "调色板" },
+            { icon: "🖌️", name: "画笔" },
+            { icon: "🪶", name: "羽毛笔" }
+
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

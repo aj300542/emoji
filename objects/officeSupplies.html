@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工具类页面 - Tools</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>工具类对象 🧰</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🖊️", name: "钢笔" },
+            { icon: "📐", name: "三角尺" },
+            { icon: "📏", name: "尺子" },
+            { icon: "📎", name: "回形针" },
+            { icon: "🖇️", name: "连接的回形针" },
+            { icon: "📌", name: "图钉" },
+            { icon: "📋", name: "剪贴板" },
+            { icon: "📁", name: "文件夹" },
+            { icon: "📂", name: "打开的文件夹" },
+            { icon: "🗂️", name: "文件夹分隔" },
+            { icon: "🗄️", name: "文件柜" },
+            { icon: "📇", name: "卡片索引" },
+            { icon: "🗃️", name: "卡片盒" },
+            { icon: "🗒️", name: "螺旋记事本" },
+            { icon: "📓", name: "记事本" },
+            { icon: "📔", name: "装饰封面记事本" },
+            { icon: "📒", name: "账簿" },
+            { icon: "📚", name: "书籍" },
+            { icon: "📖", name: "打开的书" },
+            { icon: "📗", name: "绿皮书" },
+            { icon: "📘", name: "蓝皮书" },
+            { icon: "📕", name: "封闭的书" },
+            { icon: "📙", name: "橘色书" },
+            { icon: "🔖", name: "书签" },
+            { icon: "📊", name: "柱状图" },
+            { icon: "📈", name: "上涨图表" },
+            { icon: "📉", name: "下降图表" },
+            { icon: "📆", name: "撕页日历" },
+            { icon: "📅", name: "日历" },
+            { icon: "🗓️", name: "螺旋日历" },
+            { icon: "📄", name: "正面纸张" },
+            { icon: "📃", name: "卷页纸" },
+            { icon: "📜", name: "卷轴" },
+            { icon: "📑", name: "标签页" },
+            { icon: "📥", name: "收件箱" },
+            { icon: "📤", name: "发件箱" },
+            { icon: "📦", name: "包裹" },
+            { icon: "📬", name: "扬旗开启信箱" },
+            { icon: "📫", name: "扬旗关闭信箱" },
+            { icon: "📪", name: "降旗关闭信箱" },
+            { icon: "📭", name: "降旗开启信箱" },
+            { icon: "📮", name: "邮筒" },
+            { icon: "📧", name: "电子邮件" },
+            { icon: "✉️", name: "信封" },
+            { icon: "📨", name: "收到的信封" },
+            { icon: "📩", name: "带箭头的信封" },
+            { icon: "💌", name: "情书" },
+            { icon: "🧾", name: "收据" },
+            { icon: "🏷️", name: "标签" },
+            { icon: "🪧", name: "标语牌" },
+            { icon: "🗳️", name: "选票箱" },
+            { icon: "📯", name: "邮号" },
+            { icon: "📻", name: "收音机" },
+            { icon: "🗞️", name: "报纸卷" },
+            { icon: "📰", name: "报纸" }
+
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

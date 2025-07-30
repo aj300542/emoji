@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>交通工具类页面 - Transportation</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>交通工具类对象 🚙</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🚗", name: "汽车" },
+            { icon: "🚕", name: "出租车" },
+            { icon: "🚌", name: "公交车" },
+            { icon: "🚎", name: "无轨电车" },
+            { icon: "🚲", name: "自行车" },
+            { icon: "🛵", name: "电动车" },
+            { icon: "🚄", name: "高铁" },
+            { icon: "✈️", name: "飞机" },
+            { icon: "🛳️", name: "邮轮" },
+            { icon: "🚁", name: "直升机" },
+            { icon: "🚂", name: "蒸汽火车" },
+            { icon: "🚤", name: "快艇" },
+            { icon: "🚙", name: "越野车" },
+            { icon: "🚐", name: "面包车" },
+            { icon: "🛻", name: "皮卡车" },
+            { icon: "🏍️", name: "摩托车" },
+            { icon: "🦽", name: "轮椅" },
+            { icon: "🛶", name: "独木舟" },
+            { icon: "🚡", name: "缆车" },
+            { icon: "🚠", name: "登山吊车" },
+            { icon: "⚓", name: "锚" },
+            { icon: "🚓", name: "警车" },
+            { icon: "🚑", name: "救护车" },
+            { icon: "🏎️", name: "赛车" },
+            { icon: "🚜", name: "拖拉机" },
+            { icon: "🚒", name: "消防车" },
+            { icon: "🚚", name: "货车" },
+            { icon: "🚛", name: "挂车" },
+            { icon: "🦼", name: "电动轮椅" },
+            { icon: "🛴", name: "滑板车" },
+            { icon: "🦯", name: "探测盲杖" },
+            { icon: "🛺", name: "三轮车" },
+            { icon: "🩼", name: "拐杖" },
+            { icon: "🛞", name: "车轮" },
+            { icon: "🚍", name: "对向公交车" },
+            { icon: "🚖", name: "对向出租车" },
+            { icon: "🚟", name: "悬挂式列车" },
+            { icon: "🚃", name: "铁路车厢" },
+            { icon: "🚘", name: "对向汽车" },
+            { icon: "🚨", name: "警灯" },
+            { icon: "🚔", name: "对向警车" },
+            { icon: "🚝", name: "单轨列车" },
+            { icon: "🚋", name: "有轨电车车厢" },
+            { icon: "🚆", name: "火车" },
+            { icon: "🚅", name: "子弹列车" },
+            { icon: "🚊", name: "电车" },
+            { icon: "🚞", name: "山区铁路" },
+            { icon: "🚉", name: "车站" },
+            { icon: "🛫", name: "飞机起飞" },
+            { icon: "🚈", name: "轻轨" },
+            { icon: "🚇", name: "地铁" },
+            { icon: "🛬", name: "飞机降落" },
+            { icon: "💺", name: "座位" },
+            { icon: "🛩️", name: "小型飞机" },
+            { icon: "🛰️", name: "卫星" },
+            { icon: "⛵", name: "帆船" },
+            { icon: "🛸", name: "飞碟" },
+            { icon: "🚀", name: "火箭" },
+            { icon: "⛴️", name: "渡轮" },
+            { icon: "🪝", name: "钩子" },
+            { icon: "🛥️", name: "摩托艇" },
+            { icon: "🚧", name: "施工" },
+            { icon: "🚢", name: "轮船" },
+            { icon: "🚥", name: "横向红绿灯" },
+            { icon: "🚦", name: "纵向红绿灯" },
+            { icon: "⛽", name: "加油泵" },
+            // 奇幻与未来向：
+            { icon: "🛸", name: "飞碟" },
+            { icon: "🚀", name: "太空飞船" },
+            { icon: "🛞", name: "悬浮轮" },
+            { icon: "🧳", name: "旅行行李车" },
+            // 地形专属交通方式：
+            { icon: "🛴", name: "滑板车" },
+            { icon: "🦼", name: "电动轮椅" },
+            { icon: "🛹", name: "滑板" },
+            { icon: "🛬", name: "降落的飞机" },
+            { icon: "🛫", name: "起飞的飞机" },
+            { icon: "🚜", name: "拖拉机" },
+            { icon: "🚛", name: "重型卡车" },
+            { icon: "🚚", name: "货运卡车" },
+            { icon: "🚒", name: "消防车" },
+            { icon: "🚑", name: "救护车" },
+
+            // 水上和特殊运输：
+            { icon: "⛵", name: "帆船" },
+            { icon: "🚢", name: "远洋船" },
+            { icon: "🛥️", name: "游艇" },
+            { icon: "🗿", name: "石像运输车" }, // 👈 想象力项
+
+            // 幻想载具：
+            { icon: "🐉", name: "龙之坐骑" },
+            { icon: "🦄", name: "独角兽驮具" },
+            { icon: "🪂", name: "滑翔伞" },
+            { icon: "🪐", name: "行星穿梭机" },
+            { icon: "🦕", name: "史前骑乘兽" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>家具类页面 - Furniture</title>
+    <title>食品类展示</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>家具类对象 🪑</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🛋️", name: "沙发" },
+            { icon: "🪑", name: "椅子" },
+            { icon: "🛏️", name: "床" },
+            { icon: "🗄️", name: "柜子" },
+            { icon: "🖼️", name: "墙架" },
+            { icon: "🧺", name: "储物盒" },
+            // 可继续扩展更多家具项
+            { icon: "🧸", name: "摆饰玩偶" },
+            { icon: "🪞", name: "镜子" },
+            { icon: "🪟", name: "窗户" },
+            { icon: "🚪", name: "门" },
+            { icon: "🛁", name: "浴缸" },
+            { icon: "🚽", name: "马桶" },
+            { icon: "🪤", name: "捕鼠器" },
+            { icon: "🪠", name: "管道疏通器" },
+            { icon: "🧯", name: "灭火器" },
+            { icon: "🖥️", name: "电脑桌" },
+            { icon: "🗑️", name: "垃圾桶" },
+            { icon: "📺", name: "电视" },
+            { icon: "🪬", name: "能量挂件" },
+            { icon: "🛎️", name: "服务铃" },
+            { icon: "🧼", name: "洗手液架" },
+            { icon: "🧽", name: "清洁海绵" },
+            { icon: "🪣", name: "水桶" },
+            { icon: "🎛️", name: "操作台" },
+            { icon: "🧱", name: "背景墙砖" },
+            { icon: "🪜", name: "折叠梯子" },
+            { icon: "🛖", name: "迷你屋模型" },
+            { icon: "🧵", name: "缝纫桌" },
+            { icon: "🧮", name: "古董桌面摆件" },
+            { icon: "🎐", name: "风铃挂饰" },
+            { icon: "🪴", name: "室内绿植" },
+            { icon: "🕯️", name: "蜡烛台" },
+            { icon: "🪔", name: "油灯" },
+            { icon: "🪙", name: "储蓄罐柜" },
+            { icon: "🛋️", name: "魔法沙发" },
+            { icon: "🖲️", name: "旋钮控制台" },
+            { icon: "🧊", name: "冷藏展示柜" },
+            { icon: "🎮", name: "游戏站桌" },
+            { icon: "📚", name: "阅读角书架" },
+            { icon: "🪄", name: "道具展示架" },
+            { icon: "🪆", name: "俄罗斯套柜" },
+            { icon: "🧭", name: "航海桌面台" },
+            { icon: "🧿", name: "护符装饰墙" },
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

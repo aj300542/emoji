@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工具类页面 - Tools</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>工具类对象 🧰</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🔧", name: "扳手" },
+            { icon: "🪛", name: "螺丝刀" },
+            { icon: "🪚", name: "锯子" },
+            { icon: "🔨", name: "锤子" },
+            { icon: "📏", name: "尺子" },
+            { icon: "🪜", name: "梯子" },
+            { icon: "🪠", name: "管道疏通器" },
+            { icon: "🧯", name: "灭火器" },
+            { icon: "🧰", name: "工具箱" },
+            { icon: "🪤", name: "夹具" },
+            { icon: "🧱", name: "砌砖铲" },
+            { icon: "🪝", name: "钩子" },
+            { icon: "🔌", name: "电线插头" },
+            { icon: "🔋", name: "电池组" },
+            { icon: "🧲", name: "磁铁" },
+            { icon: "🧪", name: "实验瓶" },
+            { icon: "🧫", name: "样品盘" },
+            { icon: "📐", name: "三角尺" },
+            { icon: "🖊️", name: "标记笔" },
+            { icon: "🎛️", name: "调控板" },
+            { icon: "🔍", name: "放大镜" },
+            { icon: "🪞", name: "检测镜面" },
+            { icon: "🔒", name: "锁具" },
+            { icon: "🔑", name: "钥匙" },
+            { icon: "🌿", name: "剪枝剪" },
+            { icon: "🪴", name: "种植铲" },
+            { icon: "🚿", name: "喷壶" },
+            { icon: "🍳", name: "锅铲" },
+            { icon: "🔪", name: "厨刀" },
+            { icon: "🥣", name: "搅拌盆" },
+            { icon: "🧂", name: "调味罐" },
+            { icon: "🧊", name: "冰箱工具盒" },
+            { icon: "🧵", name: "缝纫针包" },
+            { icon: "🔭", name: "望远镜" },
+            { icon: "🕹️", name: "操控杆" },
+            { icon: "📡", name: "信号工具站" },
+            { icon: "🪫", name: "电量测试器" },
+            { icon: "🔦", name: "手电筒" },
+            { icon: "🧹", name: "扫帚" },
+            { icon: "🧼", name: "工具清洁器" },
+            { icon: "⚒️", name: "锤子和鹤嘴锄" },
+            { icon: "🛠️", name: "锤子和扳手" },
+            { icon: "🗜️", name: "夹子" },
+            { icon: "🔩", name: "螺母和螺栓" },
+            { icon: "🔬", name: "显微镜" },
+            { icon: "⚗️", name: "蒸馏器" },
+            { icon: "🗡️", name: "匕首" },
+            { icon: "🛡️", name: "盾牌" },
+            { icon: "⛏️", name: "鹤嘴锄" },
+            { icon: "🔗", name: "链接" },
+            { icon: "🔫", name: "手枪" },
+            { icon: "💣", name: "炸弹" },
+            { icon: "⛓️", name: "链条" },
+            { icon: "🧷", name: "安全别针" },
+            { icon: "📎", name: "回形针" },
+            { icon: "🖇️", name: "连接的回形针" },
+            { icon: "🧮", name: "算盘" },
+            { icon: "🪣", name: "水桶" },
+            { icon: "🧽", name: "海绵" },
+            { icon: "🗝️", name: "老式钥匙" }
+
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

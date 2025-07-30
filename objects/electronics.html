@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数码电器类对象 - Electronics</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>数码电器类对象 ⚡</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "📱", name: "灵巧的智能手机" },
+            { icon: "💻", name: "专注的笔记本电脑" },
+            { icon: "🖥️", name: "冷静的台式显示器" },
+            { icon: "🎧", name: "沉浸的耳机" },
+            { icon: "📷", name: "细致的数码相机" },
+            { icon: "🕹️", name: "激烈的游戏手柄" },
+            { icon: "📺", name: "宽广的智能电视" },
+            { icon: "📡", name: "探索的家用路由器" },
+            { icon: "🧯", name: "谨慎的空气净化器" },
+            { icon: "🎙️", name: "表达的麦克风" },
+            { icon: "📼", name: "怀旧的随身听" },
+            { icon: "🌬️", name: "清爽的空调机" },
+            { icon: "🖥️", name: "强劲的台式电脑" },
+            { icon: "🧩", name: "高性能的显卡模块" },
+            { icon: "🖨️", name: "可靠的打印机" },
+            { icon: "🎮", name: "热血的游戏主机" },
+            { icon: "📠", name: "复古的传真机" },
+            { icon: "🧊", name: "智能制冷冰箱" },
+            { icon: "🌀", name: "旋转的洗衣机" },
+            { icon: "🔌", name: "能量充沛的插座延长线" },
+            { icon: "⌚", name: "精准的智能手表" },
+            { icon: "📲", name: "互联的触屏设备" },
+            { icon: "🔋", name: "满电的移动电源" },
+            { icon: "📼", name: "复古的录像机" },
+            { icon: "🧠", name: "智能的语音助手" },
+            { icon: "🛜", name: "高速的Wi-Fi接收器" },
+            { icon: "🔍", name: "清晰的数码放大镜" },
+            { icon: "🧮", name: "精密的电子计算器" },
+            { icon: "🖱️", name: "灵活的无线鼠标" },
+            { icon: "⌨️", name: "响应迅速的机械键盘" },
+            { icon: "📽️", name: "沉浸的投影仪" },
+            { icon: "🎚️", name: "精准的音频调控台" },
+            { icon: "🎛️", name: "多功能的调音界面" },
+            { icon: "🧳", name: "便携的设备收纳箱" },
+            { icon: "💿", name: "经典的光盘播放器" },
+            { icon: "🔦", name: "明亮的充电手电筒" },
+            { icon: "🖲️", name: "复古的轨迹球控制器" },
+            { icon: "📊", name: "智能的数据分析仪" },
+            { icon: "📋", name: "同步的设备任务板" },
+            { icon: "🧭", name: "导航精准的数码指南针" },
+            { icon: "🪫", name: "警觉的低电提醒器" },
+            { icon: "🗜️", name: "精细的电路夹具" },
+            { icon: "🧬", name: "科技前沿的芯片模块" },
+            { icon: "🧿", name: "监控可靠的智能摄像头" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>
