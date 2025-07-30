@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>逻辑类页面 - Logic</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>逻辑类对象 🔍</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🔍", name: "推理分析器" },
+            { icon: "🔣", name: "符号转换器" },
+            { icon: "🧮", name: "逻辑计算器" },
+            { icon: "🧠", name: "逻辑脑模块" },
+            { icon: "📐", name: "结构图形" },
+            { icon: "♻️", name: "归纳系统" },
+            { icon: "🧩", name: "因果拼图" },
+            { icon: "🎛️", name: "判断开关台" },
+            { icon: "⚖️", name: "真值平衡器" },
+            { icon: "🧭", name: "决策导航仪" },
+            { icon: "🧊", name: "冷静推演器" },
+            { icon: "🕸️", name: "命题网格" },
+            { icon: "🪄", name: "逻辑变换器" },
+            { icon: "🔧", name: "思维工具集" },
+            { icon: "🔗", name: "关系链接器" },
+            { icon: "🔄", name: "循环流程器" },
+            { icon: "📊", name: "推理数据图" },
+            { icon: "📘", name: "逻辑语法书" },
+            { icon: "🧪🧠", name: "假设试验器" },
+            { icon: "📡🧩", name: "矛盾侦测仪" },
+            { icon: "🧭🎛️", name: "分岔逻辑导向盘" },
+            { icon: "🔬🔗", name: "关系深度分析器" },
+            { icon: "🕰️📘", name: "时间命题演绎器" },
+            { icon: "🧵🔍", name: "语义联结器" },
+            { icon: "📈⚖️", name: "逻辑稳定度评估器" },
+            { icon: "🎲📐", name: "概率逻辑构建器" },
+            { icon: "🧠🪞", name: "反向思维映射仪" },
+            { icon: "🧬🔍", name: "演绎遗传模型器" },
+            { icon: "🧭🧠", name: "多维思考导航器" },
+            { icon: "🧪📐", name: "命题实验工坊" },
+            { icon: "🔭🧩", name: "逻辑远景推导仪" },
+            { icon: "📚🧬", name: "逻辑演化图谱" },
+            { icon: "🧠⛓️", name: "条件依赖链构造器" },
+            { icon: "🪞🧮", name: "镜像反证分析盘" },
+            { icon: "🕰️🎛️", name: "动态因果建模器" },
+            { icon: "🌌🕸️", name: "超结构逻辑网格" },
+            { icon: "🧤🔍", name: "感知判断模块" },
+            { icon: "🔁📘", name: "概念迭代引擎" },
+
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

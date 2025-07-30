@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>系统类页面 - Systems</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>系统类对象 ⚙️</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "⚙️", name: "齿轮机制" },
+            { icon: "💾", name: "数据存储" },
+            { icon: "🧰", name: "工具集合" },
+            { icon: "🔗", name: "网络连接" },
+            { icon: "🖥️", name: "电脑系统" },
+            { icon: "📡", name: "通信系统" },
+            { icon: "🛠️", name: "系统维护" },
+            { icon: "🔐", name: "信息安全" },
+            { icon: "⚡", name: "能源系统" },
+            { icon: "🧬", name: "生物系统" },
+            { icon: "🌐", name: "全球网络" },
+            { icon: "📊", name: "数据分析系统" },
+            { icon: "🧠", name: "智能算法" },
+            { icon: "🚦", name: "控制系统" },
+            { icon: "🪫", name: "系统耗能" },
+            { icon: "📈", name: "性能优化" },
+            { icon: "🔄", name: "反馈机制" },
+            { icon: "🧱", name: "模块结构" },
+            { icon: "🛰️", name: "卫星系统" },
+            { icon: "🕸️", name: "复杂网络" },
+            { icon: "🔧", name: "接口逻辑" },
+            { icon: "📦", name: "容器系统" },
+            { icon: "🪙", name: "计费机制" },
+            { icon: "🔋", name: "电力管理" },
+            { icon: "🧿", name: "监控节点" },
+            { icon: "🎛️", name: "参数调控" },
+            { icon: "🪤", name: "故障捕捉" },
+            { icon: "📲", name: "移动系统" },
+            { icon: "🧯", name: "故障恢复" },
+            { icon: "🎚️", name: "系统滑块" },
+            { icon: "🪟", name: "多窗口架构" },
+            { icon: "🛜", name: "无线系统" },
+            { icon: "📁", name: "文件系统" },
+            { icon: "⛓️", name: "链式流程" },
+            { icon: "🕹️", name: "操作界面" },
+            { icon: "💬", name: "指令机制" },
+            { icon: "🧮", name: "运算子系统" },
+            { icon: "🔭", name: "远程监控" },
+            { icon: "🫧", name: "虚拟容器" },
+            { icon: "🧊", name: "冷却机制" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

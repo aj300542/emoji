@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>音乐类页面 - Music</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>音乐类对象 🎶</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const musicItems = [
+            { icon: "🎧", name: "耳机体验" },
+            { icon: "🎼", name: "乐谱结构" },
+            { icon: "🎹", name: "键盘乐器" },
+            { icon: "🥁", name: "打击乐器" },
+            { icon: "🎸", name: "吉他弹奏" },
+            { icon: "🎺", name: "管乐器演奏" },
+            { icon: "🎷", name: "爵士管乐" },
+            { icon: "📻", name: "复古收音机" },
+            { icon: "🎤", name: "人声表现" },
+            { icon: "🔊", name: "音量控制" },
+            { icon: "🎶", name: "旋律符号" },
+            { icon: "🎚️", name: "音轨混音器" },
+            { icon: "🎛️", name: "音频调节台" },
+            { icon: "🧠", name: "节奏感知系统" },
+            { icon: "🌀", name: "频谱可视化" },
+            { icon: "📀", name: "唱片播放" },
+            { icon: "🪗", name: "民俗手风琴" },
+            { icon: "🪕", name: "蓝草班卓琴" },
+            { icon: "📡", name: "音乐信号采集器" },
+            { icon: "💿", name: "数字音频光盘" },
+            { icon: "♩", name: "四分音符" },
+            { icon: "♪", name: "八分音符" },
+            { icon: "♫", name: "双八分音符" },
+            { icon: "♬", name: "连音符" },
+            { icon: "♭", name: "降音符号" },
+            { icon: "♯", name: "升音符号" },
+            { icon: "𝄞", name: "高音谱号" },
+            { icon: "𝄢", name: "低音谱号" },
+            { icon: "𝄐", name: "延音记号" },
+            { icon: "𝄪", name: "重升记号" },
+            { icon: "𝄫", name: "重降记号" },
+            { icon: "𝄽", name: "休止符" },
+            { icon: "🎵", name: "单音符表情" },
+            { icon: "🎶", name: "多音符表情" },
+            { icon: "🎼", name: "乐谱表情" },
+            { icon: "🎻", name: "小提琴演奏" },
+            { icon: "🪈", name: "牧笛吹奏" },
+            { icon: "🪇", name: "节奏响葫芦" },
+            { icon: "🪘", name: "非洲手鼓" },
+            { icon: "🪔", name: "旋律祈灯" },
+            { icon: "🪕", name: "乡村班卓琴" },
+            { icon: "🪗", name: "传统手风琴" },
+            { icon: "🪮", name: "合音毛刷琴" },
+            { icon: "🪈", name: "牧歌长笛" },
+            { icon: "🪬", name: "频率共振盘" },
+            { icon: "🛎️", name: "打击铃声" },
+            { icon: "📯", name: "号角信号器" },
+            { icon: "🔔", name: "钟声乐器" },
+            { icon: "🎠", name: "旋转木琴" },
+            { icon: "🧮", name: "节拍逻辑琴" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        musicItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>

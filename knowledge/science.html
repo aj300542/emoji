@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>科学类页面 - Science</title>
+    <link rel="stylesheet" href="../js/styles.css" />
+</head>
+
+<body>
+    <h1>科学类对象 🔬</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const dataItems = [
+            { icon: "🧪", name: "实验试管" },
+            { icon: "🧬", name: "DNA分子" },
+            { icon: "🔬", name: "显微镜" },
+            { icon: "📡", name: "雷达天线" },
+            { icon: "⚛️", name: "原子结构" },
+            { icon: "🌡️", name: "温度计" },
+            { icon: "🧠", name: "神经元模型" },
+            { icon: "💡", name: "发明灵感" },
+            { icon: "📘", name: "科学手册" },
+            { icon: "🧊", name: "冷冻样本" },
+            { icon: "🔋", name: "能量模块" },
+            { icon: "🪫", name: "耗尽能量器" },
+            { icon: "🌍", name: "地球系统" },
+            { icon: "🪐", name: "行星轨道" },
+            { icon: "☄️", name: "彗星路径" },
+            { icon: "💥", name: "粒子碰撞" },
+            { icon: "🧭", name: "科学探索仪" },
+            { icon: "⚙️", name: "机械结构" },
+            { icon: "🔧", name: "实验工具" },
+            { icon: "🚀", name: "太空飞行器" },
+            { icon: "🛰️", name: "科研卫星" },
+            { icon: "🕳️", name: "黑洞模拟" },
+            { icon: "🌌", name: "星系分布" },
+            { icon: "🎛️", name: "控制台模块" },
+            { icon: "🔍", name: "研究分析器" },
+            { icon: "🧿", name: "量子观测球" },
+            { icon: "🌐", name: "引力网格仪" },
+            { icon: "🌋", name: "地质能量脉冲器" },
+            { icon: "🧯", name: "化学防护模块" },
+            { icon: "🪤", name: "微观捕捉装置" },
+            { icon: "📈", name: "研究数据演化图" },
+            { icon: "🪞", name: "时空反射器" },
+            { icon: "🩻", name: "结构扫描仪" },
+            { icon: "⚡", name: "能量释放节点" },
+            { icon: "🛰", name: "深空监测器" },
+            { icon: "🔄", name: "变量调控器" },
+            { icon: "🎯", name: "假设生成仪" },
+            { icon: "🧰", name: "模型构建箱" },
+            { icon: "📊", name: "预测趋势仪" },
+            { icon: "⚖️", name: "实验对照桥" },
+            { icon: "🕰️", name: "时间序列引擎" },
+            { icon: "🌈", name: "多维参数调色盘" },
+            { icon: "🔁", name: "迭代修正模块" },
+            { icon: "🧭", name: "研究路线导航器" },
+            { icon: "📎", name: "数据关联生成器" },
+            { icon: "🎶", name: "频谱听觉接口" },
+            { icon: "🧑‍🎨", name: "数据美学转译器" },
+            { icon: "🏛️", name: "科学伦理评估仪" },
+            { icon: "🌍", name: "生态影响描绘器" },
+            { icon: "📣", name: "科学传播转换器" },
+            { icon: "🕹️", name: "科普互动装置" }
+
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        dataItems.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popK.js"></script>
+</body>
+
+</html>
