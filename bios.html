@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生物素材</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #d0eaff);
+            color: #333;
+            padding: 5vh;
+        }
+
+        h1 {
+            font-size: 4vh;
+            text-align: center;
+            margin-bottom: 4vh;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .tags {
+            text-align: center;
+            margin-bottom: 3vh;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 1vh;
+            padding: 1vh 2vh;
+            background-color: #c8e6c9;
+            border-radius: 2vh;
+            color: #2e7d32;
+            text-decoration: none;
+            font-size: 2.5vh;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .tag:hover {
+            background-color: #a5d6a7;
+            transform: scale(1.05);
+        }
+
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15vh, 1fr));
+            gap: 3vh;
+            padding-top: 2vh;
+        }
+
+        .item {
+            background: #ffffff;
+            border-radius: 2vh;
+            text-align: center;
+            padding: 2vh;
+            box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+
+        .item:hover {
+            transform: scaleY(1.05);
+        }
+
+        .char {
+            font-size: 6vh;
+            margin-bottom: 1vh;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scaleY(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生物素材展示 🐾</h1>
+
+    <div class="tags">
+        <a class="tag" href="bios/animals.html">动物</a>
+        <a class="tag" href="bios/plants_flora.html">植物</a>
+        <a class="tag" href="bios/characters.html">人物</a>
+        <a class="tag" href="bios/fantasy.html">幻想</a>
+        <a class="tag" href="bios/anthropomorphs.html">拟人化</a>
+        <a class="tag" href="bios/expressions.html">表情</a>
+    </div>
+
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const objectItems = [
+            { icon: "🐶", name: "狗" },
+            { icon: "🐱", name: "猫" },
+            { icon: "🐻", name: "熊" },
+            { icon: "🐘", name: "大象" },
+            { icon: "🐼", name: "熊猫" },
+            { icon: "🦊", name: "狐狸" },
+            { icon: "🦁", name: "狮子" },
+            { icon: "🐯", name: "老虎" },
+            { icon: "🐮", name: "奶牛" },
+            { icon: "🐷", name: "猪" },
+            { icon: "🦅", name: "鹰" },
+            { icon: "🕊️", name: "鸽子" },
+            { icon: "🐔", name: "母鸡" },
+            { icon: "🐧", name: "企鹅" },
+            { icon: "🐦", name: "小鸟" },
+            { icon: "🦜", name: "鹦鹉" },
+            { icon: "🦚", name: "孔雀" },
+            { icon: "🦩", name: "火烈鸟" },
+            { icon: "🦢", name: "天鹅" },
+            { icon: "🦊", name: "聪明的狐狸" },
+            { icon: "🐰", name: "快跑的小兔子" },
+            { icon: "🍎", name: "害羞的苹果" },
+            { icon: "📚", name: "爱读书的图书" },
+            { icon: "🌧️", name: "哭泣的雨云" },
+            { icon: "🧊", name: "冷静的冰块" },
+            { icon: "🔥", name: "热情的火焰" },
+            { icon: "💡", name: "睿智的灯泡" },
+            { icon: "🧸", name: "温暖的玩偶" },
+            { icon: "🌵", name: "倔强的仙人掌" },
+            { icon: "🌈", name: "开心的彩虹" },
+            { icon: "🍩", name: "贪吃的甜甜圈" },
+            { icon: "🪞", name: "爱打扮的镜子" },
+            { icon: "🧑‍🏫", name: "学校老师" },
+            { icon: "👩‍🎓", name: "大学生" },
+            { icon: "👨‍💼", name: "办公室主管" },
+            { icon: "👩‍⚕️", name: "诊所医生" },
+            { icon: "👨‍🍳", name: "餐厅厨师" },
+            { icon: "👨‍🎓", name: "研究生" },
+            { icon: "👩‍💻", name: "软件工程师" },
+            { icon: "👨‍🔧", name: "汽修技师" },
+            { icon: "👮‍♂️", name: "城市警察" },
+            { icon: "👩‍🚒", name: "消防员" },
+            { icon: "👨‍🎤", name: "地铁艺人" },
+            { icon: "🧑‍🎨", name: "插画设计师" },
+            { icon: "👨‍🌾", name: "城市农夫" },
+            { icon: "👩‍🍼", name: "保育员" },
+            { icon: "👩‍✈️", name: "飞行员" },
+            { icon: "👨‍🏫", name: "补习老师" },
+            { icon: "👨‍⚖️", name: "地方法官" },
+            { icon: "👨‍💼", name: "市场经理" },
+            { icon: "🐉", name: "火焰巨龙" },
+            { icon: "🧚‍♀️", name: "森林之灵" },
+            { icon: "🧞‍♂️", name: "神秘精灵" },
+            { icon: "🌕", name: "月之守护" },
+            { icon: "🕯️", name: "灵魂之灯" },
+            { icon: "🦄", name: "星光独角兽" },
+            { icon: "🧜‍♀️", name: "深海女妖" },
+            { icon: "🦓", name: "幻境斑马" },
+            { icon: "🫧", name: "气泡灵体" },
+            { icon: "🪽", name: "羽翼幻兽" },
+            { icon: "🦢", name: "月羽天鹅" },
+            { icon: "🔥", name: "业火魂兽" },
+            { icon: "❄️", name: "冰晶魔灵" },
+            { icon: "💫", name: "星界幽魂" },
+            { icon: "🪷", name: "灵莲守花" },
+            { icon: "🔮", name: "水晶占灵" },
+            { icon: "🪄", name: "魔法幻核" },
+
+        ];
+
+        const renderGallery = (items, containerId) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = items.map(item => `
+      <div class="item">
+        <div class="char">${item.icon}</div>
+        <p>${item.name}</p>
+      </div>
+    `).join("");
+        };
+
+        renderGallery(objectItems, "gallery");
+    </script>
+    <div id="popup" style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        padding: 5vh;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2vh;
+        box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 999;
+        transition: transform 0.3s ease;
+        font-size: 5vh;
+        pointer-events: none;
+        ">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="js/pop.js"></script>
+</body>
+
+</html>

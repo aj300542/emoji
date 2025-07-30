@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>🌿图标识别展示</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #fefdf8;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            width: 80vw;
+            height: calc(80vw / 1.78);
+            /* 16:9 aspect ratio */
+            border: 2px dashed #bbb;
+            background-color: #fff;
+        }
+
+
+        .inputGroup {
+            display: flex;
+            align-items: center;
+            gap: 2vh;
+            /* 高度相关的间距 */
+        }
+
+        .inputGroup input {
+            flex: 1;
+            padding: 1.2vh 1.8vh;
+            font-size: 2vh;
+            border-radius: 1vh;
+            border: 0.2vh solid #ccc;
+        }
+
+        .inputGroup button {
+            padding: 1.2vh 1.8vh;
+            font-size: 2vh;
+            border: none;
+            border-radius: 1vh;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .inputGroup button:hover {
+            background-color: #45a049;
+        }
+
+        .controlGroup button {
+            padding: 1.2vh 1.8vh;
+            font-size: 2vh;
+            border: none;
+            border-radius: 1vh;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .controlGroup button:hover {
+            background-color: #327a36;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputGroup">
+        <input id="iconInput" placeholder="输入🐶🍎方向旋转右键取消" autocomplete="off" />
+        <button id="pasteBtn">粘贴</button>
+
+        <!-- 添加输入框用于保存文件名 -->
+
+        <button onclick="saveSceneAsFile()">保存场景</button>
+
+
+        <label for="fileInput" class="loadBtn">载入场景</label>
+        <input type="file" id="fileInput" accept=".json" onchange="loadSceneFromFile(event)" style="display:none;" />
+    </div>
+
+
+
+    <canvas id="iconCanvas"></canvas>
+    <div class="controlGroup">
+        <button onclick="saveInitialStates()">记录初始状态</button>
+        <button onclick="restoreInitialStates()">恢复初始状态</button>
+        <button onclick="animateMoveForSelected()">位移动画</button>
+        <button onclick="startSwingForSelected()">摇摆动画</button>
+        <button onclick="startRotationForSelected()">旋转动画</button>
+        <button onclick="startScaleForSelected()">缩放动画</button>
+        <button onclick="flipSelfHorizontal()">水平镜像</button> <!-- 🪞 新按钮 -->
+        <button onclick="fillSelectedElement()">选中元素铺满画布</button>
+        <button onclick="stopAnimationForSelected()">停止动画</button>
+
+    </div>
+    <script>
+
+        let sceneLoaded = false;
+
+        let currentScene = [];
+
+        function setScene(newElements) {
+            if (!Array.isArray(newElements) || newElements.length === 0) {
+                console.warn("⛔ setScene 被调用但数据无效");
+                sceneLoaded = false;
+                currentScene = [];
+                return;
+            }
+
+            elements = newElements.map(obj => ({
+                ...obj,
+                rotationSwing: 0,
+                animationHandle: null
+            }));
+
+            currentScene = elements;
+            sceneLoaded = true;
+            drawAll();
+            console.log("✅ 新场景已设置，元素数：", currentScene.length);
+        }
+
+        function loadSceneFromFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    const data = JSON.parse(reader.result);
+                    const loadedElements = Array.isArray(data)
+                        ? data
+                        : Array.isArray(data.elements)
+                            ? data.elements
+                            : [];
+
+                    if (loadedElements.length === 0) {
+                        alert("⚠️ 文件内容为空");
+                        return;
+                    }
+
+                    setScene(loadedElements);      // ✅ 初始化场景
+                    saveInitialStates();           // ✅ 记录初始状态（位置、旋转、尺寸等）
+
+                } catch (err) {
+                    console.error("❌ 文件解析失败:", err);
+                    alert("载入失败：请确认 JSON 格式正确");
+                    sceneLoaded = false;
+                    currentScene = [];
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+
+        async function saveSceneAsFile() {
+            console.log("🧪 保存前调试：sceneLoaded =", sceneLoaded);
+            console.log("🧪 保存前调试：currentScene.length =", currentScene.length);
+
+            if (!sceneLoaded || !currentScene.length) {
+                alert("❗场景尚未载入或为空，无法保存！");
+                console.warn("⚠️ 保存中止：sceneLoaded =", sceneLoaded, "，currentScene.length =", currentScene.length);
+                return;
+            }
+
+            const data = JSON.stringify(currentScene, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+
+            try {
+                const fileHandle = await window.showSaveFilePicker({
+                    suggestedName: "scene.json",
+                    types: [{
+                        description: "JSON 文件",
+                        accept: { "application/json": [".json"] }
+                    }]
+                });
+
+                const writable = await fileHandle.createWritable();
+                await writable.write(blob);
+                await writable.close();
+                console.log("✅ 场景已成功保存！");
+            } catch (err) {
+                console.error("❌ 保存失败：", err);
+            }
+        }
+    </script>
+
+
+    <script src="js/drawing.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+
+</html>
