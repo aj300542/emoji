@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>幻想世界展示</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: "Cinzel", serif;
+            background: linear-gradient(to bottom, #f3e5f5, #d1c4e9);
+            padding: 5vh;
+            color: #4a148c;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4vh;
+            margin-bottom: 4vh;
+            animation: shimmer 2s ease-in-out;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20vh, 1fr));
+            gap: 4vh;
+        }
+
+        .item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 2vh;
+            text-align: center;
+            padding: 2vh;
+            box-shadow: 0 0 2vh #ce93d8;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+            animation: pulse 3s infinite ease-in-out;
+            transition: transform 0.4s ease;
+        }
+
+        .item:hover {
+            transform: rotate(-2deg) scale(1.07);
+        }
+
+        .char {
+            font-size: 6vh;
+            margin-bottom: 1vh;
+        }
+
+        .label {
+            font-size: 2.5vh;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 2vh #ce93d8;
+            }
+
+            50% {
+                box-shadow: 0 0 2vh #ba68c8;
+            }
+        }
+
+        @keyframes shimmer {
+            from {
+                opacity: 0;
+                transform: translateY(2vh);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>幻想生物展示 ✨</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const fantasyCharacters = [
+            { icon: "🐉", name: "火焰巨龙" },
+            { icon: "🧚‍♀️", name: "森林之灵" },
+            { icon: "🧞‍♂️", name: "神秘精灵" },
+            { icon: "🌕", name: "月之守护" },
+            { icon: "🕯️", name: "灵魂之灯" },
+            { icon: "🦄", name: "星光独角兽" },
+            { icon: "🧜‍♀️", name: "深海女妖" },
+            { icon: "🦓", name: "幻境斑马" },
+            { icon: "🫧", name: "气泡灵体" },
+            { icon: "🪽", name: "羽翼幻兽" },
+            { icon: "🦢", name: "月羽天鹅" },
+            { icon: "🔥", name: "业火魂兽" },
+            { icon: "❄️", name: "冰晶魔灵" },
+            { icon: "💫", name: "星界幽魂" },
+            { icon: "🪷", name: "灵莲守花" },
+            { icon: "🔮", name: "水晶占灵" },
+            { icon: "🪄", name: "魔法幻核" },
+            { icon: "🌩️", name: "雷鸣兽王" },
+            { icon: "🌈", name: "彩虹幻狐" },
+            { icon: "🧸", name: "梦境玩偶熊" },
+            { icon: "🐺", name: "影月兽" },
+            { icon: "🕊️", name: "和平之灵" },
+            { icon: "🦉", name: "夜语魔鸮" },
+            { icon: "🪹", name: "虚巢羽灵" },
+            { icon: "🌌", name: "宇宙守灵者" },
+            { icon: "🕷️", name: "梦蛛编织者" },
+            { icon: "🌫️", name: "迷雾行者" },
+            { icon: "🪐", name: "星环浮灵" },
+            { icon: "🪸", name: "珊瑚梦兽" },
+            { icon: "🍄", name: "菌林守护者" },
+            { icon: "🌪️", name: "风暴秘使" },
+            { icon: "🧤", name: "隐形幻匠" },
+            { icon: "🧊", name: "冰魄傀儡" },
+            { icon: "🧬", name: "遗传幻灵" },
+            { icon: "🪷", name: "莲影幻蝶" },
+            { icon: "🪰", name: "苍蝇灵媒" },
+            { icon: "📿", name: "灵珠僧人" },
+            { icon: "🩵", name: "心念幻羽" },
+            { icon: "🪦", name: "墓域召唤者" },
+            { icon: "🫥", name: "虚空使徒" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        fantasyCharacters.forEach(char => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${char.icon}</div><div class="label">${char.name}</div>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popBios.js"></script>
+</body>
+
+</html>

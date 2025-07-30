@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动物素材展示</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to bottom, #f0fff0, #d0ffd0);
+            padding: 5vh;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 4vh;
+            text-align: center;
+            margin-bottom: 4vh;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15vh, 1fr));
+            gap: 3vh;
+            padding-top: 2vh;
+        }
+
+        .item {
+            background: #ffffff;
+            border-radius: 2vh;
+            text-align: center;
+            padding: 2vh;
+            box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+
+        .item:hover {
+            transform: scaleY(1.05);
+        }
+
+        .char {
+            font-size: 6vh;
+            margin-bottom: 1vh;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scaleY(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>动物素材展示 🐾</h1>
+
+    <div class="category-buttons">
+        <button onclick="renderCategory('mammals')">哺乳动物</button>
+        <button onclick="renderCategory('birds')">鸟类</button>
+        <button onclick="renderCategory('insects')">昆虫</button>
+        <button onclick="renderCategory('aquatic')">水生动物</button>
+        <button onclick="renderCategory('fantasy')">幻想生物</button>
+    </div>
+
+    <div id="gallery" class="gallery"></div>
+
+    <script>
+        const animalCategories = {
+            mammals: [
+                { icon: "🐶", name: "狗" },
+                { icon: "🐱", name: "猫" },
+                { icon: "🐻", name: "熊" },
+                { icon: "🐘", name: "大象" },
+                { icon: "🐼", name: "熊猫" },
+                { icon: "🐨", name: "考拉" },
+                { icon: "🐸", name: "青蛙" },
+                { icon: "🙈", name: "遮脸猴子" },
+                { icon: "🙉", name: "不听猴子" },
+                { icon: "🐒", name: "全身猴子" },
+                { icon: "🙊", name: "不说猴子" },
+                { icon: "🦇", name: "蝙蝠" },
+                { icon: "🐗", name: "野猪" },
+                { icon: "🐢", name: "乌龟" },
+                { icon: "🦎", name: "蜥蜴" },
+                { icon: "🐙", name: "大王章鱼" },
+                { icon: "🐳", name: "蓝鲸" },
+                { icon: "🦧", name: "红猩猩" },
+                { icon: "🐂", name: "野牛" },
+                { icon: "🐏", name: "弯角绵羊" },
+                { icon: "🦮", name: "导盲犬" },
+                { icon: "🐕‍🦺", name: "服务犬" },
+                { icon: "🐇", name: "兔子" },
+                { icon: "🐺", name: "灰狼" },
+                { icon: "🐁", name: "老鼠" },
+                { icon: "🦉", name: "猫头鹰" },
+                { icon: "🦊", name: "狐狸" },
+                { icon: "🦁", name: "狮子" },
+                { icon: "🐯", name: "老虎" },
+                { icon: "🐮", name: "奶牛" },
+                { icon: "🐷", name: "猪" },
+                { icon: "🐵", name: "猴子" },
+                { icon: "🦔", name: "刺猬" },
+                { icon: "🐭", name: "小老鼠" },
+                { icon: "🐰", name: "兔子" },
+                { icon: "🦓", name: "斑马" },
+                { icon: "🦒", name: "长颈鹿" },
+                { icon: "🦛", name: "河马" },
+                { icon: "🦬", name: "野牛" },
+                { icon: "🦌", name: "驯鹿" },
+                { icon: "🐑", name: "绵羊" },
+                { icon: "🐐", name: "山羊" },
+                { icon: "🦙", name: "羊驼" },
+                { icon: "🐫", name: "骆驼" },
+                { icon: "🐿️", name: "松鼠" },
+                { icon: "🦨", name: "臭鼬" },
+                { icon: "🧸", name: "玩具熊" }, // 拟人化角色
+                { icon: "🦣", name: "猛犸象" }, // 史前哺乳动物
+                { icon: "🦇", name: "蝙蝠" },
+                { icon: "🐋", name: "鲸鱼" }, // 虽属水生，但分类为哺乳动物
+                { icon: "🦭", name: "海豹" },
+                { icon: "🐎", name: "马" },
+                { icon: "🐈", name: "家猫" },
+                { icon: "🐕", name: "家犬" },
+                { icon: "🐖", name: "家猪" },
+                { icon: "🪵", name: "树懒" },
+                { icon: "🦥", name: "树懒" },        // 替代形态
+                { icon: "🧔‍♂️", name: "人类男性" },  // 拟人生物
+                { icon: "🧕", name: "人类女性" },
+                { icon: "👶", name: "宝宝" },
+                { icon: "🦘", name: "袋鼠" },
+                { icon: "🦡", name: "獾" },
+                { icon: "🦝", name: "浣熊" },
+                { icon: "🦬", name: "美洲野牛" },
+                { icon: "🐃", name: "水牛" },
+                { icon: "🐂", name: "公牛" },
+                { icon: "🐄", name: "乳牛" },
+                { icon: "🐎", name: "马" },
+                { icon: "🫎", name: "麋鹿" },
+                { icon: "🫏", name: "驴子" },
+                { icon: "🫐", name: "想象中的蓝莓兽" }, // 可用于幻想类衍生角色
+                { icon: "🐩", name: "贵宾犬" },
+                { icon: "🐕‍🦺", name: "导盲犬" },
+                { icon: "🧛", name: "吸血鬼（拟人哺乳类）" },
+                { icon: "👨‍🌾", name: "农夫（角色拟人）" },
+                { icon: "🧒", name: "儿童角色" },
+                { icon: "🧠", name: "智慧哺乳种族" }, // 创意角色设定
+                { icon: "🐆", name: "猎豹" },
+                { icon: "🐅", name: "虎猫" },
+                { icon: "🦍", name: "大猩猩" },
+                { icon: "🐪", name: "双峰骆驼" },
+                { icon: "🦃", name: "野火鸡（拟哺乳类场景角色）" },
+                { icon: "🦦", name: "水獭" }
+
+            ],
+            birds: [
+                { icon: "🦅", name: "鹰" },
+                { icon: "🕊️", name: "鸽子" },
+                { icon: "🐔", name: "母鸡" },
+                { icon: "🐧", name: "企鹅" },
+                { icon: "🐦", name: "小鸟" },
+                { icon: "🦜", name: "鹦鹉" },
+                { icon: "🦚", name: "孔雀" },
+                { icon: "🦩", name: "火烈鸟" },
+                { icon: "🦢", name: "天鹅" },
+                { icon: "🦉", name: "猫头鹰" },
+                { icon: "🦤", name: "渡渡鸟" },        // 已灭绝鸟类
+                { icon: "🐣", name: "雏鸟" },
+                { icon: "🐥", name: "小鸡" },
+                { icon: "🐤", name: "黄色小鸟" },
+                { icon: "🪿", name: "大雁" },
+                { icon: "🕊", name: "和平鸽" },
+                { icon: "🦃", name: "火鸡" },
+                { icon: "🐓", name: "公鸡" },
+                { icon: "🪽", name: "飞羽（幻想图腾）" },
+                { icon: "🪺", name: "鸟巢（组合元素）" },
+                { icon: "🧚‍♂️", name: "有翅精灵" },     // 拟人鸟类角色
+                { icon: "🐦‍⬛", name: "黑鸟" },
+                { icon: "🪶", name: "羽毛精灵" },
+                { icon: "🪹", name: "空鸟巢" },          // 场景元素
+                { icon: "🦆", name: "野鸭" },
+                { icon: "🕊️", name: "信鸽" },
+                { icon: "🪶", name: "羽毛精灵" },
+                { icon: "🐥", name: "萌小鸡" },
+                { icon: "🦉", name: "猫头鹰" },
+                { icon: "🦚", name: "孔雀" },
+                { icon: "🦜", name: "鹦鹉" },
+                { icon: "🧙‍♂️", name: "老鹰法师" },      // 拟人幻想角色
+                { icon: "🧚‍♀️", name: "羽翼仙子" },
+                { icon: "🦤", name: "渡渡鸟" },
+                { icon: "🐣", name: "孵化雏鸟" },
+                { icon: "🐓", name: "公鸡" },
+                { icon: "🦃", name: "火鸡" },
+                { icon: "🪽", name: "飞羽之灵" },        // 抽象拟象
+                { icon: "🪺", name: "暖巢精灵" },        // 幻想巢元素
+                { icon: "🦅", name: "秃鹰" },
+                { icon: "🧞‍♂️", name: "飞天神鸟守护者" }, // 拟神性飞禽角色
+                { icon: "🦩", name: "舞姿火烈鸟" },
+                { icon: "🪿", name: "灰雁" },
+                { icon: "🐦‍⬛", name: "黑羽鸟" },
+                { icon: "🧝‍♀️", name: "精灵飞使" },      // 拟羽族人物
+                { icon: "🕊️", name: "和平象征鸟" }
+            ],
+            insects: [
+                { icon: "🕷️", name: "蜘蛛" },
+                { icon: "🪲", name: "甲虫" },
+                { icon: "🦋", name: "蝴蝶" },
+                { icon: "🪰", name: "苍蝇" },
+                { icon: "🦗", name: "蚂蚱" },
+                { icon: "🐞", name: "瓢虫" },
+                { icon: "🪳", name: "蟑螂" },
+                { icon: "🪱", name: "蚯蚓" },       // 土壤生态角色
+                { icon: "🐜", name: "蚂蚁" },
+                { icon: "🐝", name: "蜜蜂" },
+                { icon: "🦟", name: "蚊子" },
+                { icon: "🦠", name: "微生物拟虫体" },  // 可用作幻想生物
+                { icon: "🧚‍♂️", name: "虫灵使者" },    // 幻想拟人角色
+                { icon: "🐛", name: "毛毛虫" },
+                { icon: "🪸", name: "珊瑚精灵" },     // 虽非昆虫，但可纳入生态扩展
+                { icon: "🧬", name: "基因虫" },       // 科幻扩展设定
+                { icon: "🪷", name: "荷叶虫族" },     // 虚构生态种群
+                { icon: "🧝‍♂️", name: "昆虫精灵" },     // 拟人幻想角色
+                { icon: "🦋", name: "斑斓蝶" },
+                { icon: "🐞", name: "瓢虫骑士" },
+                { icon: "🕷️", name: "暗影蜘蛛" },
+                { icon: "🦗", name: "跳跃蚂蚱" },
+                { icon: "🐜", name: "工蚁" },
+                { icon: "🐝", name: "蜂后" },
+                { icon: "🪳", name: "城市蟑螂" },
+                { icon: "🪲", name: "金甲虫" },
+                { icon: "🦟", name: "魔蚊使者" },
+                { icon: "🐛", name: "旋转毛毛虫" },
+                { icon: "🪱", name: "地下蚯蚓" },
+                { icon: "🦂", name: "烈焰蝎子" },
+                { icon: "🪸", name: "珊瑚寄虫" },       // 海洋生态延伸
+                { icon: "🧚‍♂️", name: "虫语精灵" },     // 幻想拟人角色
+                { icon: "🧬", name: "变异基因虫" },     // 科幻设定
+                { icon: "🪷", name: "莲池虫族" },       // 虚构生态种群
+                { icon: "🪼", name: "水母蛊虫" },       // 拟海虫元素
+                { icon: "🐌", name: "神秘蜗牛" },
+                { icon: "🧝‍♀️", name: "虫林守护者" },   // 拟人森林守卫
+                { icon: "🪽", name: "幻翅之灵" },       // 抽象生命体
+                { icon: "🌿", name: "寄生草虫" },
+                { icon: "🔥", name: "火羽虫" },         // 幻想飞虫
+                { icon: "🧪", name: "实验虫体" }
+            ],
+            aquatic: [
+                { icon: "🐟", name: "小鱼" },
+                { icon: "🐬", name: "海豚" },
+                { icon: "🦈", name: "鲨鱼" },
+                { icon: "🦭", name: "海豹" },
+                { icon: "🐠", name: "热带鱼" },
+                { icon: "🐡", name: "河豚" },
+                { icon: "🐙", name: "章鱼" },
+                { icon: "🦑", name: "鱿鱼" },
+                { icon: "🦐", name: "虾" },
+                { icon: "🦀", name: "螃蟹" },
+                { icon: "🐋", name: "鲸鱼" },
+                { icon: "🪼", name: "水母" },
+                { icon: "🦦", name: "水獭" },
+                { icon: "🐊", name: "鳄鱼" },          // 水陆两栖
+                { icon: "🫧", name: "气泡精灵" },      // 幻想辅助角色
+                { icon: "🧜‍♀️", name: "美人鱼" },     // 拟人幻想角色
+                { icon: "🐚", name: "贝壳生物" },
+                { icon: "🪸", name: "珊瑚精灵" },
+                { icon: "🧞‍♀️", name: "海洋女妖" },   // 神秘生物扩展
+                { icon: "🧜‍♂️", name: "海王子" },
+                { icon: "🧜", name: "深海使者" },
+                { icon: "🧃", name: "水元素拟态" },   // 幻想液体生物
+                { icon: "🌊", name: "海浪之灵" },
+                { icon: "🦐", name: "北极虾" },
+                { icon: "🦀", name: "帝王蟹" },
+                { icon: "🦑", name: "深海鱿鱼" },
+                { icon: "🐙", name: "巨型章鱼" },
+                { icon: "🧜‍♂️", name: "海之精灵" },
+                { icon: "🐋", name: "蓝鲸" },
+                { icon: "🦭", name: "斑海豹" },
+                { icon: "🦈", name: "锤头鲨" },
+                { icon: "🪼", name: "彩色水母" },
+                { icon: "🐡", name: "刺魨" },
+                { icon: "🦦", name: "河狸水獭" },
+                { icon: "🐚", name: "歌唱贝壳" },
+                { icon: "🪷", name: "水莲龟" },       // 幻想性两栖角色
+                { icon: "🧞", name: "深海魔灵" },
+                { icon: "🧜", name: "珊瑚公主" },
+                { icon: "🫧", name: "气泡生灵" },
+                { icon: "🌊", name: "海浪精魂" },
+                { icon: "🦣", name: "海象古兽" },     // 拟史前水生角色
+                { icon: "🧃", name: "液态灵兽" },     // 元素拟态角色
+                { icon: "🪸", name: "活体珊瑚" },
+                { icon: "🧝‍♂️", name: "海精灵使者" },
+                { icon: "🐠", name: "圆点热带鱼" },
+                { icon: "🐊", name: "淡水鳄鱼" },
+                { icon: "🦣", name: "海象" },
+                { icon: "🦈", name: "大白鲨" },
+                { icon: "🦈", name: "虎鲨" },
+                { icon: "🐋", name: "座头鲸" },
+                { icon: "🐡", name: "豹纹河豚" },
+                { icon: "🐠", name: "斑点神仙鱼" },
+                { icon: "🪼", name: "幻彩水母" },
+                { icon: "🦐", name: "珊瑚虾" },
+                { icon: "🦀", name: "红螃蟹" },
+                { icon: "🐙", name: "深渊章鱼" },
+                { icon: "🧜", name: "海底吟游者" },
+                { icon: "🧞‍♂️", name: "浪影魔灵" },
+                { icon: "🐚", name: "旋律贝壳" },
+                { icon: "🐊", name: "咸水鳄鱼" },
+                { icon: "🫧", name: "泡泡生灵" },
+                { icon: "🧃", name: "液态意志体" },
+                { icon: "🧝‍♂️", name: "海精族长" },
+                { icon: "🪸", name: "智慧珊瑚" },
+                { icon: "🐌", name: "海底蜗牛" },
+                { icon: "🌊", name: "海浪之神" },
+                { icon: "🧜‍♀️", name: "珍珠公主" },
+                { icon: "🦦", name: "夜潜水獭" },
+                { icon: "🐠", name: "闪电小鱼" },
+                { icon: "🐬", name: "海洋舞者" },
+                { icon: "🧞", name: "潮汐领主" },
+
+
+            ],
+            fantasy: [
+                { icon: "🧜‍♀️", name: "美人鱼" },
+                { icon: "🐉", name: "东方龙" },
+                { icon: "🦄", name: "独角兽" },
+                { icon: "🧸", name: "玩具熊" },
+                { icon: "🧚‍♀️", name: "森林妖精" },
+                { icon: "🧞", name: "精灵魔灵" },
+                { icon: "🧙‍♂️", name: "法师长者" },
+                { icon: "🧜‍♂️", name: "海王子" },
+                { icon: "🧛", name: "吸血鬼" },
+                { icon: "🧟", name: "僵尸" },
+                { icon: "🧝‍♀️", name: "高等精灵" },
+                { icon: "🦄", name: "梦幻独角兽" },
+                { icon: "🐉", name: "西方龙" },
+                { icon: "🪄", name: "魔法使者" },
+                { icon: "🪽", name: "羽翼守护灵" },
+                { icon: "🫧", name: "气泡灵体" },
+                { icon: "🎠", name: "旋转木马兽" },
+                { icon: "🎃", name: "南瓜怪" },
+                { icon: "🧸", name: "拟人玩偶熊" },
+                { icon: "💫", name: "星界幻灵" },
+                { icon: "🌈", name: "彩虹守护兽" },
+                { icon: "🪻", name: "花之精灵" },
+                { icon: "🧞‍♂️", name: "神灯灵魂" },
+                { icon: "🧙‍♀️", name: "女巫导师" },
+                { icon: "🌌", name: "宇宙守灵" },
+                { icon: "🫥", name: "隐形幻影" },
+                { icon: "🧞‍♀️", name: "神灯精灵" },
+                { icon: "🧞‍♂️", name: "愿望守护者" },
+                { icon: "🧝", name: "秘林精灵族" },
+                { icon: "👾", name: "虚拟怪兽" },
+                { icon: "🎭", name: "面具幻影者" },
+                { icon: "📿", name: "灵念图腾" },
+                { icon: "🔮", name: "占星灵球" },
+                { icon: "🫧", name: "泡影幻灵" },
+                { icon: "🪄", name: "魔法意志" },
+                { icon: "🌟", name: "星辉守灵" },
+                { icon: "🌙", name: "月影精魂" },
+                { icon: "⚡", name: "雷之化形体" },
+                { icon: "💀", name: "幽影骷髅兽" },
+                { icon: "👑", name: "幻域之王" },
+                { icon: "🥀", name: "枯花妖精" },
+                { icon: "🌸", name: "花瓣小仙" },
+                { icon: "🧃", name: "液态魔灵" },
+                { icon: "🪽", name: "天空碎羽" },
+                { icon: "🎠", name: "童话坐骑" },
+                { icon: "🪬", name: "守护符咒兽" },
+                { icon: "🪹", name: "空灵巢穴精" },
+                { icon: "🧙", name: "时空术士" },
+                { icon: "🎑", name: "祭月灵兽" }
+
+            ]
+        };
+
+        function renderCategory(type) {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+
+            const list = animalCategories[type] || []; // 👈 这行避免报错
+            list.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "item";
+                div.innerHTML = `
+            <div class="char">${item.icon}</div>
+            <div class="label">${item.name}</div>
+            `;
+                gallery.appendChild(div);
+            });
+        }
+
+        // 默认显示哺乳动物
+        renderCategory('mammals', animalCategories);
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popBB.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCategory('mammals', animalCategories);
+            // 手动触发一次初始绑定（首次渲染不会被 observer 捕获）
+            bindPopupToItems();
+        });
+    </script>
+
+
+
+</body>
+
+</html>

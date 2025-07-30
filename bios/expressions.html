@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表情角色展示</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #ffe0b2);
+            padding: 5vh;
+            color: #444;
+        }
+
+        h1 {
+            font-size: 4vh;
+            text-align: center;
+            margin-bottom: 3vh;
+            animation: riseIn 0.8s ease-out;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(18vh, 1fr));
+            gap: 3vh;
+        }
+
+        .item {
+            background-color: #fff;
+            border-radius: 2vh;
+            text-align: center;
+            padding: 2vh;
+            box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.1);
+            clip-path: polygon(15% 0, 85% 0, 100% 100%, 0% 100%);
+            animation: pulse 3s infinite ease-in-out;
+            transition: transform 0.4s ease;
+        }
+
+        .item:hover {
+            transform: rotate(1deg) scaleY(1.1);
+        }
+
+        .char {
+            font-size: 6vh;
+            display: block;
+            margin-bottom: 1vh;
+        }
+
+        .label {
+            font-size: 2.5vh;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(3vh);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>表情角色展示 😄</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const expressions = [
+            { icon: "😀", name: "灿烂微笑" },
+            { icon: "😢", name: "落泪哀伤" },
+            { icon: "😡", name: "愤怒爆发" },
+            { icon: "😱", name: "惊恐万状" },
+            { icon: "🥺", name: "哀求眼神" },
+            { icon: "😎", name: "酷炫自信" },
+            { icon: "😴", name: "昏昏欲睡" },
+            { icon: "😂", name: "狂笑不止" },
+            { icon: "🤔", name: "思考模式" },
+            { icon: "😍", name: "心动瞬间" },
+            { icon: "😈", name: "邪魅狡笑" },
+            { icon: "😇", name: "天使之颜" },
+            { icon: "🤬", name: "暴怒压抑" },
+            { icon: "🥶", name: "冰冻尴尬" },
+            { icon: "🥳", name: "欢乐庆典" },
+            { icon: "🤯", name: "脑洞炸裂" },
+            { icon: "🤤", name: "垂涎三尺" },
+            { icon: "😐", name: "面无表情" },
+            { icon: "🙃", name: "颠倒思维" },
+            { icon: "😵‍💫", name: "迷糊晕眩" },
+            { icon: "😬", name: "尴尬憋笑" },
+            { icon: "😳", name: "惊讶脸红" },
+            { icon: "🤗", name: "热情拥抱" },
+            { icon: "😔", name: "低落沉思" },
+            { icon: "😅", name: "局促苦笑" },
+            { icon: "🤥", name: "调皮撒谎" },
+            { icon: "🤓", name: "书呆智慧" },
+            { icon: "😮‍💨", name: "舒口气" },
+            { icon: "😟", name: "忧虑皱眉" },
+            { icon: "😖", name: "痛苦扭脸" },
+            { icon: "😤", name: "怒气蓄积" },
+            { icon: "😕", name: "困惑迷茫" },
+            { icon: "😩", name: "筋疲力尽" },
+            { icon: "🤨", name: "质疑打量" },
+            { icon: "😶", name: "缄默无声" },
+            { icon: "😲", name: "惊讶凝视" },
+            { icon: "🥱", name: "打哈欠懒散" },
+            { icon: "🤪", name: "古灵精怪" },
+            { icon: "🫥", name: "消失边缘感" },
+            { icon: "🤧", name: "鼻涕委屈" },
+            { icon: "🙄", name: "白眼无语" },
+            { icon: "🥵", name: "热得发疯" },
+            { icon: "🥴", name: "头晕目眩" },
+            { icon: "🤫", name: "安静秘密" },
+            { icon: "😰", name: "心慌忐忑" },
+            { icon: "🤢", name: "恶心反胃" },
+            { icon: "🤠", name: "牛仔自信" },
+            { icon: "😛", name: "吐舌顽皮" },
+            { icon: "🤭", name: "忍笑憋嘴" },
+            { icon: "😯", name: "静静惊讶" },
+            { icon: "😽", name: "撒娇喵喵" },
+            { icon: "😺", name: "开心猫笑" },
+            { icon: "🙁", name: "下垂失落" },
+            { icon: "😵", name: "完全晕眩" },
+            { icon: "😒", name: "不屑挑眉" },
+            { icon: "😖", name: "痛苦扭脸" }
+        ];
+
+        const gallery = document.getElementById("gallery");
+
+        expressions.forEach(char => {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `<div class="char">${char.icon}</div><div class="label">${char.name}</div>`;
+            gallery.appendChild(div);
+        });
+    </script>
+    <div id="popup">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="../js/popBios.js"></script>
+</body>
+
+</html>
