@@ -63,6 +63,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             border: none;
+            font-family: 'Nixiebold-bold', Arial, sans-serif;
         }
 
         .inputGroup button:hover,
@@ -91,6 +92,8 @@
             z-index: 99;
             text-shadow: 0 0 10px black;
             display: none;
+            user-select: none;
+            pointer-events: none;
         }
 
         body.fullscreen-active>*:not(#iconCanvas):not(#timeOverlay) {
@@ -171,22 +174,29 @@
 
 
     <div class="controlGroup">
-        <button onclick="saveInitialStates()">记录初始状态</button>
-        <button onclick="restoreInitialStates()">恢复初始状态</button>
-        <button onclick="animateMoveForSelected()">位移动画</button>
-        <button onclick="startSwingForSelected()">摇摆动画</button>
-        <button onclick="startRotationForSelected()">旋转动画</button>
-        <button onclick="startScaleForSelected()">缩放动画</button>
-        <button onclick="flipSelfHorizontal()">水平镜像</button> <!-- 🪞 新按钮 -->
-        <button onclick="fillSelectedElement()">选中元素铺满画布</button>
-        <button onclick="stopAnimationForSelected()">停止动画</button>
-
+        <button onclick="saveInitialStates()">1记录初始状态</button>
+        <button onclick="restoreInitialStates()">2恢复初始状态</button>
+        <button onclick="animateMoveForSelected()">3位移动画</button>
+        <button onclick="startSwingForSelected()">4摇摆动画</button>
+        <button onclick="startRotationForSelected()">5旋转动画</button>
+        <button onclick="startScaleForSelected()">6缩放动画</button>
+        <button onclick="flipSelfHorizontal()">7水平镜像</button>
+        <button onclick="fillSelectedElement()">8选中元素铺满画布</button>
+        <button onclick="stopAnimationForSelected()">9停止动画</button>
     </div>
     <div class="sceneLoaderPanel">
         <button onclick="loadSceneByName('ape')">🐵 Ape 场景</button>
         <button onclick="loadSceneByName('ufo')">🛸 UFO 场景</button>
         <button onclick="loadSceneByName('city')">🏙️ 城市场景</button>
         <button onclick="loadSceneByName('forest')">🌲 森林场景</button>
+        <button onclick="loadSceneByName('CollegeOfAthens')">🏞️ 雅典学院</button>
+        <button onclick="loadSceneByName('picture')">🖼️ 呐喊</button>
+        <button onclick="loadSceneByName('picture2')">🪭 维纳斯</button>
+        <button onclick="loadSceneByName('picture3')">🏃‍♂️ 伊甸园</button>
+        <button onclick="loadSceneByName('picture4')">👽 发现外星人</button>
+        <button onclick="loadSceneByName('picture5')">🧠 头脑风暴</button>
+        <button onclick="loadSceneByName('picture6')">🌧️ 雨中漫步</button>
+        <button onclick="loadSceneByName('picture7')">🚧 城市边缘</button>
     </div>
     <script src="js/saveLoad.js"></script>
     <script src="js/fullScreen.js"></script>
@@ -226,6 +236,19 @@
                     console.error("载入场景失败:", error);
                 });
         }
+        document.addEventListener('keydown', event => {
+            switch (event.key) {
+                case '1': saveInitialStates(); break;
+                case '2': restoreInitialStates(); break;
+                case '3': animateMoveForSelected(); break;
+                case '4': startSwingForSelected(); break;
+                case '5': startRotationForSelected(); break;
+                case '6': startScaleForSelected(); break;
+                case '7': flipSelfHorizontal(); break;
+                case '8': fillSelectedElement(); break;
+                case '9': stopAnimationForSelected(); break;
+            }
+        });
 
 
     </script>
