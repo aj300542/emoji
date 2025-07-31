@@ -60,7 +60,7 @@ function drawAll() {
         ctx.scale(scaleX, scaleY); // 💫 支持翻转 + 缩放
         ctx.rotate(rotation);
 
-        ctx.font = `${el.size}px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif`;
+        ctx.font = `${el.size}px "SegoeEmojiOld", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
