@@ -1,0 +1,39 @@
+[
+  {
+    "char": "🌆",
+    "x": 678,
+    "y": 685.5,
+    "size": 1316,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🛸",
+    "x": 105,
+    "y": 511.5,
+    "size": 152,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌃",
+    "x": 779,
+    "y": 731.5,
+    "size": 1094,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null,
+    "isFlipped": true
+  },
+  {
+    "char": "🎡",
+    "x": 1061.5,
+    "y": 653.5,
+    "size": 867,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]
