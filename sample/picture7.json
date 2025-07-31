@@ -1,0 +1,83 @@
+[
+  {
+    "char": "🌁",
+    "x": 693,
+    "y": 225,
+    "size": 1582,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "⚛️",
+    "x": 253,
+    "y": 272,
+    "size": 62,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🛤️",
+    "x": 922,
+    "y": 546,
+    "size": 1400,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧬",
+    "x": 333,
+    "y": 545,
+    "size": 308,
+    "rotation": 15,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🤖",
+    "x": 730,
+    "y": 534,
+    "size": 418,
+    "rotation": -10,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "👣",
+    "x": 799,
+    "y": 649,
+    "size": 120,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌈",
+    "x": 1667,
+    "y": 319,
+    "size": 1200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💫",
+    "x": 1124,
+    "y": 339,
+    "size": 436,
+    "rotation": 45,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "✨",
+    "x": 625,
+    "y": 132,
+    "size": 260,
+    "rotation": -45,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "char": "🌌",
+    "x": 720,
+    "y": 100,
+    "size": 1800,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌆",
+    "x": 1717,
+    "y": 747,
+    "size": 1400,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🚗",
+    "x": 1315,
+    "y": 706,
+    "size": 408,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "👽",
+    "x": 1356,
+    "y": 710,
+    "size": 54,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🚨",
+    "x": 1343,
+    "y": 611,
+    "size": 90,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌙",
+    "x": 731,
+    "y": 127,
+    "size": 90,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🕵️",
+    "x": 191.5,
+    "y": 428,
+    "size": 1471,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🎡",
+    "x": 640,
+    "y": 752,
+    "size": 800,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🛸",
+    "x": 868,
+    "y": 396,
+    "size": 96,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "📹",
+    "x": 1311,
+    "y": 683,
+    "size": 50,
+    "rotation": 13.14159265358979,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]

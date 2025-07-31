@@ -1,0 +1,74 @@
+[
+  {
+    "char": "🌃",
+    "x": 856,
+    "y": 124,
+    "size": 1600,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌧️",
+    "x": 964,
+    "y": -330,
+    "size": 1800,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🛍️",
+    "x": 862,
+    "y": 107,
+    "size": 80,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "👫",
+    "x": 1065,
+    "y": 360,
+    "size": 90,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "☂️",
+    "x": 1065,
+    "y": 323,
+    "size": 110,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍢",
+    "x": 361,
+    "y": 120,
+    "size": 67,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💡",
+    "x": 1370,
+    "y": 135,
+    "size": 70,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🪵",
+    "x": 548,
+    "y": 367,
+    "size": 70,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]

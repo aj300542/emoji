@@ -1,0 +1,92 @@
+[
+  {
+    "char": "🌊",
+    "x": 617,
+    "y": 581,
+    "size": 1800,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💨",
+    "x": 432,
+    "y": 285,
+    "size": 254,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌅",
+    "x": 1482,
+    "y": 433,
+    "size": 300,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧜‍♀️",
+    "x": 834,
+    "y": 517,
+    "size": 490,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🐚",
+    "x": 798,
+    "y": 806,
+    "size": 366,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧝‍♀️",
+    "x": 1308,
+    "y": 419,
+    "size": 192,
+    "rotation": 11.91986217719376,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "👗",
+    "x": 1171,
+    "y": 463,
+    "size": 294,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧝‍♂️",
+    "x": 190,
+    "y": 241,
+    "size": 258,
+    "rotation": -10,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌸",
+    "x": 846,
+    "y": 230,
+    "size": 60,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌸",
+    "x": 765,
+    "y": 257,
+    "size": 54,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]

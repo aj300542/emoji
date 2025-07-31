@@ -1,0 +1,83 @@
+[
+  {
+    "char": "☁️",
+    "x": 662,
+    "y": 273,
+    "size": 2004,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "⚡",
+    "x": 875,
+    "y": 222,
+    "size": 82,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌊",
+    "x": 309,
+    "y": 446,
+    "size": 552,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "⛵",
+    "x": 1134,
+    "y": 389,
+    "size": 634,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌍",
+    "x": 685,
+    "y": 513,
+    "size": 426,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🕺",
+    "x": 809,
+    "y": 379,
+    "size": 210,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌳",
+    "x": 688,
+    "y": 170,
+    "size": 288,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💃",
+    "x": 533,
+    "y": 382,
+    "size": 210,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🐍",
+    "x": 696,
+    "y": 152,
+    "size": 120,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]
