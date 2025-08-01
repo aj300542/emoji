@@ -66,7 +66,7 @@
     <h1>动物素材展示 🐾</h1>
 
     <div class="category-buttons">
-        <button onclick="renderCategory('mammals')">哺乳动物</button>
+        <button onclick="renderCategory('terrestrial')">陆地动物</button>
         <button onclick="renderCategory('birds')">鸟类</button>
         <button onclick="renderCategory('insects')">昆虫</button>
         <button onclick="renderCategory('aquatic')">水生动物</button>
@@ -77,7 +77,16 @@
 
     <script>
         const animalCategories = {
-            mammals: [
+            terrestrial: [
+                { icon: "🦕", name: "雷龙／长颈龙" },
+                { icon: "🦖", name: "霸王龙" },
+                { icon: "🐈‍⬛", name: "黑猫" },
+                { icon: "🐽", name: "猪鼻" },
+                { icon: "🦫", name: "河狸" },
+                { icon: "🐀", name: "大老鼠" },
+                { icon: "🐹", name: "仓鼠" },
+                { icon: "🦏", name: "犀牛" },
+                { icon: "🐻‍❄️", name: "北极熊" },
                 { icon: "🐶", name: "狗" },
                 { icon: "🐱", name: "猫" },
                 { icon: "🐻", name: "熊" },
@@ -93,8 +102,6 @@
                 { icon: "🐗", name: "野猪" },
                 { icon: "🐢", name: "乌龟" },
                 { icon: "🦎", name: "蜥蜴" },
-                { icon: "🐙", name: "大王章鱼" },
-                { icon: "🐳", name: "蓝鲸" },
                 { icon: "🦧", name: "红猩猩" },
                 { icon: "🐂", name: "野牛" },
                 { icon: "🐏", name: "弯角绵羊" },
@@ -164,6 +171,9 @@
 
             ],
             birds: [
+                { icon: "🪹", name: "空鸟巢" },
+                { icon: "🪺", name: "有蛋鸟巢" },
+                { icon: "🪿", name: "大雁／灰雁" },
                 { icon: "🦅", name: "鹰" },
                 { icon: "🕊️", name: "鸽子" },
                 { icon: "🐔", name: "母鸡" },
@@ -256,6 +266,9 @@
                 { icon: "🧪", name: "实验虫体" }
             ],
             aquatic: [
+                { icon: "🦞", name: "龙虾" },
+                { icon: "🐳", name: "蓝鲸" },
+                { icon: "🦪", name: "牡蛎" },
                 { icon: "🐟", name: "小鱼" },
                 { icon: "🐬", name: "海豚" },
                 { icon: "🦈", name: "鲨鱼" },
@@ -331,6 +344,7 @@
 
             ],
             fantasy: [
+                { icon: "🐲", name: "龙头（中国龙）" },
                 { icon: "🧜‍♀️", name: "美人鱼" },
                 { icon: "🐉", name: "东方龙" },
                 { icon: "🦄", name: "独角兽" },
@@ -401,7 +415,7 @@
         }
 
         // 默认显示哺乳动物
-        renderCategory('mammals', animalCategories);
+        renderCategory('terrestrial', animalCategories);
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
@@ -410,7 +424,7 @@
     <script src="../js/popBB.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            renderCategory('mammals', animalCategories);
+            renderCategory('terrestrial', animalCategories);
             // 手动触发一次初始绑定（首次渲染不会被 observer 捕获）
             bindPopupToItems();
         });
