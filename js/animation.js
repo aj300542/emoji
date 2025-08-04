@@ -4,12 +4,16 @@ function saveInitialStates() {
     initialStates = elements.map(el => ({
         x: el.x,
         y: el.y,
-        rotation: el.rotation, // ✅ 旋转角度
-        scale: el.scale,       // ✅ 缩放比例
-        size: el.size          // ✅ 元素尺寸
+        rotation: el.rotation,
+        scale: el.scale,
+        size: el.size
     }));
     console.log("✅ 已记录全部初始状态，包括位置、旋转、缩放、尺寸");
+
+    // ✅ 记录到历史快照中
+    recordCanvasState();
 }
+
 
 function restoreInitialStates() {
     if (initialStates.length === 0) {
@@ -32,7 +36,7 @@ function restoreInitialStates() {
 
 canvas.addEventListener("contextmenu", (e) => {
     e.preventDefault(); // 阻止默认右键菜单
-
+    console.log("🖱️ 右键触发成功");
     // 若有选中或拖拽的元素，先反转旋转方向
     const targetIndices = [];
     if (typeof selectedIndex === "number") targetIndices.push(selectedIndex);
@@ -51,6 +55,7 @@ canvas.addEventListener("contextmenu", (e) => {
 
     // ✅ 再取消选中状态
     selectedIndex = null;
+    selectedIndices = [];
     dragIndex = null;
     console.log("🚫 已取消所有选中状态");
 
@@ -92,13 +97,19 @@ setInterval(() => {
 // 🎶 位移动画：踩拍跳跃
 function animateMoveForSelected() {
     elements.forEach((el, i) => {
-        if ((i === selectedIndex || i === dragIndex) && !el.isMoving) {
-            el.isMoving = true;
+        const isSelected = (i === selectedIndex || i === dragIndex);
+        if (!isSelected || el.isMoving) return;
+
+        el.isMoving = true;
+
+        if (el.type === "group") {
+            // ✅ 整个群组移动：改变父级坐标，子元素不动
+            animateGroup(el);
+        } else {
             animateSingle(el);
         }
     });
 }
-
 function animateSingle(el) {
     const dx = (Math.random() - 0.5) * 100;
     const dy = (Math.random() - 0.5) * 50;
@@ -129,23 +140,51 @@ function animateSingle(el) {
 
     el.animationHandle = requestAnimationFrame(moveStep); // ⬅️ 初次记录句柄
 }
+function animateGroup(groupEl) {
+    const dx = (Math.random() - 0.5) * 100;
+    const dy = (Math.random() - 0.5) * 50;
+    const frames = framesPerBeat;
+    let step = 0;
+    const startX = groupEl.x;
+    const startY = groupEl.y;
 
-let globalStep = 0;
+    function moveStep() {
+        if (!groupEl.isMoving) return;
+        if (step < frames) {
+            const t = easeInOutQuad(step / frames);
+            groupEl.x = startX + dx * t;
+            groupEl.y = startY + dy * t;
+            drawAll();
+            step++;
+            groupEl.animationHandle = requestAnimationFrame(moveStep);
+        } else {
+            groupEl.animationHandle = null;
+            if (groupEl.isMoving) {
+                setTimeout(() => animateGroup(groupEl), beatDuration);
+            }
+        }
+    }
 
-// 🧱 初始化所有元素
-elements.forEach(el => {
-    el.rotationBase = 0;   // 由旋转控制
-    el.rotationSwing = 0;  // 由摇摆控制
-    el.rotation = 0;       // 总合用于绘制（可选）
-});
+    groupEl.animationHandle = requestAnimationFrame(moveStep);
+}
+
+
+
 
 // 🎯 摇摆启动函数（作用于全部元素）
 function startSwingForSelected() {
     elements.forEach((el, i) => {
-        if ((i === selectedIndex || i === dragIndex) && !el.isSwinging) {
-            el.swingSpeed = 6 + Math.random() * 6;
-            el.swingPhaseOffset = Math.random() * Math.PI * 2;
-            el.isSwinging = true;
+        const isSelected = i === selectedIndex || i === dragIndex;
+        if (!isSelected || el.isSwinging) return;
+
+        el.swingSpeed = 6 + Math.random() * 6;
+        el.swingPhaseOffset = Math.random() * Math.PI * 2;
+        el.isSwinging = true;
+
+        if (el.type === "group") {
+            el.isSwinging = true; // 🔥 重要！确保动画能执行
+            animateGroupSwingLoop(el);
+        } else {
             animateSwingLoop(el);
         }
     });
@@ -172,12 +211,52 @@ function animateSwingLoop(el) {
     // 初始帧
     el.animationHandle = requestAnimationFrame(swingStep);
 }
+function animateGroupSwingLoop(groupEl) {
+    const maxAngle = Math.PI / 12;
+    const frames = framesPerBeat;
+
+    groupEl.swingStep = groupEl.swingStep || 0;
+    groupEl.swingDirection = groupEl.swingDirection || 1;
+    const startAngle = groupEl.rotationSwing || 0;
+
+    function swingStep() {
+        if (!groupEl.isSwinging) return;
+
+        const step = groupEl.swingStep;
+        const t = easeInOutQuad(step / frames);
+        const targetAngle = groupEl.swingDirection * maxAngle;
+
+        groupEl.rotationSwing = startAngle + (targetAngle - startAngle) * t;
+        drawAll();
+
+        groupEl.swingStep = step + 1;
+
+        if (groupEl.swingStep < frames) {
+            groupEl.animationHandle = requestAnimationFrame(swingStep);
+        } else {
+            groupEl.swingStep = 0;
+            groupEl.swingDirection *= -1;
+            groupEl.rotationSwing = targetAngle;
+            setTimeout(() => {
+                animateGroupSwingLoop(groupEl);
+            }, beatDuration);
+        }
+    }
+
+    groupEl.animationHandle = requestAnimationFrame(swingStep);
+}
 
 function startRotationForSelected() {
     elements.forEach((el, i) => {
-        if ((i === selectedIndex || i === dragIndex) && !el.isRotating) {
-            el.rotationSpeed = Math.random() * 0.02 + 0.01; // 每帧旋转速度（弧度）
-            el.isRotating = true; // 防止重复调用
+        const isSelected = i === selectedIndex || i === dragIndex;
+        if (!isSelected || el.isRotating) return;
+
+        el.rotationSpeed = Math.random() * 0.02 + 0.01; // 每帧旋转速度（弧度）
+        el.isRotating = true;
+
+        if (el.type === "group") {
+            animateGroupRotateLoop(el);
+        } else {
             animateRotateLoop(el);
         }
     });
@@ -194,18 +273,42 @@ function animateRotateLoop(el) {
 
     requestAnimationFrame(step);
 }
+function animateGroupRotateLoop(groupEl) {
+    groupEl.rotationBase = groupEl.rotationBase || 0;
+    groupEl.rotationSpeed = groupEl.rotationSpeed || (Math.random() * 0.02 + 0.01); // 可调速
+
+    function rotateStep() {
+        if (!groupEl.isRotating) return;
+
+        groupEl.rotationBase += groupEl.rotationSpeed;
+        drawAll();
+
+        groupEl.animationHandle = requestAnimationFrame(rotateStep);
+    }
+
+    groupEl.animationHandle = requestAnimationFrame(rotateStep);
+}
+
+
 
 // 🔊 缩放动画：放大并回弹，按深度同步节奏
 function startScaleForSelected() {
     elements.forEach((el, i) => {
-        if ((i === selectedIndex || i === dragIndex) && !el.isScaling) {
-            el.baseSize = el.size;
-            el.depthRatio = (elements.length - i) / elements.length;
-            el.shouldLoopScale = true;
+        const isSelected = i === selectedIndex || i === dragIndex;
+        if (!isSelected || el.isScaling) return;
+
+        el.baseSize = el.size;
+        el.depthRatio = (elements.length - i) / elements.length;
+        el.shouldLoopScale = true;
+
+        if (el.type === "group") {
+            animateGroupScaleLoop(el);
+        } else {
             animateScaleLoop(el);
         }
     });
 }
+
 
 function animateScaleLoop(el) {
     if (el.isScaling) return;
@@ -241,6 +344,49 @@ function animateScaleLoop(el) {
 
     scaleStep();
 }
+
+function animateGroupScaleLoop(groupEl) {
+    if (groupEl.isScaling) return;
+    groupEl.isScaling = true;
+
+    groupEl.baseSize = groupEl.size || 1;
+    groupEl.depthRatio = groupEl.depthRatio || 1;
+    groupEl.shouldLoopScale = true;
+
+    // ✅ 明确设置缩放锚点（冗余但语义明确）
+    groupEl.scaleCenterX = groupEl.x;
+    groupEl.scaleCenterY = groupEl.y;
+
+    let step = 0;
+    const frames = Math.round(framesPerBeat * (1 + groupEl.depthRatio));
+    const amplitude = (0.2 + Math.random() * 0.2) * groupEl.depthRatio;
+    const direction = Math.random() < 0.5 ? 1 : -1;
+    const beatPause = beatDuration * 0.3;
+
+    function scaleStep() {
+        if (!groupEl.shouldLoopScale) {
+            groupEl.isScaling = false;
+            groupEl.scaleHandle = null;
+            return;
+        }
+
+        if (step < frames) {
+            const factor = 1 + direction * amplitude * Math.sin((Math.PI * step) / frames);
+            groupEl.size = groupEl.baseSize * factor;
+            drawAll(); // ⬅️ 此时绘制函数应引用 groupEl.scaleCenterX/Y
+            step++;
+            groupEl.scaleHandle = requestAnimationFrame(scaleStep);
+        } else {
+            step = 0;
+            groupEl.scaleHandle = setTimeout(() => {
+                groupEl.scaleHandle = requestAnimationFrame(scaleStep);
+            }, beatPause);
+        }
+    }
+
+    scaleStep();
+}
+
 
 
 function flipSelfHorizontal() {
