@@ -162,17 +162,14 @@
         <label for="fileInput" class="loadBtn">载入场景</label>
         <input type="file" id="fileInput" accept=".json" onchange="loadSceneFromFile(event)" style="display:none;" />
         <button onclick="saveCanvasAsImageWithPicker()">保存图片</button>
+        <button id="undoBtn">⬅️上一步</button>
+        <button id="redoBtn">➡️下一步</button>
         <button onclick="enterFullScreen()">进入全屏</button>
-
-
     </div>
     <div id="fullScreenContainer">
         <canvas id="iconCanvas"></canvas>
         <div id="timeOverlay">16:54</div>
     </div>
-
-
-
     <div class="controlGroup">
         <button onclick="saveInitialStates()">1记录初始状态</button>
         <button onclick="restoreInitialStates()">2恢复初始状态</button>
@@ -183,24 +180,54 @@
         <button onclick="flipSelfHorizontal()">7水平镜像</button>
         <button onclick="fillSelectedElement()">8选中元素铺满画布</button>
         <button onclick="stopAnimationForSelected()">9停止动画</button>
+        <button id="sendToBackBtn">置底</button>
+        <button id="mergeSelectedBtn">合并</button>
     </div>
     <div class="sceneLoaderPanel">
-        <button onclick="loadSceneByName('ape')">🐵 Ape 场景</button>
+        <button onclick="loadSceneByName('ape')">🐵 动物世界</button>
+        <button onclick="loadSceneByName('food')">🍰 美食图鉴</button>
+        <button onclick="loadSceneByName('drink')">🍸 饮料图鉴</button>
+        <button onclick="loadSceneByName('japan')">🎎 日本景观</button>
         <button onclick="loadSceneByName('ufo')">🛸 UFO 场景</button>
-        <button onclick="loadSceneByName('city')">🏙️ 城市场景</button>
-        <button onclick="loadSceneByName('forest')">🌲 森林场景</button>
-        <button onclick="loadSceneByName('picture')">🏞️ 雅典学院</button>
-        <button onclick="loadSceneByName('picture2')">🖼️ 呐喊</button>
+        <button onclick="loadSceneByName('music')">🏞️ 音乐学院</button>
         <button onclick="loadSceneByName('picture3')">🪭 维纳斯</button>
-        <button onclick="loadSceneByName('picture4')">🏃‍♂️ 伊甸园</button>
+        <button onclick="loadSceneByName('picture4')">♥️ 红心游戏</button>
         <button onclick="loadSceneByName('picture5')">👽 发现外星人</button>
         <button onclick="loadSceneByName('picture6')">🧠 头脑风暴</button>
         <button onclick="loadSceneByName('picture7')">🌧️ 雨中漫步</button>
         <button onclick="loadSceneByName('picture8')">🚧 城市边缘</button>
     </div>
+    <script>
+        window.elements = window.elements || [];
+        window.groupElements = window.groupElements || [];
+
+        let globalStep = 0;
+
+        // 🧱 初始化所有元素
+        elements.forEach(el => {
+            el.rotationBase = 0;   // 由旋转控制
+            el.rotationSwing = 0;  // 由摇摆控制
+            el.rotation = 0;       // 总合用于绘制（可选）
+        });
+        groupElements.forEach(group => {
+            group.rotationBase = 0;
+            group.rotationSwing = 0;
+            group.rotation = 0;
+            group.isSwinging = false;
+            group.isMoving = false;
+            group.animationHandle = null;
+            group.name = group.name || `Group_${Date.now()}`; // 如果需要调试命名
+            // 🆕 加入下面这两行：
+            group.swingStep = 0;
+            group.swingDirection = 1;
+        });
+    </script>
+    <script src="js/history.js"></script>
     <script src="js/saveLoad.js"></script>
     <script src="js/fullScreen.js"></script>
     <script src="js/drawing.js"></script>
+    <script type="module" src="js/interaction.js"></script>
+
     <script src="js/animation.js"></script>
     <script>
         function loadSceneData(data) {
