@@ -1,0 +1,435 @@
+[
+  {
+    "char": "🍛",
+    "x": 2306.5,
+    "y": 508,
+    "size": 2119,
+    "rotation": -2.4434609527920608,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "type": "group",
+    "x": 3736.423076923077,
+    "y": 436,
+    "children": [
+      {
+        "char": "🥘",
+        "x": 175.07692307692287,
+        "y": 136,
+        "size": 1471,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍦",
+        "x": -452.42307692307713,
+        "y": -195,
+        "size": 134,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍨",
+        "x": -371.42307692307713,
+        "y": -325,
+        "size": 92,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🥮",
+        "x": -357.42307692307713,
+        "y": 404,
+        "size": 116,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍧",
+        "x": -468.42307692307713,
+        "y": -38,
+        "size": 98,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍘",
+        "x": -435.42307692307713,
+        "y": 273,
+        "size": 122,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍩",
+        "x": -478.42307692307713,
+        "y": 88,
+        "size": 104,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🧈",
+        "x": -257.42307692307713,
+        "y": -428,
+        "size": 116,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🥧",
+        "x": 777.5769230769229,
+        "y": -180,
+        "size": 104,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🎂",
+        "x": 819.5769230769229,
+        "y": 105,
+        "size": 86,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍞",
+        "x": 799.5769230769229,
+        "y": -20,
+        "size": 98,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "️",
+        "x": -526.4230769230771,
+        "y": -35,
+        "size": 200,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      },
+      {
+        "char": "🍡",
+        "x": 775.5769230769229,
+        "y": 215,
+        "size": 62,
+        "rotation": 0,
+        "rotationSwing": 0,
+        "animationHandle": null
+      }
+    ],
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥓",
+    "x": 1012.5,
+    "y": 589,
+    "size": 1527,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥡",
+    "x": 138,
+    "y": 139,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍚",
+    "x": 243,
+    "y": 435,
+    "size": 494,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥗",
+    "x": 1506.5,
+    "y": 942,
+    "size": 1275,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥙",
+    "x": 227,
+    "y": 819,
+    "size": 620,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null,
+    "isFlipped": true
+  },
+  {
+    "char": "🌮",
+    "x": 862,
+    "y": 733,
+    "size": 494,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥪",
+    "x": 425,
+    "y": 172,
+    "size": 62,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍙",
+    "x": 550,
+    "y": 256,
+    "size": 50,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌯",
+    "x": 4188,
+    "y": 787,
+    "size": 740,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🫚",
+    "x": 429,
+    "y": 432,
+    "size": 50,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧅",
+    "x": 369,
+    "y": 433,
+    "size": 32,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍖",
+    "x": 340,
+    "y": 362,
+    "size": 32,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍱",
+    "x": 421,
+    "y": 77,
+    "size": 56,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥣",
+    "x": 639,
+    "y": 299,
+    "size": 50,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍲",
+    "x": 706,
+    "y": 368,
+    "size": 56,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🫕",
+    "x": 740,
+    "y": 452,
+    "size": 86,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧆",
+    "x": 1160,
+    "y": 116,
+    "size": 56,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍜",
+    "x": 1075,
+    "y": 85,
+    "size": 38,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥯",
+    "x": 4470,
+    "y": 45,
+    "size": 290,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧄",
+    "x": 28,
+    "y": 431,
+    "size": 38,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍮",
+    "x": 995,
+    "y": 68,
+    "size": 44,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧁",
+    "x": 474,
+    "y": 235,
+    "size": 38,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧂",
+    "x": 943,
+    "y": 32,
+    "size": 44,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍝",
+    "x": 2932,
+    "y": 780,
+    "size": 470,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍠",
+    "x": 2271,
+    "y": 374,
+    "size": 170,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥟",
+    "x": 2498,
+    "y": 856,
+    "size": 134,
+    "rotation": -4.88692190558412,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍤",
+    "x": 2562,
+    "y": 550,
+    "size": 98,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧀",
+    "x": 2059,
+    "y": 186,
+    "size": 80,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌭",
+    "x": 4420,
+    "y": 802,
+    "size": 326,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌶",
+    "x": 1065,
+    "y": 477,
+    "size": 92,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍅",
+    "x": 1370,
+    "y": 346,
+    "size": 86,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🥝",
+    "x": 1639,
+    "y": 350,
+    "size": 92,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍟",
+    "x": 1965,
+    "y": 849.5,
+    "size": 386,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  }
+]
