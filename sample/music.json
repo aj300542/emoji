@@ -1,8 +1,17 @@
 [
   {
+    "char": "🥁",
+    "x": 2331,
+    "y": 485.5,
+    "size": 2016,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
     "char": "🎹",
-    "x": 728,
-    "y": 470.5,
+    "x": 930,
+    "y": 501.5,
     "size": 1458,
     "rotation": 0,
     "rotationSwing": 0,
@@ -10,8 +19,8 @@
   },
   {
     "char": "🎼",
-    "x": 3851,
-    "y": 595.5,
+    "x": 3825,
+    "y": 588.5,
     "size": 1452,
     "rotation": 0,
     "rotationSwing": 0,
@@ -19,22 +28,13 @@
   },
   {
     "char": "🛋",
-    "x": 384,
+    "x": 386,
     "y": 406.5,
-    "size": 1136,
+    "size": 1244,
     "rotation": 0,
     "rotationSwing": 0,
     "animationHandle": null,
     "isFlipped": true
-  },
-  {
-    "char": "🥁",
-    "x": 2332,
-    "y": 487.5,
-    "size": 1458,
-    "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
   },
   {
     "char": "🪗",
@@ -58,7 +58,7 @@
     "char": "🎻",
     "x": 517,
     "y": 696,
-    "size": 320,
+    "size": 368,
     "rotation": -0.6981317007977315,
     "rotationSwing": 0,
     "animationHandle": null
@@ -66,7 +66,7 @@
   {
     "char": "🎺",
     "x": 4213,
-    "y": 672,
+    "y": 671,
     "size": 428,
     "rotation": 0,
     "rotationSwing": 0,
@@ -74,8 +74,8 @@
   },
   {
     "char": "🪈",
-    "x": 3847,
-    "y": 672,
+    "x": 4209,
+    "y": 264,
     "size": 350,
     "rotation": 0,
     "rotationSwing": 0,
@@ -97,7 +97,7 @@
     "char": "🎷",
     "x": 793,
     "y": 466.5,
-    "size": 200,
+    "size": 212,
     "rotation": 0,
     "rotationSwing": 0,
     "animationHandle": null
@@ -113,18 +113,9 @@
   },
   {
     "char": "📀",
-    "x": 1361,
-    "y": 786.5,
-    "size": 200,
-    "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
-    "char": "💿",
-    "x": 1145,
-    "y": 791.5,
-    "size": 122,
+    "x": 1401,
+    "y": 762.5,
+    "size": 98,
     "rotation": 0,
     "rotationSwing": 0,
     "animationHandle": null
@@ -194,9 +185,9 @@
   },
   {
     "char": "📵",
-    "x": 3313,
-    "y": 688.5,
-    "size": 476,
+    "x": 3099,
+    "y": 836.5,
+    "size": 140,
     "rotation": 0,
     "rotationSwing": 0,
     "animationHandle": null
@@ -212,8 +203,8 @@
   },
   {
     "char": "💽",
-    "x": 3100,
-    "y": 177.5,
+    "x": 1644,
+    "y": 534.5,
     "size": 266,
     "rotation": 0,
     "rotationSwing": 0,
@@ -221,8 +212,8 @@
   },
   {
     "char": "🎵",
-    "x": 4283,
-    "y": 252.5,
+    "x": 4526,
+    "y": 238.5,
     "size": 200,
     "rotation": 0,
     "rotationSwing": 0,
@@ -248,7 +239,7 @@
   },
   {
     "char": "🎛",
-    "x": 4444,
+    "x": 4490,
     "y": 792.5,
     "size": 200,
     "rotation": 0,
@@ -257,8 +248,215 @@
   },
   {
     "char": "🔌",
-    "x": 1143,
-    "y": 618.5,
+    "x": 1132,
+    "y": 624.5,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🪟",
+    "x": 1543,
+    "y": 757,
+    "size": 92,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🌞",
+    "x": 1960,
+    "y": 317,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "☀",
+    "x": 2778,
+    "y": 263,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "️",
+    "x": 2370,
+    "y": 428,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💥",
+    "x": 2364,
+    "y": 452,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💦",
+    "x": 3015,
+    "y": 116,
+    "size": 200,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🩻",
+    "x": 3755,
+    "y": 773,
+    "size": 248,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "💿",
+    "x": 1195,
+    "y": 757.5,
+    "size": 98,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♩",
+    "x": 247,
+    "y": 517,
+    "size": 68,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♪",
+    "x": 286,
+    "y": 535,
+    "size": 68,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♫",
+    "x": 341,
+    "y": 512,
+    "size": 50,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♬",
+    "x": 405,
+    "y": 515,
+    "size": 44,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♭",
+    "x": 598,
+    "y": 523,
+    "size": 44,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "♯",
+    "x": 632,
+    "y": 524,
+    "size": 56,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄞",
+    "x": 670,
+    "y": 509,
+    "size": 50,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄢",
+    "x": 198,
+    "y": 522,
+    "size": 80,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄐",
+    "x": 191,
+    "y": 494,
+    "size": 98,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄪",
+    "x": 587,
+    "y": 505,
+    "size": 110,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄫",
+    "x": 826,
+    "y": 522,
+    "size": 62,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "𝄽",
+    "x": 386,
+    "y": 448,
+    "size": 68,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🎵",
+    "x": 628,
+    "y": 418,
+    "size": 44,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🎶",
+    "x": 310,
+    "y": 447,
+    "size": 62,
+    "rotation": 0,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🎼",
+    "x": 2900,
+    "y": 380,
     "size": 200,
     "rotation": 0,
     "rotationSwing": 0,
