@@ -1,18 +1,26 @@
 [
   {
+    "char": "🧊",
+    "x": 727,
+    "y": 409.5,
+    "size": 1430,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🍸",
+    "x": 787.5,
+    "y": 805,
+    "size": 1353,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
     "char": "🍉",
     "x": 2359,
     "y": 449.5,
     "size": 1652,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
-    "char": "🧊",
-    "x": 727,
-    "y": 409.5,
-    "size": 1430,
     "rotationSwing": 0,
     "animationHandle": null
   },
@@ -126,60 +134,63 @@
   },
   {
     "char": "☕️",
-    "x": 223,
-    "y": 294,
-    "size": 494,
+    "x": 133,
+    "y": 533,
+    "size": 332,
     "rotationSwing": 0,
     "animationHandle": null
   },
   {
     "char": "🥤",
-    "x": 207,
-    "y": 767,
-    "size": 620,
+    "x": 310,
+    "y": 886,
+    "size": 506,
     "isFlipped": true,
     "rotationSwing": 0,
     "animationHandle": null
   },
   {
     "char": "🫖",
-    "x": 639,
-    "y": 770,
+    "x": 1328,
+    "y": 800,
     "size": 494,
     "rotationSwing": 0,
     "animationHandle": null
   },
   {
     "char": "🥂",
-    "x": 1198,
-    "y": 123,
-    "size": 104,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "x": 1181,
+    "y": 422,
+    "size": 128,
+    "rotationSwing": -0.0366509454817954,
+    "animationHandle": 13849,
+    "swingSpeed": 9.905061194585073,
+    "swingPhaseOffset": 6.139921991817324,
+    "isSwinging": true
   },
   {
     "char": "🫐",
-    "x": 643,
-    "y": 234,
-    "size": 134,
+    "x": 458,
+    "y": 327,
+    "size": 170,
     "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": null,
+    "rotationSpeed": 0.014306349914634881,
+    "isRotating": true,
+    "rotationBase": 19.12217838354295,
+    "rotation": null,
+    "isSwinging": false,
+    "isScaling": false,
+    "isMoving": false
   },
   {
     "char": "🍹",
-    "x": 854,
-    "y": 218,
+    "x": 805.1268055944979,
+    "y": 588.2387078674315,
     "size": 140,
     "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
-    "char": "🧃",
-    "x": 817,
-    "y": 330,
-    "size": 146,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": null,
+    "isMoving": true
   },
   {
     "char": "🍶",
@@ -190,20 +201,15 @@
     "animationHandle": null
   },
   {
-    "char": "🧋",
-    "x": 1095,
-    "y": 126,
-    "size": 128,
-    "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
     "char": "🥤",
-    "x": 995,
-    "y": 164,
+    "x": 460,
+    "y": 499,
     "size": 128,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.25441678687637365,
+    "animationHandle": 13850,
+    "swingSpeed": 11.446932169653167,
+    "swingPhaseOffset": 3.6864176553108265,
+    "isSwinging": true
   },
   {
     "char": "🍵",
@@ -215,19 +221,25 @@
   },
   {
     "char": "🥝",
-    "x": 836,
-    "y": 460,
+    "x": 651,
+    "y": 714,
     "size": 128,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.20097160572961154,
+    "animationHandle": 13851,
+    "swingSpeed": 8.37885776417101,
+    "swingPhaseOffset": 0.9505338331828849,
+    "isSwinging": true
   },
   {
     "char": "🍋",
-    "x": 567,
-    "y": 253,
+    "x": 491,
+    "y": 573,
     "size": 104,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.16570273916577455,
+    "animationHandle": 13852,
+    "swingSpeed": 9.944372060110851,
+    "swingPhaseOffset": 6.161492073083375,
+    "isSwinging": true
   },
   {
     "char": "🍈",
@@ -312,8 +324,8 @@
   },
   {
     "char": "🍒",
-    "x": 621,
-    "y": 308,
+    "x": 568,
+    "y": 647,
     "size": 122,
     "rotationSwing": 0,
     "animationHandle": null
@@ -403,22 +415,6 @@
     "animationHandle": null
   },
   {
-    "char": "🧋",
-    "x": 929,
-    "y": 317,
-    "size": 158,
-    "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
-    "char": "🍸",
-    "x": 1346.5,
-    "y": 972,
-    "size": 1083,
-    "rotationSwing": 0,
-    "animationHandle": null
-  },
-  {
     "char": "🍺",
     "x": 3898,
     "y": 146,
@@ -463,19 +459,57 @@
     "scale": 0.20000000000000004
   },
   {
+    "char": "🧋",
+    "x": 1109,
+    "y": 486,
+    "size": 140,
+    "rotationSwing": 0.15732197668934783,
+    "animationHandle": 13853,
+    "swingSpeed": 11.81948897007645,
+    "swingPhaseOffset": 2.9277711748661535,
+    "isSwinging": true
+  },
+  {
+    "char": "🧃",
+    "x": 1038,
+    "y": 564,
+    "size": 146,
+    "rotationSwing": 0,
+    "animationHandle": null
+  },
+  {
+    "char": "🧋",
+    "x": 954,
+    "y": 623,
+    "size": 157.71919283509493,
+    "rotationSwing": 0.05016787873794441,
+    "animationHandle": 13855,
+    "baseSize": 158,
+    "depthRatio": 0.06818181818181818,
+    "shouldLoopScale": true,
+    "isScaling": true,
+    "scaleHandle": 72,
+    "swingSpeed": 9.114403596510037,
+    "swingPhaseOffset": 4.60543315274626,
+    "isSwinging": true
+  },
+  {
     "char": "🍊",
-    "x": 618,
-    "y": 403,
+    "x": 862,
+    "y": 705,
     "size": 164,
     "rotationSwing": 0,
     "animationHandle": null
   },
   {
     "char": "🍇",
-    "x": 569,
-    "y": 463,
-    "size": 140,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "x": 761,
+    "y": 787,
+    "size": 176,
+    "rotationSwing": -0.202403957457199,
+    "animationHandle": 13854,
+    "swingSpeed": 6.127533156528861,
+    "swingPhaseOffset": 4.767063173501158,
+    "isSwinging": true
   }
 ]

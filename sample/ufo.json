@@ -81,8 +81,11 @@
     "x": 1014,
     "y": 68,
     "size": 88,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.2615257328856579,
+    "animationHandle": 193439,
+    "swingSpeed": 10.707362817062197,
+    "swingPhaseOffset": 1.7966414391427024,
+    "isSwinging": true
   },
   {
     "char": "☄️",
@@ -171,9 +174,11 @@
     "y": 401,
     "size": 102,
     "isSwinging": true,
-    "rotationSwing": 0,
-    "animationHandle": null,
-    "rotation": -0.174532925199433
+    "rotationSwing": 0.24622260335033308,
+    "animationHandle": 193420,
+    "rotation": -0.174532925199433,
+    "swingSpeed": 9.535864437417548,
+    "swingPhaseOffset": 5.4123483589554295
   },
   {
     "char": "🌔",
@@ -217,11 +222,12 @@
   },
   {
     "char": "🛸",
-    "x": 218,
-    "y": 216,
+    "x": 224.50436413919098,
+    "y": 214.64132171192384,
     "size": 266,
     "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": 193446,
+    "isMoving": true
   },
   {
     "char": "🌎",
@@ -324,13 +330,16 @@
   },
   {
     "char": "📡",
-    "x": 1321,
+    "x": 1318,
     "y": 690,
     "size": 56,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null,
-    "isFlipped": true
+    "rotationSwing": -0.04296629363236352,
+    "animationHandle": 193440,
+    "isFlipped": true,
+    "swingSpeed": 6.516334396051889,
+    "swingPhaseOffset": 5.5621805309279635,
+    "isSwinging": true
   },
   {
     "char": "🫧",
@@ -400,7 +409,10 @@
     "size": 48,
     "rotation": 0,
     "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": null,
+    "rotationSpeed": 0.014962025016911625,
+    "isRotating": true,
+    "rotationBase": 3.3365315787713024
   },
   {
     "char": "➖",
@@ -414,11 +426,14 @@
   {
     "char": "✖️",
     "x": 1000,
-    "y": 185,
+    "y": 187,
     "size": 48,
     "rotation": 0,
     "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": null,
+    "rotationSpeed": 0.012645957241988973,
+    "isRotating": true,
+    "rotationBase": 3.009737823593368
   },
   {
     "char": "➗",
@@ -440,12 +455,15 @@
   },
   {
     "char": "√",
-    "x": 900,
+    "x": 898,
     "y": 435,
     "size": 48,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.22275909621567722,
+    "animationHandle": 193426,
+    "swingSpeed": 8.578995388673912,
+    "swingPhaseOffset": 3.8244304044110025,
+    "isSwinging": true
   },
   {
     "char": "∑",
@@ -463,7 +481,10 @@
     "size": 48,
     "rotation": 0,
     "rotationSwing": 0,
-    "animationHandle": null
+    "animationHandle": null,
+    "rotationSpeed": 0.013131818100887848,
+    "isRotating": true,
+    "rotationBase": 7.774036315725645
   },
   {
     "char": "∫",
@@ -471,8 +492,14 @@
     "y": 555,
     "size": 48,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.2594267819117054,
+    "animationHandle": 193428,
+    "rotationSpeed": 0.016307760938094655,
+    "isRotating": true,
+    "rotationBase": 7.827725250285517,
+    "swingSpeed": 6.0408042832249755,
+    "swingPhaseOffset": 1.0635415797096373,
+    "isSwinging": true
   },
   {
     "char": "∆",
@@ -489,8 +516,14 @@
     "y": 302,
     "size": 44,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.21186877394567485,
+    "animationHandle": 193425,
+    "rotationSpeed": 0.027368638577617482,
+    "isRotating": true,
+    "rotationBase": 14.313797976093753,
+    "swingSpeed": 8.957101312409868,
+    "swingPhaseOffset": 2.580545012694949,
+    "isSwinging": true
   },
   {
     "char": "≠",
@@ -525,8 +558,14 @@
     "y": 240,
     "size": 44,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.23759815644640137,
+    "animationHandle": 193422,
+    "swingSpeed": 9.372891593412135,
+    "swingPhaseOffset": 5.721377374644945,
+    "isSwinging": true,
+    "rotationSpeed": 0.022689977456081062,
+    "isRotating": true,
+    "rotationBase": 12.63831744303701
   },
   {
     "char": "⊂",
@@ -543,17 +582,23 @@
     "y": 489,
     "size": 42,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.26072201330567224,
+    "animationHandle": 193431,
+    "swingSpeed": 10.865519708308247,
+    "swingPhaseOffset": 5.479198908526387,
+    "isSwinging": true
   },
   {
     "char": "∈",
-    "x": 492,
-    "y": 540,
+    "x": 489,
+    "y": 542,
     "size": 42,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.2597975096326392,
+    "animationHandle": 193432,
+    "swingSpeed": 7.770363736088891,
+    "swingPhaseOffset": 6.0431148820919995,
+    "isSwinging": true
   },
   {
     "char": "∉",
@@ -567,11 +612,17 @@
   {
     "char": "⊆",
     "x": 612,
-    "y": 575,
+    "y": 573,
     "size": 42,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.04484605119810138,
+    "animationHandle": 193429,
+    "swingSpeed": 11.405199595329659,
+    "swingPhaseOffset": 1.5125089693875926,
+    "isSwinging": true,
+    "rotationSpeed": 0.010590071349392625,
+    "isRotating": true,
+    "rotationBase": 4.363109395949789
   },
   {
     "char": "𝑥",
@@ -588,8 +639,11 @@
     "y": 627,
     "size": 38,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.1852056457618296,
+    "animationHandle": 193433,
+    "swingSpeed": 8.508681405393597,
+    "swingPhaseOffset": 5.603730523712071,
+    "isSwinging": true
   },
   {
     "char": "𝑧",
@@ -606,8 +660,14 @@
     "y": 690,
     "size": 38,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": 0.26071010201383576,
+    "animationHandle": 193435,
+    "rotationSpeed": 0.02314867771309479,
+    "isRotating": true,
+    "rotationBase": 7.546468934468862,
+    "swingSpeed": 8.238814509150632,
+    "swingPhaseOffset": 5.644053414532455,
+    "isSwinging": true
   },
   {
     "char": "ℓ",
@@ -615,7 +675,10 @@
     "y": 450,
     "size": 38,
     "rotation": 0,
-    "rotationSwing": 0,
-    "animationHandle": null
+    "rotationSwing": -0.1422215630420769,
+    "animationHandle": 193436,
+    "swingSpeed": 9.0978702487701,
+    "swingPhaseOffset": 0.0014056979820195124,
+    "isSwinging": true
   }
 ]
