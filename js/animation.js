@@ -434,3 +434,55 @@ function stopAnimationForSelected() {
     drawAll(); // 重绘画面
 }
 
+function restoreAnimations(elements) {
+    elements.forEach(el => {
+        // 🌀 恢复摇摆动画
+        if (el.isSwinging) {
+            el.swingSpeed = el.swingSpeed || 6 + Math.random() * 6;
+            el.swingPhaseOffset = el.swingPhaseOffset || Math.random() * Math.PI * 2;
+            animateSwingLoop(el);
+        }
+
+        // 🔄 恢复旋转动画
+        if (el.isRotating) {
+            el.rotationSpeed = el.rotationSpeed || 0.01;
+            el.rotationBase = el.rotationBase || 0;
+            animateRotationLoop(el);
+        }
+
+        // 🕺 恢复位移动画（节拍跳跃）
+        if (el.isMoving) {
+            if (el.type === "group") {
+                animateGroup(el);
+            } else {
+                animateSingle(el);
+            }
+        }
+    });
+}
+
+function animateRotationLoop(el) {
+    function rotateStep() {
+        if (!el.isRotating) return;
+
+        el.rotation += el.rotationSpeed || 0.01;
+        drawAll();
+
+        el.animationHandle = requestAnimationFrame(rotateStep);
+    }
+
+    el.animationHandle = requestAnimationFrame(rotateStep);
+}
+
+function stopAllAnimations() {
+    if (!Array.isArray(currentScene)) return;
+
+    currentScene.forEach(obj => {
+        if (obj.animationHandle) {
+            cancelAnimationFrame(obj.animationHandle);
+            obj.animationHandle = null;
+        }
+    });
+
+    console.log("🛑 所有旧动画已停止");
+}
