@@ -72,7 +72,7 @@ function fillSelectedElement() {
     // 💡 设置画布大小参数
     const maxDimension = Math.max(canvas.width, canvas.height);
 
-    el.size = maxDimension; // 字体大小设为最大边长
+    el.size = maxDimension; 
     el.x = canvas.width / 2;
     el.y = canvas.height / 2;
 

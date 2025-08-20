@@ -9,9 +9,6 @@ let offsetX = 0, offsetY = 0;
 let selectionBox = null;
 let selectedIndices = [];
 
-
-
-
 // 初始化 canvas 尺寸
 function resizeCanvas() {
     canvas.width = canvas.offsetWidth;
@@ -31,12 +28,19 @@ input.addEventListener("input", () => {
 // Emoji 提取函数
 function extractIcons(text) {
     const emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u26FF\uFE0F]/g;
-    return text.match(emojiRegex) || [];
+    const matches = text.match(emojiRegex) || [];
+    return matches.filter(char => typeof char === "string" && char.trim() !== "");
 }
+
 
 // 添加图标到元素数组
 function addIcons(icons) {
     icons.forEach((icon, i) => {
+        if (typeof icon !== "string" || icon.trim() === "") {
+            console.warn("跳过非法图标:", icon);
+            return;
+        }
+
         elements.push({
             char: icon,
             x: 60 + (elements.length + i) * 70,
@@ -46,9 +50,76 @@ function addIcons(icons) {
         });
     });
 
-    // ✅ 同步状态
-    setScene([...elements]); // 使用展开符确保不会共享引用
+    setScene([...elements]);
 }
+
+
+
+canvas.addEventListener("dragover", e => {
+    e.preventDefault(); // 允许放置
+    canvas.style.cursor = "copy";
+});
+
+canvas.addEventListener("dragleave", () => {
+    canvas.style.cursor = "default";
+});
+
+canvas.addEventListener("drop", e => {
+    e.preventDefault();
+    canvas.style.cursor = "default";
+
+    const files = e.dataTransfer.files;
+    const items = e.dataTransfer.items;
+
+    // 🎯 优先处理图片文件
+    const imageFile = [...files].find(file => file.type.startsWith("image/"));
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+            const img = new Image();
+            img.onload = function () {
+                const x = e.offsetX;
+                const y = e.offsetY;
+
+                elements.push({
+                    type: "image",
+                    img,
+                    x,
+                    y,
+                    size: Math.max(img.width, img.height), // 保留 size 用于选中逻辑
+                    width: img.width,                      // 用于绘制真实比例
+                    height: img.height,
+                    rotation: 0
+                });
+
+
+                drawAll();
+            };
+            img.src = evt.target.result;
+        };
+        reader.readAsDataURL(imageFile);
+        return;
+    }
+
+    // 🧼 如果是文本拖拽，尝试提取 emoji
+    if (items.length > 0) {
+        const item = items[0];
+        if (item.kind === "string" && item.type === "text/plain") {
+            item.getAsString(text => {
+                const icons = extractIcons(text);
+                if (icons.length > 0) {
+                    addIcons(icons);
+                    drawAll();
+                } else {
+                    console.log("未检测到 emoji，忽略文本拖拽");
+                }
+            });
+
+        }
+    }
+});
+
+
 
 // 绘制所有图标（支持旋转）
 function drawAll() {
@@ -92,15 +163,22 @@ function drawAll() {
 
             // ✅ 绘制子元素
             el.children.forEach((child, j) => {
-                drawEmojiWithContext(
-                    child,
-                    el.x + child.x,
-                    el.y + child.y,
-                    selectedIndices.includes(i)
-                );
+                if (child.type === "image" && child.img) {
+                    drawImageWithContext(child, el.x + child.x, el.y + child.y, selectedIndices.includes(i));
+                } else {
+                    drawEmojiWithContext(child, el.x + child.x, el.y + child.y, selectedIndices.includes(i));
+                }
             });
 
+
             ctx.restore();
+        } else if (el.type === "image" && el.img) {
+            drawImageWithContext(
+                el,
+                el.x,
+                el.y,
+                selectedIndices.includes(i) || selectedIndex === i || dragIndex === i
+            );
         } else {
             drawEmojiWithContext(
                 el,
@@ -109,9 +187,44 @@ function drawAll() {
                 selectedIndices.includes(i) || selectedIndex === i || dragIndex === i
             );
         }
+
     });
 
 }
+function drawImageWithContext(el, finalX, finalY, isSelected) {
+    const rotation = (el.rotationBase || 0) + (el.rotationSwing || 0) + (el.rotation || 0);
+    const scaleX = (el.isFlipped ? -1 : 1);
+    const scaleY = 1;
+
+    const baseW = el.width || 100;
+    const baseH = el.height || 100;
+    const scale = el.size ? el.size / Math.max(baseW, baseH) : 1;
+
+    const width = baseW * scale;
+    const height = baseH * scale;
+
+    ctx.save();
+    ctx.translate(finalX, finalY);
+    ctx.scale(scaleX, scaleY);
+    ctx.rotate(rotation);
+
+    ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
+    ctx.shadowBlur = 4;
+    ctx.drawImage(el.img, -width / 2, -height / 2, width, height);
+    ctx.shadowColor = "transparent";
+    ctx.shadowBlur = 0;
+
+    if (isSelected) {
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+        const padding = 4;
+        ctx.strokeRect(-width / 2 - padding, -height / 2 - padding, width + padding * 2, height + padding * 2);
+    }
+
+    ctx.restore();
+}
+
+
 function drawEmojiWithContext(el, finalX, finalY, isSelected) {
     const rotation = (el.rotationBase || 0) + (el.rotationSwing || 0) + (el.rotation || 0);
     const scaleX = (el.isFlipped ? -1 : 1) * (el.scale || 1);
@@ -240,4 +353,3 @@ document.getElementById("pasteBtn").addEventListener("click", async () => {
         alert("无法访问剪贴板，请确保你已点击授权并使用受支持的浏览器（如 Chrome 最新版本）");
     }
 });
-
