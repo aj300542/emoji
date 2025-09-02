@@ -84,63 +84,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const fantasyCharacters = [
-            { icon: "🐉", name: "火焰巨龙" },
-            { icon: "🧚‍♀️", name: "森林之灵" },
-            { icon: "🧞‍♂️", name: "神秘精灵" },
-            { icon: "🌕", name: "月之守护" },
-            { icon: "🕯️", name: "灵魂之灯" },
-            { icon: "🦄", name: "星光独角兽" },
-            { icon: "🧜‍♀️", name: "深海女妖" },
-            { icon: "🦓", name: "幻境斑马" },
-            { icon: "🫧", name: "气泡灵体" },
-            { icon: "🪽", name: "羽翼幻兽" },
-            { icon: "🦢", name: "月羽天鹅" },
-            { icon: "🔥", name: "业火魂兽" },
-            { icon: "❄️", name: "冰晶魔灵" },
-            { icon: "💫", name: "星界幽魂" },
-            { icon: "🪷", name: "灵莲守花" },
-            { icon: "🔮", name: "水晶占灵" },
-            { icon: "🪄", name: "魔法幻核" },
-            { icon: "🌩️", name: "雷鸣兽王" },
-            { icon: "🌈", name: "彩虹幻狐" },
-            { icon: "🧸", name: "梦境玩偶熊" },
-            { icon: "🐺", name: "影月兽" },
-            { icon: "🕊️", name: "和平之灵" },
-            { icon: "🦉", name: "夜语魔鸮" },
-            { icon: "🪹", name: "虚巢羽灵" },
-            { icon: "🌌", name: "宇宙守灵者" },
-            { icon: "🕷️", name: "梦蛛编织者" },
-            { icon: "🌫️", name: "迷雾行者" },
-            { icon: "🪐", name: "星环浮灵" },
-            { icon: "🪸", name: "珊瑚梦兽" },
-            { icon: "🍄", name: "菌林守护者" },
-            { icon: "🌪️", name: "风暴秘使" },
-            { icon: "🧤", name: "隐形幻匠" },
-            { icon: "🧊", name: "冰魄傀儡" },
-            { icon: "🧬", name: "遗传幻灵" },
-            { icon: "🪷", name: "莲影幻蝶" },
-            { icon: "🪰", name: "苍蝇灵媒" },
-            { icon: "📿", name: "灵珠僧人" },
-            { icon: "🩵", name: "心念幻羽" },
-            { icon: "🪦", name: "墓域召唤者" },
-            { icon: "🫥", name: "虚空使徒" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        fantasyCharacters.forEach(char => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${char.icon}</div><div class="label">${char.name}</div>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/fantasy.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popBios.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

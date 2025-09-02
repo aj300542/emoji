@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji 飞机游戏</title>
+    <script src="js/phaser.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #1d1d1d;
+            overflow: hidden;
+            font-family: 'Segoe UI Emoji', 'Noto Emoji', sans-serif;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let player;
+    let isPointerDown = false;
+    let hasMoved = false;
+    let targetX = null;
+    let targetY = null;
+    const speed = 2;
+
+    const config = {
+        type: Phaser.AUTO,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: '#1d1d1d',
+        physics: {
+            default: 'arcade',
+            arcade: { debug: false }
+        },
+        scene: {
+            preload,
+            create,
+            update
+        }
+    };
+
+    const game = new Phaser.Game(config);
+
+    window.addEventListener('resize', () => {
+        game.scale.resize(window.innerWidth, window.innerHeight);
+    });
+
+    function preload() {}
+
+    function create() {
+        const scene = this;
+
+        player = scene.add.text(config.width / 2, config.height * 0.8, '✈️', {
+            fontSize: '6vh',
+            fontFamily: 'Segoe UI Emoji, Noto Emoji, sans-serif'
+        }).setOrigin(0.5);
+
+        scene.input.on('pointerdown', () => {
+            isPointerDown = true;
+            hasMoved = false;
+            targetX = null;
+            targetY = null;
+        });
+
+        scene.input.on('pointermove', pointer => {
+            if (isPointerDown) {
+                hasMoved = true;
+                targetX = pointer.x;
+                targetY = pointer.y;
+            }
+        });
+
+        scene.input.on('pointerup', () => {
+            isPointerDown = false;
+            hasMoved = false;
+            targetX = null;
+            targetY = null;
+        });
+    }
+
+    function update() {
+        if (isPointerDown && hasMoved && targetX !== null && targetY !== null) {
+            const dx = targetX - player.x;
+            const dy = targetY - player.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const buffer = 100;
+
+            if (distance > buffer) {
+                const ratio = speed * (distance - buffer) / distance;
+                player.x += dx * ratio;
+                player.y += dy * ratio;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -15,126 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🔧", name: "扳手" },
-            { icon: "🪛", name: "螺丝刀" },
-            { icon: "🪚", name: "锯子" },
-            { icon: "🔨", name: "锤子" },
-            { icon: "📏", name: "尺子" },
-            { icon: "🪜", name: "梯子" },
-            { icon: "🪠", name: "管道疏通器" },
-            { icon: "🧯", name: "灭火器" },
-            { icon: "🧰", name: "工具箱" },
-            { icon: "🪤", name: "夹具" },
-            { icon: "🧱", name: "砌砖铲" },
-            { icon: "🪝", name: "钩子" },
-            { icon: "🔌", name: "电线插头" },
-            { icon: "🔋", name: "电池组" },
-            { icon: "🧲", name: "磁铁" },
-            { icon: "🧪", name: "实验瓶" },
-            { icon: "🧫", name: "样品盘" },
-            { icon: "📐", name: "三角尺" },
-            { icon: "🖊️", name: "标记笔" },
-            { icon: "🎛️", name: "调控板" },
-            { icon: "🔍", name: "放大镜" },
-            { icon: "🪞", name: "检测镜面" },
-            { icon: "🔒", name: "锁具" },
-            { icon: "🔑", name: "钥匙" },
-            { icon: "🌿", name: "剪枝剪" },
-            { icon: "🪴", name: "种植铲" },
-            { icon: "🚿", name: "喷壶" },
-            { icon: "🍳", name: "锅铲" },
-            { icon: "🔪", name: "厨刀" },
-            { icon: "🥣", name: "搅拌盆" },
-            { icon: "🧂", name: "调味罐" },
-            { icon: "🧳", name: "行李箱" },
-            { icon: "🌡️", name: "温度计" },
-            { icon: "🧸", name: "泰迪熊" },
-            { icon: "🧶", name: "毛线团" },
-            { icon: "🪢", name: "结绳" },
-            { icon: "🔎", name: "放大镜（右向）" },
-            { icon: "🕯️", name: "蜡烛" },
-            { icon: "💡", name: "灯泡" },
-            { icon: "🔦", name: "手电筒" },
-            { icon: "🔓", name: "打开的锁" },
-            { icon: "🔏", name: "带钢笔的锁" },
-            { icon: "🔐", name: "带钥匙的锁" },
-            { icon: "🗝️", name: "老式钥匙" },
-            { icon: "🪓", name: "斧头" },
-            { icon: "⛏️", name: "镐" },
-            { icon: "⚒️", name: "锤镐工具" },
-            { icon: "🛠️", name: "工具组合" },
-            { icon: "🗡️", name: "匕首" },
-            { icon: "⚔️", name: "交叉剑" },
-            { icon: "💣", name: "炸弹" },
-            { icon: "🪃", name: "回旋镖" },
-            { icon: "🏹", name: "弓箭" },
-            { icon: "🛡️", name: "盾牌" },
-            { icon: "🔩", name: "螺丝螺母" },
-            { icon: "⚙️", name: "齿轮" },
-            { icon: "🗜️", name: "夹钳" },
-            { icon: "⚖️", name: "天平" },
-            { icon: "🔗", name: "链接" },
-            { icon: "⛓️‍💥", name: "断裂链条" },
-            { icon: "⛓️", name: "链条" },
-            { icon: "🪏", name: "槌球棒" },
-            { icon: "⚗️", name: "蒸馏器" },
-            { icon: "🔬", name: "显微镜" },
-            { icon: "🔭", name: "望远镜" },
-            { icon: "📡", name: "卫星天线" },
-            { icon: "💉", name: "注射器" },
-            { icon: "🩹", name: "创可贴" },
-            { icon: "🩼", name: "拐杖" },
-            { icon: "🩺", name: "听诊器" },
-            { icon: "🩻", name: "X光图像" },
-            { icon: "🚪", name: "门" },
-            { icon: "🪞", name: "镜子" },
-            { icon: "🪟", name: "窗户" },
-            { icon: "🛏️", name: "床" },
-            { icon: "🛋️", name: "沙发" },
-            { icon: "🪑", name: "椅子" },
-            { icon: "🚽", name: "马桶" },
-            { icon: "🪠", name: "吸厕器" },
-            { icon: "🚿", name: "淋浴" },
-            { icon: "🛁", name: "浴缸" },
-            { icon: "🪒", name: "剃须刀" },
-            { icon: "🧴", name: "护肤瓶" },
-            { icon: "🧷", name: "别针" },
-            { icon: "🧹", name: "扫帚" },
-            { icon: "🧺", name: "洗衣篮" },
-            { icon: "🧻", name: "卷纸" },
-            { icon: "🪣", name: "桶" },
-            { icon: "🧼", name: "肥皂" },
-            { icon: "🫧", name: "泡泡" },
-            { icon: "🪥", name: "牙刷" },
-            { icon: "🧽", name: "海绵" },
-            { icon: "🛒", name: "购物车" },
-            { icon: "🚬", name: "香烟" },
-            { icon: "⚰️", name: "棺材" },
-            { icon: "🪦", name: "墓碑" },
-            { icon: "⚱️", name: "骨灰瓮" },
-            { icon: "🪧", name: "抗议牌" },
-            { icon: "🧊", name: "冰箱工具盒" },
-            { icon: "🧵", name: "缝纫针包" },
-            { icon: "🕹️", name: "操控杆" },
-            { icon: "🪫", name: "电量测试器" }
-        ];
-        // ...existing code...
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/tools.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

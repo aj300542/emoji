@@ -14,130 +14,16 @@
 
     <div class="gallery" id="gallery"></div>
 
+
     <script>
-        const dataItems = [
-            { icon: "📔", name: "笔记本（精装）" },
-            { icon: "📕", name: "红色书籍" },
-            { icon: "📖", name: "打开的书" },
-            { icon: "📚", name: "书堆" },
-            { icon: "📓", name: "笔记本" },
-            { icon: "📒", name: "分类笔记本" },
-            { icon: "📃", name: "文件页" },
-            { icon: "📜", name: "卷轴" },
-            { icon: "📄", name: "文档" },
-            { icon: "📰", name: "报纸" },
-            { icon: "🗞️", name: "卷起的报纸" },
-            { icon: "📑", name: "书签页" },
-            { icon: "🔖", name: "书签" },
-            { icon: "🏷️", name: "标签" },
-            { icon: "✉️", name: "信封" },
-            { icon: "📧", name: "电子邮件" },
-            { icon: "📨", name: "收件邮件" },
-            { icon: "📩", name: "回复邮件" },
-            { icon: "📤", name: "发件箱" },
-            { icon: "📥", name: "收件箱" },
-            { icon: "📦", name: "包裹箱" },
-            { icon: "✏️", name: "铅笔" },
-            { icon: "✒️", name: "钢笔" },
-            { icon: "🖋️", name: "墨水笔" },
-            { icon: "🖊️", name: "圆珠笔" },
-            { icon: "🖌️", name: "画笔" },
-            { icon: "🖍️", name: "蜡笔" },
-            { icon: "📝", name: "书写" },
-            { icon: "💼", name: "公文包" },
-            { icon: "📁", name: "文件夹" },
-            { icon: "📂", name: "打开的文件夹" },
-            { icon: "🗂️", name: "分类标签夹" },
-            { icon: "📅", name: "撕页日历" },
-            { icon: "📆", name: "日历" },
-            { icon: "🗒️", name: "备忘录本" },
-            { icon: "🗓️", name: "挂历" },
-            { icon: "📇", name: "名片夹" },
-            { icon: "📈", name: "上升趋势图" },
-            { icon: "📉", name: "下降趋势图" },
-            { icon: "📊", name: "柱状图" },
-            { icon: "📋", name: "剪贴板" },
-            { icon: "📌", name: "图钉" },
-            { icon: "📍", name: "定位标记" },
-            { icon: "📎", name: "回形针" },
-            { icon: "🖇️", name: "连接回形针" },
-            { icon: "🧮", name: "算盘" },
-            { icon: "💰", name: "钱袋" },
-            { icon: "🪙", name: "硬币" },
-            { icon: "💴", name: "日元" },
-            { icon: "💵", name: "美元" },
-            { icon: "💶", name: "欧元" },
-            { icon: "💷", name: "英镑" },
-            { icon: "💸", name: "飞钱" },
-            { icon: "💳", name: "信用卡" },
-            { icon: "🧾", name: "账单" },
-            { icon: "💹", name: "股票趋势" },
-            { icon: "📗", name: "绿色书籍" },
-            { icon: "📘", name: "蓝色书籍" },
-            { icon: "📙", name: "橙色书籍" },
-            { icon: "📻", name: "收音机" },
-            { icon: "📐", name: "三角尺" },
-            { icon: "📏", name: "尺子" },
-            { icon: "🗄️", name: "文件柜" },
-            { icon: "🗃️", name: "卡片盒" },
-            { icon: "🗑️", name: "垃圾桶" },
-            { icon: "🪪", name: "身份证件" },
-            { icon: "📫", name: "邮筒（信件在内）" },
-            { icon: "📪", name: "邮筒（空）" },
-            { icon: "📬", name: "邮筒（开启信件）" },
-            { icon: "📭", name: "邮筒（开启空）" },
-            { icon: "📮", name: "邮政投递箱" },
-            { icon: "🗳️", name: "投票箱" },
-            { icon: "⌛", name: "沙漏（旧）" },
-            { icon: "⏳", name: "沙漏（运行）" },
-            { icon: "⌚", name: "腕表" },
-            { icon: "⏰", name: "闹钟" },
-            { icon: "⏱️", name: "秒表" },
-            { icon: "⏲️", name: "计时器" },
-            { icon: "🕰️", name: "时钟" },
-            { icon: "🕛", name: "12点整" },
-            { icon: "🕧", name: "12点半" },
-            { icon: "🕐", name: "1点整" },
-            { icon: "🕜", name: "1点半" },
-            { icon: "🕑", name: "2点整" },
-            { icon: "🕝", name: "2点半" },
-            { icon: "🕒", name: "3点整" },
-            { icon: "🕞", name: "3点半" },
-            { icon: "🕓", name: "4点整" },
-            { icon: "🕟", name: "4点半" },
-            { icon: "🕔", name: "5点整" },
-            { icon: "🕠", name: "5点半" },
-            { icon: "🕕", name: "6点整" },
-            { icon: "🕡", name: "6点半" },
-            { icon: "🕖", name: "7点整" },
-            { icon: "🕢", name: "7点半" },
-            { icon: "🕗", name: "8点整" },
-            { icon: "🕣", name: "8点半" },
-            { icon: "🕘", name: "9点整" },
-            { icon: "🕤", name: "9点半" },
-            { icon: "🕙", name: "10点整" },
-            { icon: "🕥", name: "10点半" },
-            { icon: "🕚", name: "11点整" },
-            { icon: "🕦", name: "11点半" },
-            { icon: "💌", name: "情书" },
-            { icon: "🪧", name: "标语牌" },
-            { icon: "✂️", name: "剪刀" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/officeSupplies.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

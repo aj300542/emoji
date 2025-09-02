@@ -15,126 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-
-        // ...existing code...
-        const dataItems = [
-            { icon: "🏯", name: "日式城堡" },
-            { icon: "🏰", name: "欧洲城堡" },
-            { icon: "💒", name: "婚礼教堂" },
-            { icon: "🗼", name: "东京塔" },
-            { icon: "🗽", name: "自由女神像" },
-            { icon: "⛪", name: "教堂" },
-            { icon: "🕌", name: "清真寺" },
-            { icon: "🛕", name: "印度寺庙" },
-            { icon: "🕍", name: "犹太教堂" },
-            { icon: "⛩️", name: "鸟居" },
-            { icon: "🕋", name: "麦加天房" },
-            { icon: "⛲", name: "喷泉" },
-            { icon: "⛺", name: "帐篷" },
-            { icon: "🏟️", name: "体育场" },
-            { icon: "🏛️", name: "古典建筑" },
-            { icon: "🏗️", name: "建筑工地" },
-            { icon: "🧱", name: "砖块" },
-            { icon: "🛖", name: "茅屋" },
-            { icon: "🏘️", name: "住宅区" },
-            { icon: "🏚️", name: "废弃房屋" },
-            { icon: "🏠", name: "房屋" },
-            { icon: "🏡", name: "有庭院的房屋" },
-            { icon: "🏢", name: "办公楼" },
-            { icon: "🏣", name: "邮局" },
-            { icon: "🏤", name: "欧洲邮政局" },
-            { icon: "🏥", name: "医院" },
-            { icon: "🏦", name: "银行" },
-            { icon: "🏨", name: "酒店" },
-            { icon: "🏩", name: "爱情旅馆" },
-            { icon: "🏪", name: "便利店" },
-            { icon: "🏫", name: "学校" },
-            { icon: "🏬", name: "百货公司" },
-            { icon: "🏭", name: "工厂" },
-            { icon: "🌁", name: "雾中的桥" },
-            { icon: "🌃", name: "夜晚城市" },
-            { icon: "🏙️", name: "城市天际线" },
-            { icon: "🌄", name: "山间日出" },
-            { icon: "🌅", name: "海边日出" },
-            { icon: "🌆", name: "傍晚城市" },
-            { icon: "🌇", name: "城市日落" },
-            { icon: "🌉", name: "桥梁" },
-            { icon: "♨️", name: "温泉" },
-            { icon: "🎠", name: "旋转木马" },
-            { icon: "🛝", name: "滑梯" },
-            { icon: "🎡", name: "摩天轮" },
-            { icon: "🎢", name: "过山车" },
-            { icon: "💈", name: "理发标志" },
-            { icon: "🎪", name: "马戏团帐篷" },
-            { icon: "🛎️", name: "服务铃" },
-            { icon: "🗿", name: "复活节岛石像" },
-            { icon: "🏬", name: "商场" },
-            { icon: "🏯", name: "城堡" },
-            { icon: "🏰", name: "宫殿" },
-            { icon: "🗼", name: "铁塔" },
-            { icon: "⛩️", name: "神社鸟居" },
-            { icon: "🛖", name: "草屋" },
-            { icon: "🏛️", name: "古典神庙" },
-            { icon: "🕍", name: "犹太会堂" },
-            { icon: "🧱", name: "砖房" },
-            { icon: "🚉", name: "火车站" },
-            { icon: "🏗️", name: "建设中楼宇" },
-            { icon: "🛕", name: "印度庙宇" },
-            { icon: "🏚️", name: "废弃建筑" },
-            { icon: "🛎️", name: "接待大堂" },
-            { icon: "⛪", name: "典雅教堂" },
-            { icon: "🏟️", name: "古代角斗场" },
-            { icon: "🏛️", name: "雅典神庙" },
-            { icon: "🪨", name: "石柱殿堂" },
-            { icon: "🧿", name: "神秘祭坛" },
-            { icon: "🏺", name: "古典博物馆" },
-            { icon: "🚀", name: "太空发射塔" },
-            { icon: "🎢", name: "过山车建筑" },
-            { icon: "⛵", name: "码头建筑" },
-            { icon: "🌉", name: "桥梁建筑" },
-            { icon: "🎠", name: "游乐场亭" },
-            { icon: "🛸", name: "飞碟基地" },
-            { icon: "🌌", name: "星际驿站" },
-            { icon: "🪐", name: "轨道城市" },
-            { icon: "🏔️", name: "山岩建筑" },
-            { icon: "🌋", name: "火山建筑" },
-            { icon: "🏕️", name: "露营木屋" },
-            { icon: "🏜️", name: "沙漠城堡" },
-            { icon: "🌁", name: "雾港塔楼" },
-            { icon: "🏘️", name: "住宅群落" },
-            { icon: "🧊", name: "冰原建筑" },
-            { icon: "🌀", name: "能量漩涡塔" },
-            { icon: "🛤️", name: "轨道枢纽站" },
-            { icon: "📡", name: "电视塔" },
-            { icon: "⚛️", name: "核能发电站" },
-            { icon: "🌬️", name: "风力发电风车" },
-            { icon: "🏞️", name: "国家公园景观" },
-            { icon: "🛣️", name: "高架高速路" },
-            { icon: "🏗️", name: "巨型起重架构" },
-            { icon: "🪨", name: "雕刻岩柱" },
-            { icon: "🌆", name: "都市天际线" },
-            { icon: "🚠", name: "缆车站台" },
-            { icon: "🌃", name: "夜景观塔" },
-            { icon: "🌊", name: "人工瀑布景观" },
-            { icon: "🧭", name: "旅者纪念碑" },
-            { icon: "🎇", name: "灯光秀装置" },
-            { icon: "🔭", name: "观星天文台" }
-        ];
-        // ...existing code...
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/architecture.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

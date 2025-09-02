@@ -85,63 +85,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const anthropomorphs = [
-            { icon: "🦊", name: "聪明的狐狸" },
-            { icon: "🐰", name: "快跑的小兔子" },
-            { icon: "🍎", name: "害羞的苹果" },
-            { icon: "📚", name: "爱读书的图书" },
-            { icon: "🌧️", name: "哭泣的雨云" },
-            { icon: "🧊", name: "冷静的冰块" },
-            { icon: "🔥", name: "热情的火焰" },
-            { icon: "💡", name: "睿智的灯泡" },
-            { icon: "🧸", name: "温暖的玩偶" },
-            { icon: "🌵", name: "倔强的仙人掌" },
-            { icon: "🌈", name: "开心的彩虹" },
-            { icon: "🍩", name: "贪吃的甜甜圈" },
-            { icon: "🪞", name: "爱打扮的镜子" },
-            { icon: "🎩", name: "绅士的帽子" },
-            { icon: "📷", name: "好奇的相机" },
-            { icon: "🪁", name: "自由的风筝" },
-            { icon: "🍪", name: "调皮的饼干" },
-            { icon: "🌜", name: "打盹的月亮" },
-            { icon: "🔔", name: "吵闹的铃铛" },
-            { icon: "🧦", name: "迷路的袜子" },
-            { icon: "🕶️", name: "酷酷的墨镜" },
-            { icon: "🧽", name: "勤劳的海绵" },
-            { icon: "🧃", name: "多汁的果饮" },
-            { icon: "🎈", name: "轻飘的气球" },
-            { icon: "📦", name: "藏秘密的纸箱" },
-            { icon: "🧦", name: "孤独的袜子" },
-            { icon: "🔌", name: "能量充沛的插头" },
-            { icon: "🛏️", name: "爱做梦的床" },
-            { icon: "🕰️", name: "守时的老钟" },
-            { icon: "🧼", name: "洁癖的肥皂" },
-            { icon: "🎧", name: "沉浸的耳机" },
-            { icon: "🫙", name: "善藏回忆的罐子" },
-            { icon: "💼", name: "忙碌的公文包" },
-            { icon: "🥛", name: "纯真的牛奶杯" },
-            { icon: "🧴", name: "细心的乳液瓶" },
-            { icon: "🧹", name: "负责的扫帚" },
-            { icon: "🪥", name: "唠叨的牙刷" },
-            { icon: "📺", name: "健忘的电视机" },
-            { icon: "🪙", name: "幸运的硬币" }
-
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        anthropomorphs.forEach(char => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${char.icon}</div><div class="label">${char.name}</div>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/anthropomorphs.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popBios.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

@@ -14,103 +14,16 @@
 
     <div class="gallery" id="gallery"></div>
 
+
     <script>
-        const dataItems = [
-            { icon: "🕴️", name: "神秘玩家" },
-            { icon: "🍸", name: "鸡尾酒" },
-            { icon: "💼", name: "赌资公文包" },
-            { icon: "📿", name: "运气护符" },
-            { icon: "🃏", name: "小丑牌" }, { icon: "🃟", name: "黑白小丑" },
-            { icon: "♟️", name: "兵（Pawn）" },
-            { icon: "♜", name: "車（Rook）" },
-            { icon: "♞", name: "馬（Knight）" },
-            { icon: "♝", name: "象（Bishop）" },
-            { icon: "♛", name: "后（Queen）" },
-            { icon: "♚", name: "王（King）" }, { icon: "♠️", name: "黑桃" },
-            { icon: "♥️", name: "红心" },
-            { icon: "♦️", name: "方块" },
-            { icon: "♣️", name: "梅花" }, { icon: "🎲", name: "骰子" },
-            { icon: "🀄", name: "红中（Red Dragon）" },
-            { icon: "🎯", name: "飞镖靶" },
-            { icon: "🕹️", name: "操纵杆（游戏机）" },
-            { icon: "🎮", name: "游戏手柄" },
-            { icon: "🎰", name: "老虎机" },
-            { icon: "🪀", name: "溜溜球" },
-            { icon: "🪁", name: "风筝" },
-            { icon: "♟️", name: "棋子" },
-            { icon: "🧩", name: "拼图" },
-            { icon: "🀇", name: "一万（Character One）" },
-            { icon: "🀈", name: "二万（Character Two）" },
-            { icon: "🀉", name: "三万（Character Three）" },
-            { icon: "🀊", name: "四万（Character Four）" },
-            { icon: "🀋", name: "五万（Character Five）" },
-            { icon: "🀌", name: "六万（Character Six）" },
-            { icon: "🀍", name: "七万（Character Seven）" },
-            { icon: "🀎", name: "八万（Character Eight）" },
-            { icon: "🀏", name: "九万（Character Nine）" },
-            { icon: "🀐", name: "东风（East Wind）" },
-            { icon: "🀑", name: "南风（South Wind）" },
-            { icon: "🀒", name: "西风（West Wind）" },
-            { icon: "🀓", name: "北风（North Wind）" },
-            { icon: "🀔", name: "白板（White Dragon）" },
-            { icon: "🀕", name: "一筒（Dot One）" },
-            { icon: "🀖", name: "二筒（Dot Two）" },
-            { icon: "🀗", name: "三筒（Dot Three）" },
-            { icon: "🀘", name: "四筒（Dot Four）" },
-            { icon: "🀙", name: "五筒（Dot Five）" },
-            { icon: "🀚", name: "六筒（Dot Six）" },
-            { icon: "🀛", name: "七筒（Dot Seven）" },
-            { icon: "🀜", name: "八筒（Dot Eight）" },
-            { icon: "🀝", name: "九筒（Dot Nine）" },
-            { icon: "🀞", name: "一索（Bamboo One）" },
-            { icon: "🀟", name: "二索（Bamboo Two）" },
-            { icon: "🀠", name: "三索（Bamboo Three）" },
-            { icon: "🀡", name: "四索（Bamboo Four）" },
-            { icon: "🀢", name: "五索（Bamboo Five）" },
-            { icon: "🀣", name: "六索（Bamboo Six）" },
-            { icon: "🀤", name: "七索（Bamboo Seven）" },
-            { icon: "🀥", name: "八索（Bamboo Eight）" },
-            { icon: "🀦", name: "九索（Bamboo Nine）" },
-            { icon: "🂡", name: "A黑桃" }, { icon: "🂢", name: "2黑桃" }, { icon: "🂣", name: "3黑桃" },
-            { icon: "🂤", name: "4黑桃" }, { icon: "🂥", name: "5黑桃" }, { icon: "🂦", name: "6黑桃" },
-            { icon: "🂧", name: "7黑桃" }, { icon: "🂨", name: "8黑桃" }, { icon: "🂩", name: "9黑桃" },
-            { icon: "🂪", name: "10黑桃" }, { icon: "🂫", name: "J黑桃" }, { icon: "🂭", name: "Q黑桃" },
-            { icon: "🂮", name: "K黑桃" },
-
-            { icon: "🂱", name: "A红心" }, { icon: "🂲", name: "2红心" }, { icon: "🂳", name: "3红心" },
-            { icon: "🂴", name: "4红心" }, { icon: "🂵", name: "5红心" }, { icon: "🂶", name: "6红心" },
-            { icon: "🂷", name: "7红心" }, { icon: "🂸", name: "8红心" }, { icon: "🂹", name: "9红心" },
-            { icon: "🂺", name: "10红心" }, { icon: "🂻", name: "J红心" }, { icon: "🂽", name: "Q红心" },
-            { icon: "🂾", name: "K红心" },
-
-            { icon: "🃑", name: "A梅花" }, { icon: "🃒", name: "2梅花" }, { icon: "🃓", name: "3梅花" },
-            { icon: "🃔", name: "4梅花" }, { icon: "🃕", name: "5梅花" }, { icon: "🃖", name: "6梅花" },
-            { icon: "🃗", name: "7梅花" }, { icon: "🃘", name: "8梅花" }, { icon: "🃙", name: "9梅花" },
-            { icon: "🃚", name: "10梅花" }, { icon: "🃛", name: "J梅花" }, { icon: "🃝", name: "Q梅花" },
-            { icon: "🃞", name: "K梅花" },
-
-            { icon: "🃁", name: "A方块" }, { icon: "🃂", name: "2方块" }, { icon: "🃃", name: "3方块" },
-            { icon: "🃄", name: "4方块" }, { icon: "🃅", name: "5方块" }, { icon: "🃆", name: "6方块" },
-            { icon: "🃇", name: "7方块" }, { icon: "🃈", name: "8方块" }, { icon: "🃉", name: "9方块" },
-            { icon: "🃊", name: "10方块" }, { icon: "🃋", name: "J方块" }, { icon: "🃍", name: "Q方块" },
-            { icon: "🃎", name: "K方块" },
-
-        ]
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/game.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

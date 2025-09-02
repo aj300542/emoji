@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生物素材</title>
+    <link rel="stylesheet" href="js/emoji-font.css">
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom, #e0f7fa, #d0eaff);
+            color: #333;
+            padding: 5vh;
+        }
+
+        h1 {
+            font-size: 4vh;
+            text-align: center;
+            margin-bottom: 4vh;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .tags {
+            text-align: center;
+            margin-bottom: 3vh;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 1vh;
+            padding: 1vh 2vh;
+            background-color: #c8e6c9;
+            border-radius: 2vh;
+            color: #2e7d32;
+            text-decoration: none;
+            font-size: 2.5vh;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .tag:hover {
+            background-color: #a5d6a7;
+            transform: scale(1.05);
+        }
+
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15vh, 1fr));
+            gap: 3vh;
+            padding-top: 2vh;
+        }
+
+        .item {
+            background: #ffffff;
+            border-radius: 2vh;
+            text-align: center;
+            padding: 2vh;
+            box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+
+        .item:hover {
+            transform: scaleY(1.05);
+        }
+
+        .char {
+            font-size: 6vh;
+            margin-bottom: 1vh;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scaleY(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>生物素材展示 🐾</h1>
+
+    <div class="tags">
+        <a class="tag" href="bios/animals.html">动物</a>
+        <a class="tag" href="bios/plants_flora.html">植物</a>
+        <a class="tag" href="bios/Characters.html">人物</a>
+        <a class="tag" href="bios/fantasy.html">幻想</a>
+        <a class="tag" href="bios/Anthropomorphs.html">拟人化</a>
+        <a class="tag" href="bios/expressions.html">表情</a>
+    </div>
+
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const objectItems = [
+            { icon: "🀄", name: "红中（Red Dragon）" },
+            { icon: "🀇", name: "一万（Character One）" },
+            { icon: "🀈", name: "二万（Character Two）" },
+            { icon: "🀉", name: "三万（Character Three）" },
+            { icon: "🀊", name: "四万（Character Four）" },
+            { icon: "🀋", name: "五万（Character Five）" },
+            { icon: "🀌", name: "六万（Character Six）" },
+            { icon: "🀍", name: "七万（Character Seven）" },
+            { icon: "🀎", name: "八万（Character Eight）" },
+            { icon: "🀏", name: "九万（Character Nine）" },
+            { icon: "🀐", name: "东风（East Wind）" },
+            { icon: "🀑", name: "南风（South Wind）" },
+            { icon: "🀒", name: "西风（West Wind）" },
+            { icon: "🀓", name: "北风（North Wind）" },
+            { icon: "🀔", name: "白板（White Dragon）" },
+            { icon: "🀕", name: "一筒（Dot One）" },
+            { icon: "🀖", name: "二筒（Dot Two）" },
+            { icon: "🀗", name: "三筒（Dot Three）" },
+            { icon: "🀘", name: "四筒（Dot Four）" },
+            { icon: "🀙", name: "五筒（Dot Five）" },
+            { icon: "🀚", name: "六筒（Dot Six）" },
+            { icon: "🀛", name: "七筒（Dot Seven）" },
+            { icon: "🀜", name: "八筒（Dot Eight）" },
+            { icon: "🀝", name: "九筒（Dot Nine）" },
+            { icon: "🀞", name: "一索（Bamboo One）" },
+            { icon: "🀟", name: "二索（Bamboo Two）" },
+            { icon: "🀠", name: "三索（Bamboo Three）" },
+            { icon: "🀡", name: "四索（Bamboo Four）" },
+            { icon: "🀢", name: "五索（Bamboo Five）" },
+            { icon: "🀣", name: "六索（Bamboo Six）" },
+            { icon: "🀤", name: "七索（Bamboo Seven）" },
+            { icon: "🀥", name: "八索（Bamboo Eight）" },
+            { icon: "🀦", name: "九索（Bamboo Nine）" }
+
+
+        ];
+
+        const renderGallery = (items, containerId) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = items.map(item => `
+      <div class="item">
+        <div class="char">${item.icon}</div>
+        <p>${item.name}</p>
+      </div>
+    `).join("");
+        };
+
+        renderGallery(objectItems, "gallery");
+    </script>
+    <div id="popup" style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        padding: 5vh;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2vh;
+        box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 999;
+        transition: transform 0.3s ease;
+        font-size: 5vh;
+        pointer-events: none;
+        ">
+        <div id="popup-icon" style="font-size:45vh;"></div>
+        <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
+    </div>
+    <script src="js/pop.js"></script>
+</body>
+
+</html>

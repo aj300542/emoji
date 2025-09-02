@@ -15,73 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🏺", name: "古代陶器" },
-            { icon: "📜", name: "历史文献" },
-            { icon: "🏛️", name: "古典建筑" },
-            { icon: "🗿", name: "石雕像" },
-            { icon: "⚔️", name: "战斗武器" },
-            { icon: "🛡️", name: "防御盾牌" },
-            { icon: "🪖", name: "军事头盔" },
-            { icon: "📯", name: "号角信物" },
-            { icon: "🧭", name: "航海罗盘" },
-            { icon: "🌍", name: "古代地图" },
-            { icon: "🏰", name: "中世纪城堡" },
-            { icon: "📅", name: "历史年代表" },
-            { icon: "🪶", name: "羽毛笔写史" },
-            { icon: "📖", name: "史书典籍" },
-            { icon: "👑", name: "王权象征" },
-            { icon: "🎖️", name: "勋章奖章" },
-            { icon: "🚩", name: "旗帜变迁" },
-            { icon: "🗺️", name: "探索遗迹" },
-            { icon: "🔍", name: "考古发现" },
-            { icon: "🕰️", name: "历史时钟" },
-            { icon: "🪵", name: "远古工具" },
-            { icon: "🧦", name: "历史服饰" },
-            { icon: "🏟️", name: "竞技场" },
-            { icon: "🎎", name: "民族象征" },
-            { icon: "🛕", name: "神庙遗址" },
-            { icon: "📻", name: "历史广播" },
-            { icon: "🎬", name: "纪录影像" },
-            { icon: "📽️", name: "年代投影" },
-            { icon: "🏚️", name: "废墟残迹" },
-            { icon: "🧱", name: "文明基石" },
-            { icon: "🪧", name: "革命标语" },
-            { icon: "🎼", name: "历史乐章" },
-            { icon: "🏫", name: "古代学府" },
-            { icon: "📎", name: "文献存档" },
-            { icon: "🕵️", name: "密史探查" },
-            { icon: "🪙", name: "古代货币" },
-            { icon: "🛶", name: "迁徙工具" },
-            { icon: "🥁", name: "仪式鼓声" },
-            { icon: "🖋️", name: "签名历史" },
-            { icon: "🛏️", name: "王室寝殿" },
-            { icon: "🎨", name: "历史画作" },
-            { icon: "👘", name: "传统服饰" },
-            { icon: "🧬", name: "血统谱系" },
-            { icon: "🎤", name: "历史演讲" },
-            { icon: "🛣️", name: "帝国道路" },
-            { icon: "📬", name: "信件传递" },
-            { icon: "🥇", name: "王权荣耀" },
-            { icon: "🕯️", name: "纪念仪式" },
-            { icon: "🎆", name: "庆典记忆" },
-            { icon: "🧭", name: "时代引航" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/history.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

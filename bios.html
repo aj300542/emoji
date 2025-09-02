@@ -100,88 +100,7 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const objectItems = [
-            { icon: "🐶", name: "狗" },
-            { icon: "🐱", name: "猫" },
-            { icon: "🐻", name: "熊" },
-            { icon: "🐘", name: "大象" },
-            { icon: "🐼", name: "熊猫" },
-            { icon: "🦊", name: "狐狸" },
-            { icon: "🦁", name: "狮子" },
-            { icon: "🐯", name: "老虎" },
-            { icon: "🐮", name: "奶牛" },
-            { icon: "🐷", name: "猪" },
-            { icon: "🦅", name: "鹰" },
-            { icon: "🕊️", name: "鸽子" },
-            { icon: "🐔", name: "母鸡" },
-            { icon: "🐧", name: "企鹅" },
-            { icon: "🐦", name: "小鸟" },
-            { icon: "🦜", name: "鹦鹉" },
-            { icon: "🦚", name: "孔雀" },
-            { icon: "🦩", name: "火烈鸟" },
-            { icon: "🦢", name: "天鹅" },
-            { icon: "🦊", name: "聪明的狐狸" },
-            { icon: "🐰", name: "快跑的小兔子" },
-            { icon: "🍎", name: "害羞的苹果" },
-            { icon: "📚", name: "爱读书的图书" },
-            { icon: "🌧️", name: "哭泣的雨云" },
-            { icon: "🧊", name: "冷静的冰块" },
-            { icon: "🔥", name: "热情的火焰" },
-            { icon: "💡", name: "睿智的灯泡" },
-            { icon: "🧸", name: "温暖的玩偶" },
-            { icon: "🌵", name: "倔强的仙人掌" },
-            { icon: "🌈", name: "开心的彩虹" },
-            { icon: "🍩", name: "贪吃的甜甜圈" },
-            { icon: "🪞", name: "爱打扮的镜子" },
-            { icon: "🧑‍🏫", name: "学校老师" },
-            { icon: "👩‍🎓", name: "大学生" },
-            { icon: "👨‍💼", name: "办公室主管" },
-            { icon: "👩‍⚕️", name: "诊所医生" },
-            { icon: "👨‍🍳", name: "餐厅厨师" },
-            { icon: "👨‍🎓", name: "研究生" },
-            { icon: "👩‍💻", name: "软件工程师" },
-            { icon: "👨‍🔧", name: "汽修技师" },
-            { icon: "👮‍♂️", name: "城市警察" },
-            { icon: "👩‍🚒", name: "消防员" },
-            { icon: "👨‍🎤", name: "地铁艺人" },
-            { icon: "🧑‍🎨", name: "插画设计师" },
-            { icon: "👨‍🌾", name: "城市农夫" },
-            { icon: "👩‍🍼", name: "保育员" },
-            { icon: "👩‍✈️", name: "飞行员" },
-            { icon: "👨‍🏫", name: "补习老师" },
-            { icon: "👨‍⚖️", name: "地方法官" },
-            { icon: "👨‍💼", name: "市场经理" },
-            { icon: "🐉", name: "火焰巨龙" },
-            { icon: "🧚‍♀️", name: "森林之灵" },
-            { icon: "🧞‍♂️", name: "神秘精灵" },
-            { icon: "🌕", name: "月之守护" },
-            { icon: "🕯️", name: "灵魂之灯" },
-            { icon: "🦄", name: "星光独角兽" },
-            { icon: "🧜‍♀️", name: "深海女妖" },
-            { icon: "🦓", name: "幻境斑马" },
-            { icon: "🫧", name: "气泡灵体" },
-            { icon: "🪽", name: "羽翼幻兽" },
-            { icon: "🦢", name: "月羽天鹅" },
-            { icon: "🔥", name: "业火魂兽" },
-            { icon: "❄️", name: "冰晶魔灵" },
-            { icon: "💫", name: "星界幽魂" },
-            { icon: "🪷", name: "灵莲守花" },
-            { icon: "🔮", name: "水晶占灵" },
-            { icon: "🪄", name: "魔法幻核" },
-
-        ];
-
-        const renderGallery = (items, containerId) => {
-            const container = document.getElementById(containerId);
-            container.innerHTML = items.map(item => `
-      <div class="item">
-        <div class="char">${item.icon}</div>
-        <p>${item.name}</p>
-      </div>
-    `).join("");
-        };
-
-        renderGallery(objectItems, "gallery");
+        const jsonpath = "json/bios.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup" style="
         position: fixed;
@@ -201,6 +120,7 @@
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
+    <script src="js/jsonpath.js"></script>
     <script src="js/pop.js"></script>
 </body>
 

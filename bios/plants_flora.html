@@ -83,93 +83,15 @@
 
   <div class="gallery" id="gallery"></div>
 
-  <script>
-    const plantgallery = [
-      { icon: "🌲", name: "冷杉" },
-      { icon: "🌳", name: "橡树" },
-      { icon: "🌴", name: "棕榈" },
-      { icon: "🌵", name: "仙人掌" },
-      { icon: "🎋", name: "竹子" },
-      { icon: "🍀", name: "幸运草" },
-      { icon: "🌾", name: "稻穗" },
-      { icon: "🌸", name: "樱花" },
-      { icon: "🌼", name: "金盏花" },
-      { icon: "🌻", name: "向日葵" },
-      { icon: "🪻", name: "紫罗兰" },
-      { icon: "🌹", name: "玫瑰" },
-      { icon: "🌷", name: "郁金香" },
-      { icon: "🌺", name: "扶桑花" },
-      { icon: "🌹", name: "黑玫瑰" },
-      { icon: "🌻", name: "迷你向日葵" },
-      { icon: "🌼", name: "野菊花" },
-      { icon: "🪷", name: "莲花" },
-      { icon: "🪸", name: "珊瑚草" },
-      { icon: "🍂", name: "秋叶" },
-      { icon: "🍃", name: "嫩叶" },
-      { icon: "🍄", name: "蘑菇" },
-      { icon: "🌱", name: "小苗" },
-      { icon: "🪴", name: "盆栽植物" },
-      { icon: "🎍", name: "新春松竹" },
-      { icon: "🌾", name: "金麦" },
-      { icon: "🌿", name: "森林绿植" },
-      { icon: "💐", name: "花束" },
-      { icon: "💮", name: "白色花朵" },
-      { icon: "🏵️", name: "花环" },
-      { icon: "🥀", name: "枯萎玫瑰" },
-      { icon: "🪾", name: "洋桔梗" },
-      { icon: "☘️", name: "三叶草" },
-      { icon: "🍁", name: "枫叶" },
-      { icon: "🪨", name: "石头" },
-      { icon: "🪵", name: "木头" },
-      { icon: "🌹", name: "火焰玫瑰" },
-      { icon: "🪻", name: "暮光紫罗兰" },
-      { icon: "🌰", name: "森林果实" },
-      { icon: "🍇", name: "藤蔓葡萄" },
-      { icon: "🌾", name: "晨露麦穗" },
-      { icon: "🌰", name: "栗子树" },
-      { icon: "🌾", name: "燕麦" },
-      { icon: "🍇", name: "葡萄藤" },
-      { icon: "🍈", name: "甜瓜藤" },
-      { icon: "🍉", name: "西瓜苗" },
-      { icon: "🍅", name: "番茄植株" },
-      { icon: "🫘", name: "豆荚植物" },
-      { icon: "🍆", name: "茄子藤" },
-      { icon: "🌶️", name: "辣椒株" },
-      { icon: "🪴", name: "蕨类盆栽" },
-      { icon: "🍄", name: "毒蘑菇" },
-      { icon: "🪷", name: "水莲" },
-      { icon: "🌿", name: "药草" },
-      { icon: "🌾", name: "大麦" },
-      { icon: "🎋", name: "山竹" },
-      { icon: "🌳", name: "榕树" },
-      { icon: "🌲", name: "杉木" },
-      { icon: "🌴", name: "椰子树" },
-      { icon: "🌵", name: "圆球仙人掌" },
-      { icon: "🪹", name: "藤巢植物" },
-      { icon: "🌸", name: "蔷薇花" },
-      { icon: "🌺", name: "朱槿花" },
-      { icon: "🌼", name: "玛格丽特" },
-      { icon: "🌻", name: "高杆向日葵" },
-      { icon: "🌹", name: "晨露玫瑰" },
-      { icon: "🪻", name: "晨曦紫罗兰" },
-      { icon: "🌷", name: "风信子" },
-      { icon: "🌱", name: "嫩芽" }
-    ];
-
-    const gallery = document.getElementById("gallery");
-
-    plantgallery.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "item";
-      card.innerHTML = `<div class="char">${p.icon}</div><div class="label">${p.name}</div>`;
-      gallery.appendChild(card);
-    });
-  </script>
+    <script>
+        const jsonpath = "../json/plants_flora.json"; // ✅ 路径作为字符串
+    </script>
   <div id="popup">
     <div id="popup-icon" style="font-size:45vh;"></div>
     <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
   </div>
-  <script src="../js/popBios.js"></script>
+  <script src="../js/jsonpath.js"></script>
+  <script src="../js/pop.js"></script>
 </body>
 
 </html>

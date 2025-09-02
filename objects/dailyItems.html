@@ -15,123 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🎃", name: "南瓜灯" },
-            { icon: "🎄", name: "圣诞树" },
-            { icon: "🎆", name: "烟花" },
-            { icon: "🎇", name: "火焰花" },
-            { icon: "🧨", name: "鞭炮" },
-            { icon: "✨", name: "闪光" },
-            { icon: "🎈", name: "气球" },
-            { icon: "🎉", name: "庆祝" },
-            { icon: "🎊", name: "五彩纸屑" },
-            { icon: "🎋", name: "七夕竹饰" },
-            { icon: "🎍", name: "门松" },
-            { icon: "🎎", name: "日本人偶" },
-            { icon: "🎏", name: "鲤鱼旗" },
-            { icon: "🎐", name: "风铃" },
-            { icon: "🎑", name: "赏月" },
-            { icon: "🧧", name: "红包" },
-            { icon: "🎁", name: "礼物盒" },
-            { icon: "🎟️", name: "入场券" },
-            { icon: "🎫", name: "票券" },
-            { icon: "🏮", name: "红灯笼" },
-            { icon: "🪔", name: "油灯" },
-            { icon: "🪀", name: "溜溜球" },
-            { icon: "🪁", name: "风筝" },
-            { icon: "🔫", name: "玩具水枪" },
-            { icon: "🎱", name: "桌球（黑八）" },
-            { icon: "🔮", name: "水晶球" },
-            { icon: "🪄", name: "魔杖" },
-            { icon: "🎮", name: "游戏手柄" },
-            { icon: "🕹️", name: "街机摇杆" },
-            { icon: "🎰", name: "老虎机" },
-            { icon: "🎲", name: "骰子" },
-            { icon: "🧩", name: "拼图块" },
-            { icon: "🪅", name: "彩球" },
-            { icon: "🪩", name: "镜面球" },
-            { icon: "🪆", name: "俄罗斯套娃" },
-            { icon: "♠️", name: "黑桃" },
-            { icon: "♥️", name: "红心" },
-            { icon: "♦️", name: "方块" },
-            { icon: "♣️", name: "梅花" },
-            { icon: "♟️", name: "国际象棋卒" },
-            { icon: "🃏", name: "鬼牌" },
-            { icon: "🀄", name: "麻将牌" },
-            { icon: "🎴", name: "花札" },
-            { icon: "🎭", name: "戏剧面具" },
-            { icon: "🖼️", name: "画框" },
-            { icon: "🎨", name: "调色板" },
-            { icon: "🪨", name: "石头" },
-            { icon: "🪵", name: "木头" },
-            { icon: "🍼", name: "奶瓶" },
-            { icon: "🥛", name: "牛奶杯" },
-            { icon: "☕", name: "咖啡杯" },
-            { icon: "🫖", name: "茶壶" },
-            { icon: "🍵", name: "绿茶杯" },
-            { icon: "🍶", name: "清酒瓶" },
-            { icon: "🍾", name: "香槟瓶" },
-            { icon: "🍷", name: "红酒杯" },
-            { icon: "🍸", name: "鸡尾酒杯" },
-            { icon: "🍹", name: "热带饮料" },
-            { icon: "🍺", name: "啤酒杯" },
-            { icon: "🍻", name: "碰杯啤酒" },
-            { icon: "🥂", name: "庆祝香槟" },
-            { icon: "🥃", name: "威士忌杯" },
-            { icon: "🫗", name: "倾倒液体" },
-            { icon: "🥤", name: "软饮杯" },
-            { icon: "🧋", name: "珍珠奶茶" },
-            { icon: "🧃", name: "果汁盒" },
-            { icon: "🧉", name: "马黛茶杯" },
-            { icon: "🥢", name: "筷子" },
-            { icon: "🍽️", name: "餐盘" },
-            { icon: "🍴", name: "刀叉" },
-            { icon: "🥄", name: "勺子" },
-            { icon: "🔪", name: "菜刀" },
-            { icon: "🫙", name: "瓶子罐子" },
-            { icon: "🏺", name: "陶罐壶" },
-            { icon: "🛒", name: "购物车" },
-            { icon: "🛍️", name: "购物袋" },
-            { icon: "🧼", name: "肥皂" },
-            { icon: "🚿", name: "淋浴" },
-            { icon: "🛁", name: "浴缸" },
-            { icon: "🧻", name: "卫生纸" },
-            { icon: "🪥", name: "牙刷" },
-            { icon: "🪒", name: "剃刀" },
-            { icon: "🪮", name: "美发梳" },
-            { icon: "🧴", name: "润肤瓶" },
-            { icon: "🪣", name: "水桶" },
-            { icon: "🧽", name: "海绵" },
-            { icon: "🗝️", name: "老式钥匙" },
-            { icon: "🚪", name: "门" },
-            { icon: "🔑", name: "钥匙" },
-            { icon: "🪑", name: "椅子" },
-            { icon: "🛏️", name: "床" },
-            { icon: "🧸", name: "泰迪熊" },
-            { icon: "🛋️", name: "沙发和灯" },
-            { icon: "🪞", name: "镜子" },
-            { icon: "🪟", name: "窗户" },
-            { icon: "🛎️", name: "服务铃" },
-            { icon: "🎀", name: "丝带" },
-            { icon: "🪭", name: "折扇" },
-            { icon: "🖌️", name: "画笔" },
-            { icon: "🪶", name: "羽毛笔" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/dailyitems.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

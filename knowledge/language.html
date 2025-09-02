@@ -14,71 +14,16 @@
 
     <div class="gallery" id="gallery"></div>
 
+
     <script>
-        const dataItems = [
-            { icon: "🗣️", name: "发音单元" },
-            { icon: "🔤", name: "字母系统" },
-            { icon: "📖", name: "文本语料" },
-            { icon: "🈳", name: "汉字结构" },
-            { icon: "🈶", name: "日文词汇" },
-            { icon: "🌐", name: "多语翻译" },
-            { icon: "💬", name: "对话框体" },
-            { icon: "🧠", name: "语言模型" },
-            { icon: "📘", name: "语法规则" },
-            { icon: "📚", name: "词典条目" },
-            { icon: "🧾", name: "句式模式" },
-            { icon: "🔣", name: "符号语义" },
-            { icon: "🪄", name: "文字变换器" },
-            { icon: "🎙️", name: "语言识别器" },
-            { icon: "🧩", name: "词根拼图" },
-            { icon: "🔧", name: "语言处理工具" },
-            { icon: "🕮", name: "语言通道" },
-            { icon: "🪪", name: "语言身份识别器" },
-            { icon: "🎞️", name: "语境切换器" },
-            { icon: "📮", name: "文本投送器" },
-            { icon: "🪬", name: "语义净化器" },
-            { icon: "🧮", name: "语言统计引擎" },
-            { icon: "🎯", name: "关键词提取器" },
-            { icon: "🧿", name: "文本聚焦盘" },
-            { icon: "📟", name: "字符编码转换器" },
-            { icon: "🧊", name: "语言冻结模块" },
-            { icon: "🕸️", name: "语义网络生成器" },
-            { icon: "🛎️", name: "语音触发器" },
-            { icon: "🗂️", name: "语段归档器" },
-            { icon: "🖍️", name: "文本修饰器" },
-            { icon: "📐", name: "句式建构器" },
-            { icon: "🧪", name: "语言实验模块" },
-            { icon: "🧼", name: "语言清洗器" },
-            { icon: "🎛️", name: "语义调节盘" },
-            { icon: "🗜️", name: "语体压缩器" },
-            { icon: "🪄", name: "语言演化器" },
-            { icon: "🔋", name: "语能补充仪" },
-            { icon: "🧵", name: "语义线索提取器" },
-            { icon: "🪜", name: "语言层级梳理器" },
-            { icon: "🧲", name: "语义吸附模块" },
-            { icon: "🎨", name: "文本风格转换器" },
-            { icon: "🛠️", name: "语法修复装置" },
-            { icon: "🔍", name: "语料分析镜" },
-            { icon: "🪞", name: "语言镜像生成器" },
-            { icon: "📈", name: "词频动态轨迹仪" },
-            { icon: "🎭", name: "语气模拟器" },
-            { icon: "🧬", name: "句法结构重组器" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/language.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

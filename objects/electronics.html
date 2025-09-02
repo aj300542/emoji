@@ -15,103 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🎙️", name: "录音麦克风" },
-            { icon: "🎚️", name: "音量调节器" },
-            { icon: "🎛️", name: "控制面板" },
-            { icon: "🎤", name: "麦克风" },
-            { icon: "🎧", name: "耳机" },
-            { icon: "📻", name: "收音机" },
-            { icon: "🎷", name: "萨克斯" },
-            { icon: "🪗", name: "手风琴" },
-            { icon: "🎸", name: "吉他" },
-            { icon: "🎹", name: "钢琴键盘" },
-            { icon: "🎺", name: "小号" },
-            { icon: "🎻", name: "小提琴" },
-            { icon: "🪕", name: "班卓琴" },
-            { icon: "🥁", name: "架子鼓" },
-            { icon: "🪘", name: "非洲鼓" },
-            { icon: "🪇", name: "沙锤" },
-            { icon: "🪈", name: "长号" },
-            { icon: "🪉", name: "响板" },
-            { icon: "📱", name: "手机" },
-            { icon: "📲", name: "手机来电" },
-            { icon: "☎️", name: "座机电话" },
-            { icon: "📞", name: "听筒" },
-            { icon: "📟", name: "传呼机" },
-            { icon: "📠", name: "传真机" },
-            { icon: "🔋", name: "电池" },
-            { icon: "🪫", name: "耗尽电池" },
-            { icon: "🔌", name: "电源插头" },
-            { icon: "💻", name: "笔记本电脑" },
-            { icon: "🖥️", name: "台式电脑" },
-            { icon: "🖨️", name: "打印机" },
-            { icon: "⌨️", name: "键盘" },
-            { icon: "🖱️", name: "鼠标" },
-            { icon: "🖲️", name: "轨迹球" },
-            { icon: "💽", name: "光盘" },
-            { icon: "💾", name: "软盘" },
-            { icon: "💿", name: "CD 光盘" },
-            { icon: "📀", name: "DVD 光盘" },
-            { icon: "🎥", name: "摄像机" },
-            { icon: "🎞️", name: "胶卷" },
-            { icon: "📽️", name: "放映机" },
-            { icon: "🎬", name: "电影板" },
-            { icon: "📺", name: "电视" },
-            { icon: "📷", name: "照相机" },
-            { icon: "📸", name: "闪光照相机" },
-            { icon: "📹", name: "录像机" },
-            { icon: "📼", name: "录像带" },
-            { icon: "🕹️", name: "激烈的游戏手柄" },
-            { icon: "📡", name: "探索的家用路由器" },
-            { icon: "🧯", name: "谨慎的空气净化器" },
-            { icon: "🎮", name: "热血的游戏主机" },
-            { icon: "🧊", name: "智能制冷冰箱" },
-            { icon: "🌀", name: "旋转的洗衣机" },
-            { icon: "🔇", name: "静音" },
-            { icon: "🔈", name: "低音量" },
-            { icon: "🔉", name: "中音量" },
-            { icon: "🔊", name: "高音量" },
-            { icon: "📢", name: "扩音器" },
-            { icon: "📣", name: "喇叭" },
-            { icon: "📯", name: "邮号" },
-            { icon: "🔔", name: "铃铛" },
-            { icon: "🔕", name: "禁用铃声" },
-            { icon: "🎼", name: "乐谱" },
-            { icon: "🎵", name: "音符" },
-            { icon: "🎶", name: "多音符" },
-            { icon: "⌚", name: "精准的智能手表" },
-            { icon: "🧩", name: "高性能的显卡模块" },
-            { icon: "🛜", name: "高速的Wi-Fi接收器" },
-            { icon: "🔦", name: "明亮的充电手电筒" },
-            { icon: "📊", name: "智能的数据分析仪" },
-            { icon: "📋", name: "同步的设备任务板" },
-            { icon: "🧭", name: "导航精准的数码指南针" },
-            { icon: "🗜️", name: "精细的电路夹具" },
-            { icon: "🧬", name: "科技前沿的芯片模块" },
-            { icon: "🧿", name: "监控可靠的智能摄像头" },
-            { icon: "🌬️", name: "清爽的空调机" },
-            { icon: "🔍", name: "清晰的数码放大镜" },
-            { icon: "🧮", name: "精密的电子计算器" },
-            { icon: "🧳", name: "便携的设备收纳箱" }
-        ];
-        // ...existing code...
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/electronics.json"; // ✅ 路径作为字符串
     </script>
-
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

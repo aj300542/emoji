@@ -15,112 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🗺️", name: "世界地图" },
-            { icon: "🌍", name: "地球仪" },
-            { icon: "🧭", name: "方位罗盘" },
-            { icon: "📍", name: "地理坐标" },
-            { icon: "🏞️", name: "山水景观" },
-            { icon: "🏜️", name: "沙漠地貌" },
-            { icon: "🌋", name: "火山地形" },
-            { icon: "🏔️", name: "高山峻岭" },
-            { icon: "🌊", name: "海洋地势" },
-            { icon: "🏕️", name: "野外地貌" },
-            { icon: "🏖️", name: "海岸风景" },
-            { icon: "🌫️", name: "气候现象" },
-            { icon: "🛤️", name: "地理路线" },
-            { icon: "🌦️", name: "天气变化" },
-            { icon: "🏙️", name: "城市地理" },
-            { icon: "🌄", name: "地理地貌" },
-            { icon: "🌌", name: "空间观察" },
-            { icon: "🚩", name: "国家区域" },
-            { icon: "🧭", name: "地理测绘" },
-            { icon: "🌐", name: "全球地理" },
-            { icon: "📡", name: "地理探测" },
-            { icon: "🗻", name: "岩石构造" },
-            { icon: "🏛️", name: "人文地标" },
-            { icon: "🛶", name: "地理迁徙" },
-            { icon: "⛺", name: "地形适应" },
-            { icon: "📌", name: "位置标记" },
-            { icon: "🌳", name: "植被分布" },
-            { icon: "🛰️", name: "地理遥感" },
-            { icon: "🌾", name: "农业地理" },
-            { icon: "🚐", name: "地理探险" },
-            { icon: "🏜️", name: "干旱地带" },
-            { icon: "🏝️", name: "岛屿环境" },
-            { icon: "🧊", name: "极地冰原" },
-            { icon: "🌁", name: "雾霭现象" },
-            { icon: "🏚️", name: "地理遗迹" },
-            { icon: "🌉", name: "地理桥梁" },
-            { icon: "🌠", name: "星空观察" },
-            { icon: "⛰️", name: "丘陵高地" },
-            { icon: "🛣️", name: "公路地理" },
-            { icon: "🌬️", name: "风力分布" },
-            { icon: "🌡️", name: "气温测量" },
-            { icon: "🌦️", name: "气候动态" },
-            { icon: "🗾", name: "地形轮廓" },
-            { icon: "🪨", name: "岩石地质" },
-            { icon: "🌲", name: "森林覆盖" },
-            { icon: "🦜", name: "地理生物群落" },
-            { icon: "🏞️", name: "自然保护区" },
-            { icon: "🧂", name: "盐湖地貌" },
-            { icon: "🌀", name: "风暴路径" },
-            { icon: "🌕", name: "天文地理" },
-            { icon: "🌧️", name: "降水分布" },
-            { icon: "🧪", name: "地质实验" },
-            { icon: "🧱", name: "地壳结构" },
-            { icon: "🪵", name: "生态材料" },
-            { icon: "🧬", name: "地理遗传演化" },
-            { icon: "🌎", name: "地球生态圈" },
-            { icon: "🎒", name: "地理考察" },
-            { icon: "🧭", name: "方向系统" },
-            { icon: "📷", name: "地理摄影" },
-            { icon: "🌐", name: "经纬网格" },
-            { icon: "🗺️", name: "地图集成" },
-            { icon: "🏕️", name: "露营地理" },
-            { icon: "⛱️", name: "沙滩区位" },
-            { icon: "🚠", name: "缆车地带" },
-            { icon: "🌉", name: "水域桥梁" },
-            { icon: "🛸", name: "区域探索" },
-            { icon: "🚢", name: "航海通道" },
-            { icon: "🧰", name: "地理工具" },
-            { icon: "🛎️", name: "地理标识" },
-            { icon: "🪞", name: "镜像地貌" },
-            { icon: "🦉", name: "夜间地理观察" },
-            { icon: "🪐", name: "行星地貌" },
-            { icon: "🌜", name: "地理与月相" },
-            { icon: "🗃️", name: "地理档案" },
-            { icon: "📊", name: "地理统计" },
-            { icon: "🧮", name: "地理建模" },
-            { icon: "📖", name: "地理书籍" },
-            { icon: "🖼️", name: "地貌绘图" },
-            { icon: "🧑‍🚀", name: "地理与航天" },
-            { icon: "📡", name: "卫星定位" },
-            { icon: "🧑‍💻", name: "地理信息系统" },
-            { icon: "🧑‍🎓", name: "地理教育" },
-            { icon: "🧪", name: "地质分析" },
-            { icon: "🦅", name: "生态迁徙" },
-            { icon: "🫐", name: "地理农产" },
-            { icon: "🌾", name: "地势耕作" },
-            { icon: "📦", name: "地理资源" },
-            { icon: "🛴", name: "城市轨迹" },
-            { icon: "🌿", name: "自然分布" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/geography.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

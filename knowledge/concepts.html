@@ -15,64 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "🌌", name: "宇宙构想" },
-            { icon: "🎭", name: "身份角色" },
-            { icon: "🔮", name: "未来预言" },
-            { icon: "♻️", name: "循环系统" },
-            { icon: "🧠", name: "意识模型" },
-            { icon: "🧩", name: "结构逻辑" },
-            { icon: "📡", name: "信息交流" },
-            { icon: "💡", name: "创意源点" },
-            { icon: "🌀", name: "混沌与秩序" },
-            { icon: "🕊️", name: "和平理念" },
-            { icon: "🎢", name: "情感波动" },
-            { icon: "🔗", name: "关联性" },
-            { icon: "🧿", name: "意识碎片" },
-            { icon: "🛸", name: "超现实设定" },
-            { icon: "⏳", name: "时间机制" },
-            { icon: "🎲", name: "随机性" },
-            { icon: "🧬", name: "复杂性" },
-            { icon: "📘", name: "哲学原理" },
-            { icon: "🛕", name: "信仰系统" },
-            { icon: "🎇", name: "灵感爆发" },
-            { icon: "🎼", name: "美学结构" },
-            { icon: "📶", name: "频率意识" },
-            { icon: "🗣️", name: "符号语言" },
-            { icon: "🫥", name: "存在消隐" },
-            { icon: "🎥", name: "记忆叙事" },
-            { icon: "🌐", name: "虚拟身份" },
-            { icon: "🕳️", name: "思想黑洞" },
-            { icon: "🪞", name: "镜像假象" },
-            { icon: "🧭", name: "观念导航" },
-            { icon: "🚪", name: "认知门槛" },
-            { icon: "🌫️", name: "意识迷雾" },
-            { icon: "🔍", name: "真理探索" },
-            { icon: "🧘", name: "自我沉思" },
-            { icon: "📿", name: "存在仪式" },
-            { icon: "📎", name: "思想绑定" },
-            { icon: "🧱", name: "认知壁垒" },
-            { icon: "⚖️", name: "对立平衡" },
-            { icon: "🪐", name: "维度交汇" },
-            { icon: "🫀", name: "情感动力" },
-            { icon: "🪩", name: "意识闪烁" }
-        ];
-
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/concepts.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

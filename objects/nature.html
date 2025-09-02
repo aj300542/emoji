@@ -15,125 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        // ...existing code...
-        const dataItems = [
-            { icon: "🧭", name: "指南针" },
-            { icon: "🏔️", name: "雪山" },
-            { icon: "⛰️", name: "山脉" },
-            { icon: "🌋", name: "火山" },
-            { icon: "🗻", name: "富士山" },
-            { icon: "🏕️", name: "露营地" },
-            { icon: "🏖️", name: "海滩" },
-            { icon: "🏜️", name: "沙漠" },
-            { icon: "🏝️", name: "小岛" },
-            { icon: "🏞️", name: "国家公园" },
-            { icon: "☁️", name: "云朵" },
-            { icon: "⛅", name: "晴间多云" },
-            { icon: "⛈️", name: "雷阵雨" },
-            { icon: "🌤️", name: "晴朗有云" },
-            { icon: "🌥️", name: "多云" },
-            { icon: "🌦️", name: "阵雨" },
-            { icon: "🌧️", name: "雨天" },
-            { icon: "🌨️", name: "雪天" },
-            { icon: "🌩️", name: "雷暴" },
-            { icon: "🌪️", name: "龙卷风" },
-            { icon: "🌫️", name: "雾霾" },
-            { icon: "🌬️", name: "吹风脸" },
-            { icon: "🌀", name: "旋涡" },
-            { icon: "🌈", name: "彩虹" },
-            { icon: "🌂", name: "折叠雨伞（闭）" },
-            { icon: "☂️", name: "雨伞（开）" },
-            { icon: "☔", name: "雨伞和雨滴" },
-            { icon: "⛱️", name: "遮阳伞" },
-            { icon: "⚡", name: "闪电" },
-            { icon: "❄️", name: "雪花" },
-            { icon: "☃️", name: "雪人（有雪）" },
-            { icon: "⛄", name: "雪人（无雪）" },
-            { icon: "☄️", name: "彗星" },
-            { icon: "🔥", name: "火焰" },
-            { icon: "💧", name: "水滴" },
-            { icon: "🌊", name: "海浪" },
-            { icon: "🏞️", name: "峡谷风景" },
-            { icon: "🌋", name: "火山喷发" },
-            { icon: "💨", name: "强风" },
-            { icon: "🌳", name: "森林" },
-            { icon: "🌲", name: "针叶林" },
-            { icon: "🌴", name: "热带丛林" },
-            { icon: "🧊", name: "冰川" },
-            { icon: "🌫️", name: "雾林" },
-            { icon: "🌅", name: "日出景色" },
-            { icon: "🌄", name: "夕阳山景" },
-            { icon: "🏄", name: "海面冲浪区" },
-            { icon: "🪐", name: "空中花园" },
-            { icon: "🛸", name: "浮空岛屿" },
-            { icon: "🌌", name: "星空高原" },
-            { icon: "🪨", name: "奇岩怪石" },
-            { icon: "🌾", name: "草原" },
-            { icon: "🍂", name: "秋林小径" },
-            { icon: "🏠", name: "湖畔木屋" },
-            { icon: "🦋", name: "蝴蝶谷" },
-            { icon: "🍄", name: "蘑菇森林" },
-            { icon: "🏝️", name: "孤岛" },
-            { icon: "🛶", name: "静水河湾" },
-            { icon: "🗾", name: "日本地图轮廓" },
-            { icon: "🎋", name: "竹林幽径" },
-            { icon: "🫧", name: "泡泡溪流" },
-            { icon: "🌠", name: "流星湖泊" },
-            { icon: "🧚", name: "精灵谷地" },
-            { icon: "🦄", name: "独角兽草原" },
-            { icon: "🪷", name: "漂浮莲塘" },
-            { icon: "🌁", name: "梦境雾港" },
-            { icon: "✨", name: "星尘瀑布" },
-            { icon: "🦕", name: "史前丛林" },
-            { icon: "🍭", name: "糖果山丘" },
-            { icon: "🌬️", name: "风语峰顶" },
-            { icon: "🪺", name: "鸟巢林地" },
-            { icon: "🐚", name: "珊瑚海底" },
-            { icon: "🪻", name: "野花草甸" },
-            { icon: "🌰", name: "秋季果林" },
-            { icon: "🦢", name: "湖中天鹅" },
-            { icon: "🪵", name: "枯木林" },
-            { icon: "🦥", name: "热带树冠带" },
-            { icon: "🫎", name: "苔原驯鹿谷" },
-            { icon: "🎑", name: "月光丘陵" },
-            { icon: "🌧️", name: "细雨森林" },
-            { icon: "🔮", name: "魔法瀑布" },
-            { icon: "🧝", name: "秘境精灵庄园" },
-            { icon: "🪄", name: "光之回廊" },
-            { icon: "🌟", name: "恒星草原" },
-            { icon: "🪽", name: "天使溪谷" },
-            { icon: "🍥", name: "漩涡星岛" },
-            { icon: "🌃", name: "梦境城市边缘" },
-            { icon: "🌖", name: "月辉冰原" },
-            { icon: "🧜", name: "美人鱼浅滩" },
-            { icon: "🌙", name: "沉睡山丘" },
-            { icon: "🐳", name: "鲸鱼海谷" },
-            { icon: "🪼", name: "深海水母林" },
-            { icon: "🐠", name: "彩色珊瑚群" },
-            { icon: "🦑", name: "章鱼洞穴" },
-            { icon: "🌊", name: "潮汐迷宫" },
-            { icon: "🐚", name: "螺旋贝壳滩" },
-            { icon: "🫧", name: "泡泡浮岛" },
-            { icon: "🌌", name: "夜光海洋" }
-        ];
-        // ...existing code...
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/nature.json"; // ✅ 路径作为字符串
     </script>
-
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

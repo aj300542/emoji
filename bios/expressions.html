@@ -83,201 +83,29 @@
     <h1>表情角色展示 😄</h1>
     <div class="category-buttons">
 
-        <button onclick="renderCategory('smile&love')">微笑和爱心</button>
+        <button onclick="renderCategory('smilelove')">微笑和爱心</button>
         <button onclick="renderCategory('calm')">平静</button>
-        <button onclick="renderCategory('surprise&sad&angry')">惊讶/悲伤/愤怒</button>
-        <button onclick="renderCategory('animal&fantasy')">动物/幻想/搞怪</button>
+        <button onclick="renderCategory('surprisesadangry')">惊讶/悲伤/愤怒</button>
+        <button onclick="renderCategory('animalfantasy')">动物/幻想/搞怪</button>
     </div>
     <div class="gallery" id="gallery"></div>
 
-    <script>
-
-        const expressionCategories = {
-            "smile&love": [
-                { icon: "😀", name: "灿烂微笑" },
-                { icon: "😃", name: "开心露齿" },
-                { icon: "😄", name: "愉快欢笑" },
-                { icon: "😁", name: "露齿笑容" },
-                { icon: "🤭", name: "掩嘴偷笑" },         // 补充
-                { icon: "😆", name: "笑出声来" },
-                { icon: "😅", name: "尴尬微笑" },
-                { icon: "🙂", name: "轻松微笑" },
-                { icon: "🤩", name: "闪耀激动" },         // 补充
-                { icon: "😊", name: "暖心微笑" },
-                { icon: "☺️", name: "羞涩微笑" },
-                { icon: "😋", name: "满足美味" },
-                { icon: "😛", name: "吐舌调皮" },
-                { icon: "😜", name: "顽皮眨眼" },
-                { icon: "🤪", name: "疯狂滑稽" },
-                { icon: "😝", name: "大笑吐舌" },
-                { icon: "🤣", name: "狂笑不止" },
-                { icon: "😂", name: "笑出眼泪" },
-                { icon: "😘", name: "亲吻送爱" },
-                { icon: "😗", name: "轻吻微笑" },
-                { icon: "😙", name: "笑中带吻" },
-                { icon: "😚", name: "羞涩亲亲" },
-                { icon: "😍", name: "心动双眼" },
-                { icon: "🥰", name: "幸福心脸" },
-                { icon: "😻", name: "爱意满满" },
-                { icon: "💗", name: "深情浓爱" },
-                { icon: "💌", name: "情书寄心" },
-                { icon: "🤝", name: "握手信任" },
-                { icon: "🫶", name: "心形合掌" },
-                { icon: "🤲", name: "捧心之意" },
-                { icon: "❤️", name: "红心挚爱" },
-                { icon: "💖", name: "闪亮心动" },
-                { icon: "💕", name: "双心相依" }
-            ],
-            "calm": [
-                { icon: "🥹", name: "含泪微笑" },         // 补充
-                { icon: "😌", name: "满足松口气" },        // 补充
-                { icon: "😔", name: "低落沉思" },         // 补充
-                { icon: "🫨", name: "震颤动摇" },         // 补充
-                { icon: "🥲", name: "笑中带泪" },
-                { icon: "😏", name: "自信傲慢" },
-                { icon: "🤑", name: "财迷笑脸" },
-                { icon: "🤗", name: "张手拥抱" },
-                { icon: "🫢", name: "惊讶掩嘴" },
-                { icon: "🫣", name: "不敢直视" },
-                { icon: "😇", name: "天使微笑" },         // 补充
-                { icon: "🤫", name: "嘘声安静" },
-                { icon: "🫡", name: "敬礼认同" },
-                { icon: "🤤", name: "垂涎欲滴" },
-                { icon: "🤠", name: "牛仔开心" },
-                { icon: "🥳", name: "派对快乐" },
-                { icon: "🥸", name: "伪装滑稽" },
-                { icon: "😎", name: "酷炫墨镜" },
-                { icon: "🤓", name: "书呆眼镜" },
-                { icon: "🧐", name: "审视凝视" },
-                { icon: "🙃", name: "倒置调皮" },
-                { icon: "🫠", name: "融化无语" },
-                { icon: "🤐", name: "闭嘴沉默" },
-                { icon: "😐", name: "无表情" },
-                { icon: "😑", name: "平静淡漠" },
-                { icon: "😶", name: "沉默无言" },
-                { icon: "🫥", name: "含蓄沉静" },
-                { icon: "😶‍🌫️", name: "迷雾失神" },
-                { icon: "🧡", name: "温暖橙心" },
-                { icon: "🩷", name: "柔粉之心" },
-                { icon: "💘", name: "丘比特心" },
-                { icon: "💝", name: "礼盒之爱" },
-                { icon: "💟", name: "爱之符号" },
-                { icon: "❣️", name: "爱的感叹" },
-                { icon: "💞", name: "心心相印" },
-                { icon: "💓", name: "心跳感觉" }
-            ],
-            "surprise&sad&angry": [
-                { icon: "🥴", name: "头晕目眩" },         // 补充
-                { icon: "🤥", name: "调皮撒谎" },         // 补充
-                { icon: "😳", name: "惊讶脸红" },
-                { icon: "😲", name: "惊讶凝视" },
-                { icon: "😯", name: "静静惊讶" },
-                { icon: "🤔", name: "思考疑惑" },
-                { icon: "🤨", name: "怀疑挑眉" },
-                { icon: "😢", name: "流泪难过" },
-                { icon: "😭", name: "号啕大哭" },
-                { icon: "😞", name: "失落沮丧" },
-                { icon: "😓", name: "苦笑冒汗" },
-                { icon: "😩", name: "精疲力竭" },
-                { icon: "😫", name: "累到崩溃" },
-                { icon: "😿", name: "哭泣猫咪" },
-                { icon: "😠", name: "生气恼火" },
-                { icon: "🫩", name: "头晕新表情" },       // 补充，部分系统支持
-                { icon: "😡", name: "暴怒沸腾" },
-                { icon: "🤬", name: "怒骂咒语" },
-                { icon: "😒", name: "嫌弃冷漠" },
-                { icon: "🙄", name: "翻白眼无语" },
-                { icon: "😴", name: "沉睡梦乡" },
-                { icon: "🥱", name: "打哈欠困倦" },
-                { icon: "😪", name: "迷糊瞌睡" },
-                { icon: "😮‍💨", name: "叹息疲惫" },
-                { icon: "😵", name: "眩晕头晕" },
-                { icon: "😮", name: "张口吃惊" },         // 补充
-                { icon: "😵‍💫", name: "意识模糊" },
-                { icon: "🤯", name: "炸裂震惊" },
-                { icon: "😷", name: "口罩生病" },
-                { icon: "😦", name: "张口难过" },         // 补充
-                { icon: "🤒", name: "发烧难受" },
-                { icon: "🤕", name: "头痛受伤" },
-                { icon: "😧", name: "痛苦" },             // 补充
-                { icon: "🤢", name: "恶心想吐" },
-                { icon: "😥", name: "流汗难过" },         // 补充
-                { icon: "🤮", name: "呕吐反胃" },
-                { icon: "🤧", name: "打喷嚏" },
-                { icon: "🥵", name: "炎热爆汗" },
-                { icon: "🥶", name: "冻得发抖" },
-                { icon: "😰", name: "冷汗焦虑" },
-                { icon: "😨", name: "惊恐惧怕" },
-                { icon: "😱", name: "尖叫惊吓" },
-                { icon: "😖", name: "痛苦纠结" },
-                { icon: "😣", name: "艰难挣扎" }
-            ],
-            "animal&fantasy": [
-                { icon: "😺", name: "笑脸猫咪" },
-                { icon: "😸", name: "开心眼笑猫" },
-                { icon: "😹", name: "泪笑猫咪" },
-                { icon: "😼", name: "狡黠猫脸" },
-                { icon: "🙀", name: "惊恐猫咪" },
-                { icon: "😽", name: "猫咪亲吻" },
-                { icon: "😾", name: "生气猫咪" },         // 补充
-                { icon: "🙈", name: "捂眼猴子" },
-                { icon: "🙉", name: "捂耳猴子" },
-                { icon: "🙊", name: "捂嘴猴子" },
-                { icon: "👽", name: "外星人" },           // 补充
-                { icon: "💛", name: "友善黄心" },
-                { icon: "💚", name: "疗愈绿心" },
-                { icon: "💙", name: "平静蓝心" },
-                { icon: "💜", name: "神秘紫心" },
-                { icon: "🤍", name: "纯白心意" },
-                { icon: "🖤", name: "黑心魅力" },
-                { icon: "🤡", name: "滑稽小丑" },
-                { icon: "👻", name: "幽灵飘飘" },
-                { icon: "🤖", name: "机器人脑袋" },
-                { icon: "👾", name: "像素怪兽" },
-                { icon: "🧌", name: "山妖魔物" },
-                { icon: "😈", name: "调皮恶魔" },
-                { icon: "👿", name: "愤怒恶魔" },
-                { icon: "👺", name: "日本面具" },
-                { icon: "👹", name: "鬼怪愤怒" },
-                { icon: "💩", name: "呆萌便便" },
-                { icon: "💀", name: "骷髅头骨" },
-                { icon: "☠️", name: "死亡标志" }
-
-
-            ]
-        };
-
-        function renderCategory(type) {
-            const gallery = document.getElementById("gallery");
-            gallery.innerHTML = "";
-
-            const list = expressionCategories[type] || []; // 👈 这行避免报错
-            list.forEach(item => {
-                const div = document.createElement("div");
-                div.className = "item";
-                div.innerHTML = `
-            <div class="char">${item.icon}</div>
-            <div class="label">${item.name}</div>
-            `;
-                gallery.appendChild(div);
-            });
-        }
-
-        // 默认显示哺乳动物
-        renderCategory('smile&love', expressionCategories);
-    </script>
+    <!-- 弹窗 -->
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popBB.js"></script>
+
+    <!-- 主脚本：加载分类数据并渲染 -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            renderCategory('smile&love', expressionCategories);
-            // 手动触发一次初始绑定（首次渲染不会被 observer 捕获）
-            bindPopupToItems();
-        });
+        const JSON_BASE_PATH = "/json/expressions/"; // ✅ 路径前缀抽离
+        const JSON_1 = "smilelove";
+
+
     </script>
+
+    <script src="../js/renderCategory.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>

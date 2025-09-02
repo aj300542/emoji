@@ -15,61 +15,14 @@
     <div class="gallery" id="gallery"></div>
 
     <script>
-        const dataItems = [
-            { icon: "⚖️", name: "伦理天平" },
-            { icon: "🔮", name: "思辨水晶球" },
-            { icon: "📖", name: "哲学原典" },
-            { icon: "🧠", name: "意识实体" },
-            { icon: "☯️", name: "阴阳原理" },
-            { icon: "🕳️", name: "虚无空间" },
-            { icon: "🧩", name: "认知碎片" },
-            { icon: "📘", name: "思维之书" },
-            { icon: "👁️", name: "洞察之眼" },
-            { icon: "🌀", name: "存在漩涡" },
-            { icon: "⏳", name: "时间命题" },
-            { icon: "🧬", name: "人性结构" },
-            { icon: "🔗", name: "因果连接器" },
-            { icon: "📚", name: "意识体系档案" },
-            { icon: "🧙", name: "哲思引导者" },
-            { icon: "🔤", name: "语言哲学结构" },
-            { icon: "🌌", name: "宇宙意义图谱" },
-            { icon: "🧭", name: "存在导航仪" },
-            { icon: "🌌🔍", name: "宇宙级命题观测器" },
-            { icon: "📐🧪", name: "结构验证试验台" },
-            { icon: "🧬🧠", name: "思维进化映射仪" },
-            { icon: "🌀⚖️", name: "认知偏差修正器" },
-            { icon: "🕰️📡", name: "因果时间扫描仪" },
-            { icon: "🧾🧩", name: "命题记录序列器" },
-            { icon: "🧠🗺️", name: "思维结构拓扑图" },
-            { icon: "🎛️⏳", name: "逻辑节奏同步器" },
-            { icon: "🪬🔬", name: "悖论解析器" },
-            { icon: "🧠🔄", name: "自反推理模拟器" },
-            { icon: "🔮", name: "概念预测器" },
-            { icon: "🪫", name: "逻辑熵测定器" },
-            { icon: "🕯️", name: "条件亮显仪" },
-            { icon: "🧿", name: "推演焦点盘" },
-            { icon: "📮", name: "命题投送器" },
-            { icon: "📯", name: "逻辑警示号" },
-            { icon: "📎", name: "命题夹联器" },
-            { icon: "🔬", name: "细节剖析仪" },
-            { icon: "🗜️", name: "约束压缩器" },
-            { icon: "🧼", name: "逻辑清洗器" }
-        ];
-
-        const gallery = document.getElementById("gallery");
-
-        dataItems.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML = `<div class="char">${item.icon}</div><p>${item.name}</p>`;
-            gallery.appendChild(div);
-        });
+        const jsonpath = "../json/philosophy.json"; // ✅ 路径作为字符串
     </script>
     <div id="popup">
         <div id="popup-icon" style="font-size:45vh;"></div>
         <div id="popup-name" style="font-size: 15vh; margin-top: 2vh;"></div>
     </div>
-    <script src="../js/popK.js"></script>
+    <script src="../js/jsonpath.js"></script>
+    <script src="../js/pop.js"></script>
 </body>
 
 </html>
