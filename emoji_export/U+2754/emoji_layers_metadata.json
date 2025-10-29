@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u2754",
+  "emoji_code": "U+2754",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph04992",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph04993",
+      "color": {
+        "r": 242,
+        "g": 242,
+        "b": 242
+      },
+      "hex": "#f2f2f2",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

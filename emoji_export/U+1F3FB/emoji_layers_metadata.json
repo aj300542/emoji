@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\ud83c\udffb",
+  "emoji_code": "U+1F3FB",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph01066",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph01067",
+      "color": {
+        "r": 247,
+        "g": 215,
+        "b": 196
+      },
+      "hex": "#f7d7c4",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

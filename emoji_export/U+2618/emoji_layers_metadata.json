@@ -1,0 +1,39 @@
+{
+  "emoji_char": "\u2618",
+  "emoji_code": "U+2618",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph02691",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph02692",
+      "color": {
+        "r": 19,
+        "g": 161,
+        "b": 14
+      },
+      "hex": "#13a10e",
+      "svg_file": "emoji_layer_01.svg"
+    },
+    {
+      "layer_index": 2,
+      "glyph_name": "glyph02693",
+      "color": {
+        "r": 121,
+        "g": 219,
+        "b": 117
+      },
+      "hex": "#79db75",
+      "svg_file": "emoji_layer_02.svg"
+    }
+  ]
+}

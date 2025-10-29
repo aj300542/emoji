@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u3030",
+  "emoji_code": "U+3030",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph05001",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph05002",
+      "color": {
+        "r": 117,
+        "g": 117,
+        "b": 117
+      },
+      "hex": "#757575",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

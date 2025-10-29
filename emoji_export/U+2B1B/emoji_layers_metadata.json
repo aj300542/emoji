@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u2b1b",
+  "emoji_code": "U+2B1B",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph02312",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph02313",
+      "color": {
+        "r": 56,
+        "g": 56,
+        "b": 56
+      },
+      "hex": "#383838",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

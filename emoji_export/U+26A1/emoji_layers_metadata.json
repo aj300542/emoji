@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u26a1",
+  "emoji_code": "U+26A1",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph04974",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph04975",
+      "color": {
+        "r": 255,
+        "g": 200,
+        "b": 61
+      },
+      "hex": "#ffc83d",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

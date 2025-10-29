@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u2666",
+  "emoji_code": "U+2666",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph04496",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph04497",
+      "color": {
+        "r": 240,
+        "g": 58,
+        "b": 23
+      },
+      "hex": "#f03a17",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}

@@ -31,3 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// 监听 gallery 中所有 .item 的 emoji 双击事件
+document.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.getElementById('gallery');
+
+  // 使用事件委托监听 .char 的双击
+  gallery.addEventListener('dblclick', (event) => {
+    const target = event.target;
+    if (target.classList.contains('char')) {
+      const emoji = target.textContent.trim();
+      const encoded = encodeURIComponent(emoji);
+      // 跳转到根目录下的 download.html
+      window.location.href = `/download.html?emoji=${encoded}`;
+    }
+  });
+});

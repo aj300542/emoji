@@ -1,0 +1,50 @@
+{
+  "emoji_char": "\ud83e\udd4e",
+  "emoji_code": "U+1F94E",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph10420",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph10421",
+      "color": {
+        "r": 255,
+        "g": 241,
+        "b": 0
+      },
+      "hex": "#fff100",
+      "svg_file": "emoji_layer_01.svg"
+    },
+    {
+      "layer_index": 2,
+      "glyph_name": "glyph10422",
+      "color": {
+        "r": 223,
+        "g": 190,
+        "b": 0
+      },
+      "hex": "#dfbe00",
+      "svg_file": "emoji_layer_02.svg"
+    },
+    {
+      "layer_index": 3,
+      "glyph_name": "glyph10423",
+      "color": {
+        "r": 232,
+        "g": 18,
+        "b": 36
+      },
+      "hex": "#e81224",
+      "svg_file": "emoji_layer_03.svg"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "emoji_char": "\u2602",
+  "emoji_code": "U+2602",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph01789",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph01790",
+      "color": {
+        "r": 212,
+        "g": 140,
+        "b": 0
+      },
+      "hex": "#d48c00",
+      "svg_file": "emoji_layer_01.svg"
+    },
+    {
+      "layer_index": 2,
+      "glyph_name": "glyph01791",
+      "color": {
+        "r": 156,
+        "g": 137,
+        "b": 233
+      },
+      "hex": "#9c89e9",
+      "svg_file": "emoji_layer_02.svg"
+    },
+    {
+      "layer_index": 3,
+      "glyph_name": "glyph01792",
+      "color": {
+        "r": 115,
+        "g": 91,
+        "b": 193
+      },
+      "hex": "#735bc1",
+      "svg_file": "emoji_layer_03.svg"
+    },
+    {
+      "layer_index": 4,
+      "glyph_name": "glyph01793",
+      "color": {
+        "r": 136,
+        "g": 108,
+        "b": 228
+      },
+      "hex": "#886ce4",
+      "svg_file": "emoji_layer_04.svg"
+    }
+  ]
+}

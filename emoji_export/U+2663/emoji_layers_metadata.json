@@ -1,0 +1,28 @@
+{
+  "emoji_char": "\u2663",
+  "emoji_code": "U+2663",
+  "layers": [
+    {
+      "layer_index": 0,
+      "glyph_name": "glyph05417",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "hex": "#000000",
+      "svg_file": "emoji_layer_00.svg"
+    },
+    {
+      "layer_index": 1,
+      "glyph_name": "glyph05418",
+      "color": {
+        "r": 43,
+        "g": 43,
+        "b": 43
+      },
+      "hex": "#2b2b2b",
+      "svg_file": "emoji_layer_01.svg"
+    }
+  ]
+}
