@@ -296,8 +296,8 @@ function loadEmojiSequence(codes) {
     });
 
     filtered.forEach((code, index) => {
-        const mtlPath = `../emoji_export/${code}/${code}.mtl`;
-        const objPath = `../emoji_export/${code}/${code}.obj`;
+        const mtlPath = `./emoji/emoji_export/${code}/${code}.mtl`;
+        const objPath = `./emoji/emoji_export/${code}/${code}.obj`;
 
         const mtlLoader = new MTLLoader();
         mtlLoader.load(mtlPath, (materials) => {
