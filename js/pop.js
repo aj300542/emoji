@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const emoji = target.textContent.trim();
       const encoded = encodeURIComponent(emoji);
       // 跳转到根目录下的 download.html
-      window.location.href = `/downloadobj.html?emoji=${encoded}`;
+      window.location.href = `https://aj300542.github.io/emoji/downloadobj.html?emoji=${encoded}`;
     }
   });
 });
