@@ -321,8 +321,15 @@ function loadEmojiSequence(codes) {
     });
 
     filtered.forEach((code, index) => {
-        const mtlPath = `/emoji/emoji_export/${code}/${code}.mtl`;
-        const objPath = `/emoji/emoji_export/${code}/${code}.obj`;
+        
+        // 判断是否是线上环境（GitHub Pages 域名）
+        const isGitHubPages = window.location.hostname === 'aj300542.github.io';
+
+        // 线上路径加 /emoji 前缀，本地用相对路径
+        const basePath = isGitHubPages ? '/emoji/emoji_export/' : '../emoji_export/';
+
+        const mtlPath = `${basePath}${code}/${code}.mtl`;
+        const objPath = `${basePath}${code}/${code}.obj`;
 
         const mtlLoader = new MTLLoader();
         mtlLoader.load(mtlPath, (materials) => {
