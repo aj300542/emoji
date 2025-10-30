@@ -423,29 +423,37 @@ function bindSingleEmoji() {
 function bindItemHover(item) {
     if (item.__emojiBound) return;
     item.__emojiBound = true;
+    let hoverTimer = null; // 用于存储定时器ID
 
     item.addEventListener('mouseenter', () => {
-        const charEl = item.querySelector('.char');
-        if (!charEl) return;
-        const emojiChar = charEl.textContent.trim();
-        if (!emojiChar) return;
-        const visibleCodes = getEmojiCodeSequence(emojiChar).filter(c => c !== 'U+200D' && c !== 'U+FE0F');
+        // 鼠标进入时，设置200毫秒后执行的定时器
+        hoverTimer = setTimeout(() => {
+            const charEl = item.querySelector('.char');
+            if (!charEl) return;
+            const emojiChar = charEl.textContent.trim();
+            if (!emojiChar) return;
+            const visibleCodes = getEmojiCodeSequence(emojiChar).filter(c => c !== 'U+200D' && c !== 'U+FE0F');
 
-        if (canvas) canvas.style.display = 'block';
-        clearSceneKeepRenderer();
+            if (canvas) canvas.style.display = 'block';
+            clearSceneKeepRenderer();
 
-        if (!scene) initThree();
-        loadEmojiSequence(visibleCodes);
-        animate();
+            if (!scene) initThree();
+            loadEmojiSequence(visibleCodes);
+            animate();
+        }, 200); // 200毫秒延迟
     });
 
     item.addEventListener('mouseleave', () => {
+        // 鼠标离开时，清除未执行的定时器（如果有的话）
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
         clearSceneKeepRenderer();
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
     });
 }
-
 function bindExistingItems() {
     const items = document.querySelectorAll('.item');
     if (items.length > 0) {
