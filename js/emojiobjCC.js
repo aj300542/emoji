@@ -4,8 +4,19 @@ import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/j
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'RoomEnvironment';
 
+/*
+  完整说明
+  - 自动创建或使用页面上的 #three-canvas
+  - initThree 一次
+  - mouseenter 时清场一次，mouseleave 时清场
+  - 在加入 scene 前强制覆盖材质并 computeVertexNormals
+  - 若几何不是面（Points/Lines），添加 wireframe/placeholder 回退
+  - BoxHelper 在材质替换后添加
+  - 暴露全局 THREE，暴露调试 helper __emojiAddTestCube、__emojiListMeshes、__emojiScene
+*/
+
 /* -------------------------
-   Canvas setup
+   Ensure canvas exists and safe DOM refs
    ------------------------- */
 let canvas = document.getElementById('three-canvas');
 if (!canvas) {
@@ -22,8 +33,11 @@ if (!canvas) {
     document.body.appendChild(canvas);
 }
 
+const singleEmojiEl = document.getElementById('emoji') || null;
+const codeDisplay = document.getElementById('code') || null;
+
 /* -------------------------
-   Three.js state
+   Three state
    ------------------------- */
 let renderer = null;
 let scene = null;
@@ -34,7 +48,7 @@ let helpers = [];
 let animationFrameId = null;
 
 /* -------------------------
-   Utility
+   Utility functions
    ------------------------- */
 function getEmojiCodeSequence(emojiChar) {
     return [...emojiChar].map(c => 'U+' + c.codePointAt(0).toString(16).toUpperCase());
@@ -108,7 +122,7 @@ function onWindowResize() {
 }
 
 /* -------------------------
-   Disposal
+   Resource disposal
    ------------------------- */
 function disposeMaterial(material) {
     if (!material) return;
@@ -132,6 +146,9 @@ function disposeObject(obj) {
     });
 }
 
+/* -------------------------
+   Scene clearing (keep renderer)
+   ------------------------- */
 function clearSceneKeepRenderer() {
     pivots.forEach(p => {
         try { disposeObject(p); } catch (e) { }
@@ -148,8 +165,9 @@ function clearSceneKeepRenderer() {
 
     console.log('Scene cleared (kept renderer).');
 }
+
 /* -------------------------
-   Material fix
+   Force visible materials & normals (robust)
    ------------------------- */
 function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
     const template = new THREE.MeshStandardMaterial({
@@ -168,8 +186,13 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
 
         const geom = child.geometry;
 
-        if (geom && !geom.attributes.normal) {
-            try { geom.computeVertexNormals(); } catch (e) { console.warn('computeVertexNormals failed', e); }
+        if (geom) {
+            if (!geom.attributes.normal) {
+                try { geom.computeVertexNormals(); } catch (e) { console.warn('computeVertexNormals failed', e); }
+            }
+            if (!geom.attributes.position) {
+                console.warn('mesh has no position attribute', child);
+            }
         }
 
         try {
@@ -184,7 +207,6 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
         child.receiveShadow = true;
         child.frustumCulled = false;
         child.renderOrder = 1;
-
         if (child.material) {
             child.material.side = THREE.DoubleSide;
             child.material.transparent = false;
@@ -195,7 +217,7 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
             child.material.polygonOffsetUnits = 1;
         }
 
-        // conservative face detection
+        // detect if faces likely exist
         let hasFaces = false;
         if (geom) {
             if (geom.index && geom.index.count > 0) hasFaces = true;
@@ -228,13 +250,18 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
     });
 }
 
-/* -------------------------
-   Load and handle OBJ
-   ------------------------- */
-function handleLoadedObject(object, code, index) {
-    if (!scene) return;
+function clearScene() {
+    pivots.forEach(p => scene.remove(p));
+    pivots = [];
+}
 
-    forceVisibleMaterialsAndNormals(object);
+function handleLoadedObject(object, code, index) {
+    clearScene();
+
+    if (!scene) { disposeObject(object); console.warn('Scene missing, skip', code); return; }
+    console.log('✅ 成功加载 OBJ：', code);
+
+    try { forceVisibleMaterialsAndNormals(object, 0xffffff); } catch (e) { console.warn('forceVisibleMaterialsAndNormals error', e); }
 
     const box = new THREE.Box3().setFromObject(object);
     const center = box.getCenter(new THREE.Vector3());
@@ -252,7 +279,6 @@ function handleLoadedObject(object, code, index) {
     scene.add(pivot);
     pivots.push(pivot);
 
-    // add BoxHelper for debugging
     object.traverse(child => {
         if (child.isMesh) {
             try {
@@ -260,19 +286,18 @@ function handleLoadedObject(object, code, index) {
                 bh.renderOrder = 10;
                 scene.add(bh);
                 helpers.push(bh);
-            } catch (e) { /* ignore */ }
+            } catch (e) { console.warn('BoxHelper add failed', e); }
         }
     });
 
-    // position camera to fit all pivots
     const fullGroup = new THREE.Group();
     pivots.forEach(p => fullGroup.add(p));
     const fullBox = new THREE.Box3().setFromObject(fullGroup);
     const fullCenter = fullBox.getCenter(new THREE.Vector3());
-    const fullSize = fullBox.getSize(new THREE.Vector3()).length() || 1;
+    const fullSize = fullBox.getSize(new THREE.Vector3()).length();
     const z = Math.max(1.5, fullSize * 1.8 + 2);
 
-    camera.near = 0.0005;
+    camera.near = 0.001;
     camera.far = 5000;
     camera.updateProjectionMatrix();
     camera.position.set(fullCenter.x, fullCenter.y, z);
@@ -296,8 +321,15 @@ function loadEmojiSequence(codes) {
     });
 
     filtered.forEach((code, index) => {
-        const mtlPath = `../emoji_export/${code}/${code}.mtl`;
-        const objPath = `../emoji_export/${code}/${code}.obj`;
+        
+        // 判断是否是线上环境（GitHub Pages 域名）
+        const isGitHubPages = window.location.hostname === 'aj300542.github.io';
+
+        // 线上路径加 /emoji 前缀，本地用相对路径
+        const basePath = isGitHubPages ? '/emoji/emoji_export/' : '../emoji_export/';
+
+        const mtlPath = `${basePath}${code}/${code}.mtl`;
+        const objPath = `${basePath}${code}/${code}.obj`;
 
         const mtlLoader = new MTLLoader();
         mtlLoader.load(mtlPath, (materials) => {
@@ -345,7 +377,6 @@ function loadEmojiSequence(codes) {
     });
 }
 
-
 /* -------------------------
    Animation loop
    ------------------------- */
@@ -353,41 +384,76 @@ function animate() {
     cancelAnimationFrame(animationFrameId);
     function loop() {
         animationFrameId = requestAnimationFrame(loop);
-        pivots.forEach(p => { p.rotation.y += 0.005; });
+        pivots.forEach(p => p.rotation.y += 0.005);
         controls && controls.update();
-        renderer && scene && camera && renderer.render(scene, camera);
+        if (renderer && scene && camera) renderer.render(scene, camera);
     }
     loop();
 }
+
 /* -------------------------
-   Hover binding and DOM watch
+   Event binding: single #emoji or .item list (async)
    ------------------------- */
-function bindItemHover(item) {
-    if (item.__emojiBound) return;
-    item.__emojiBound = true;
-
-    item.addEventListener('mouseenter', () => {
-        const charEl = item.querySelector('.char');
-        if (!charEl) return;
-        const emojiChar = charEl.textContent.trim();
-        if (!emojiChar) return;
-        const visibleCodes = getEmojiCodeSequence(emojiChar).filter(c => c !== 'U+200D' && c !== 'U+FE0F');
-
+function bindSingleEmoji() {
+    if (!singleEmojiEl) return false;
+    singleEmojiEl.addEventListener('mouseenter', () => {
         if (canvas) canvas.style.display = 'block';
         clearSceneKeepRenderer();
+
+        const emojiChar = singleEmojiEl.textContent.trim();
+        const codeSequence = getEmojiCodeSequence(emojiChar);
+        const visibleCodes = codeSequence.filter(code => code !== 'U+200D' && code !== 'U+FE0F');
+        if (codeDisplay) codeDisplay.textContent = visibleCodes.join('_');
 
         if (!scene) initThree();
         loadEmojiSequence(visibleCodes);
         animate();
     });
 
+    singleEmojiEl.addEventListener('mouseleave', () => {
+        if (canvas) canvas.style.display = 'none';
+        cancelAnimationFrame(animationFrameId);
+        clearSceneKeepRenderer();
+    });
+
+    console.log('Bound single #emoji handlers');
+    return true;
+}
+
+function bindItemHover(item) {
+    if (item.__emojiBound) return;
+    item.__emojiBound = true;
+    let hoverTimer = null; // 用于存储定时器ID
+
+    item.addEventListener('mouseenter', () => {
+        // 鼠标进入时，设置200毫秒后执行的定时器
+        hoverTimer = setTimeout(() => {
+            const charEl = item.querySelector('.char');
+            if (!charEl) return;
+            const emojiChar = charEl.textContent.trim();
+            if (!emojiChar) return;
+            const visibleCodes = getEmojiCodeSequence(emojiChar).filter(c => c !== 'U+200D' && c !== 'U+FE0F');
+
+            if (canvas) canvas.style.display = 'block';
+            clearSceneKeepRenderer();
+
+            if (!scene) initThree();
+            loadEmojiSequence(visibleCodes);
+            animate();
+        }, 200); // 200毫秒延迟
+    });
+
     item.addEventListener('mouseleave', () => {
+        // 鼠标离开时，清除未执行的定时器（如果有的话）
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
         clearSceneKeepRenderer();
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
     });
 }
-
 function bindExistingItems() {
     const items = document.querySelectorAll('.item');
     if (items.length > 0) {
@@ -406,39 +472,11 @@ function watchForItems() {
         }
     });
     mo.observe(root, { childList: true, subtree: true });
-    // safety: stop observing after a short while
-    setTimeout(() => { bindExistingItems(); try { mo.disconnect(); } catch (e) {} }, 5000);
+    setTimeout(() => { bindExistingItems(); mo.disconnect(); }, 5000);
 }
 
 /* -------------------------
-   Single #emoji support (optional)
-   ------------------------- */
-function bindSingleEmoji() {
-    const singleEmojiEl = document.getElementById('emoji');
-    if (!singleEmojiEl) return false;
-
-    singleEmojiEl.addEventListener('mouseenter', () => {
-        const emojiChar = singleEmojiEl.textContent.trim();
-        if (!emojiChar) return;
-        const visibleCodes = getEmojiCodeSequence(emojiChar).filter(c => c !== 'U+200D' && c !== 'U+FE0F');
-        if (canvas) canvas.style.display = 'block';
-        clearSceneKeepRenderer();
-        if (!scene) initThree();
-        loadEmojiSequence(visibleCodes);
-        animate();
-    });
-
-    singleEmojiEl.addEventListener('mouseleave', () => {
-        clearSceneKeepRenderer();
-        if (canvas) canvas.style.display = 'none';
-        cancelAnimationFrame(animationFrameId);
-    });
-
-    return true;
-}
-
-/* -------------------------
-   DOM ready init
+   Initialize bindings after DOM ready
    ------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     if (!bindSingleEmoji()) {
@@ -475,10 +513,6 @@ window.__emojiListMeshes = function () {
 };
 
 /* -------------------------
-   Resize listener (redundant safe)
+   Resize listener
    ------------------------- */
 window.addEventListener('resize', onWindowResize);
-
-/* -------------------------
-   End of emojiobjCC.js
-   ------------------------- */

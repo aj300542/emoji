@@ -2,18 +2,120 @@ import * as THREE from 'three';
 import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/MTLLoader.js';
 import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/OBJLoader.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
-import { RoomEnvironment } from 'RoomEnvironment';
+import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/environments/RoomEnvironment.js';
 
-/*
-  完整说明
-  - 自动创建或使用页面上的 #three-canvas
-  - initThree 一次
-  - mouseenter 时清场一次，mouseleave 时清场
-  - 在加入 scene 前强制覆盖材质并 computeVertexNormals
-  - 若几何不是面（Points/Lines），添加 wireframe/placeholder 回退
-  - BoxHelper 在材质替换后添加
-  - 暴露全局 THREE，暴露调试 helper __emojiAddTestCube、__emojiListMeshes、__emojiScene
-*/
+/* -------------------------
+   加载进度条 DOM 与样式
+   ------------------------- */
+function createProgressBar() {
+    let progressContainer = document.getElementById('emoji-loading');
+    if (progressContainer) return;
+
+    // 容器：居中显示
+    progressContainer = document.createElement('div');
+    progressContainer.id = 'emoji-loading';
+    progressContainer.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: rgba(0,0,0,0.7);
+        padding: 20px 30px;
+        border-radius: 8px;
+        color: white;
+        font-family: sans-serif;
+    `;
+
+    // 进度条背景
+    const progressBarBg = document.createElement('div');
+    progressBarBg.style.cssText = `
+        width: 200px;
+        height: 8px;
+        background: #333;
+        border-radius: 4px;
+        overflow: hidden;
+    `;
+
+    // 进度条填充
+    const progressBar = document.createElement('div');
+    progressBar.id = 'emoji-progress-bar';
+    progressBar.style.cssText = `
+        width: 0%;
+        height: 100%;
+        background: #00ffcc;
+        transition: width 0.2s ease;
+    `;
+
+    // 进度文本
+    const progressText = document.createElement('div');
+    progressText.id = 'emoji-progress-text';
+    progressText.textContent = '加载中... 0%';
+    progressText.style.fontSize = '14px';
+
+    progressBarBg.appendChild(progressBar);
+    progressContainer.appendChild(progressBarBg);
+    progressContainer.appendChild(progressText);
+    document.body.appendChild(progressContainer);
+}
+
+/* -------------------------
+   进度管理工具
+   ------------------------- */
+const progressManager = {
+    total: 0, // 总加载项数（每个 emoji 需加载 MTL + OBJ，共 2 项）
+    completed: 0, // 已完成项数
+
+    // 初始化进度（接收需加载的 emoji 编码数组）
+    init(codes) {
+        this.total = codes.length * 2;
+        this.completed = 0;
+        this.show();
+        this.update();
+    },
+
+    // 完成一项加载
+    increment() {
+        this.completed = Math.min(this.completed + 1, this.total);
+        this.update();
+        // 全部完成后隐藏进度条
+        if (this.completed >= this.total) {
+            setTimeout(() => this.hide(), 300);
+        }
+    },
+
+    // 更新进度条显示
+    update() {
+        const progress = Math.round((this.completed / this.total) * 100);
+        const bar = document.getElementById('emoji-progress-bar');
+        const text = document.getElementById('emoji-progress-text');
+        if (bar) bar.style.width = `${progress}%`;
+        if (text) text.textContent = `加载中... ${progress}%`;
+    },
+
+    // 显示进度条
+    show() {
+        const container = document.getElementById('emoji-loading');
+        if (container) container.style.display = 'flex';
+    },
+
+    // 隐藏进度条
+    hide() {
+        const container = document.getElementById('emoji-loading');
+        if (container) container.style.display = 'none';
+    },
+
+    // 重置进度（加载失败或取消时调用）
+    reset() {
+        this.total = 0;
+        this.completed = 0;
+        this.hide();
+    }
+};
 
 /* -------------------------
    Ensure canvas exists and safe DOM refs
@@ -313,6 +415,9 @@ function loadEmojiSequence(codes) {
     const filtered = codes.filter(c => c !== 'U+200D' && c !== 'U+FE0F');
     if (filtered.length === 0) return;
 
+    // 初始化进度条（总项数 = 过滤后编码数 × 2）
+    progressManager.init(filtered);
+
     const fallbackMaterial = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         specular: 0x666666,
@@ -332,48 +437,80 @@ function loadEmojiSequence(codes) {
         const objPath = `${basePath}${code}/${code}.obj`;
 
         const mtlLoader = new MTLLoader();
-        mtlLoader.load(mtlPath, (materials) => {
-            materials.preload();
+        mtlLoader.load(
+            mtlPath,
+            (materials) => {
+                materials.preload();
 
-            for (const key in materials.materials) {
-                const mat = materials.materials[key];
-                if (mat instanceof THREE.MeshPhongMaterial) {
-                    mat.specular = new THREE.Color(1, 1, 1);
-                    mat.shininess = 8;
-                    mat.reflectivity = 0.1;
-                    mat.envMap = scene.environment;
-                }
-            }
-
-            const objLoader = new OBJLoader();
-            objLoader.setMaterials(materials);
-            objLoader.load(objPath, (object) => {
-                object.traverse((child) => {
-                    if (child.isMesh) {
-                        child.castShadow = true;
-                        child.receiveShadow = true;
+                for (const key in materials.materials) {
+                    const mat = materials.materials[key];
+                    if (mat instanceof THREE.MeshPhongMaterial) {
+                        mat.specular = new THREE.Color(1, 1, 1);
+                        mat.shininess = 8;
+                        mat.reflectivity = 0.1;
+                        mat.envMap = scene.environment;
                     }
-                });
+                }
 
-                const box = new THREE.Box3().setFromObject(object);
-                const center = box.getCenter(new THREE.Vector3());
-                const size = box.getSize(new THREE.Vector3()).length();
+                // MTL 加载完成，进度 +1
+                progressManager.increment();
 
-                object.position.sub(center);
+                const objLoader = new OBJLoader();
+                objLoader.setMaterials(materials);
+                objLoader.load(
+                    objPath,
+                    (object) => {
+                        object.traverse((child) => {
+                            if (child.isMesh) {
+                                child.castShadow = true;
+                                child.receiveShadow = true;
+                            }
+                        });
 
-                const pivot = new THREE.Object3D();
-                pivot.add(object);
-                pivot.position.x = index * (size + 0.5);
-                scene.add(pivot);
-                pivots.push(pivot);
+                        const box = new THREE.Box3().setFromObject(object);
+                        const center = box.getCenter(new THREE.Vector3());
+                        const size = box.getSize(new THREE.Vector3()).length();
 
-                const totalWidth = (filtered.length - 1) * (size + 0.5);
-                camera.position.set(0, 0, totalWidth + 1.75);
-                camera.lookAt(0, 0, 0);
-                controls.target.set(0, 0, 0);
-                controls.update();
-            });
-        });
+                        object.position.sub(center);
+
+                        const pivot = new THREE.Object3D();
+                        pivot.add(object);
+                        pivot.position.x = index * (size + 0.5);
+                        scene.add(pivot);
+                        pivots.push(pivot);
+
+                        const totalWidth = (filtered.length - 1) * (size + 0.5);
+                        camera.position.set(0, 0, totalWidth + 1.75);
+                        camera.lookAt(0, 0, 0);
+                        controls.target.set(0, 0, 0);
+                        controls.update();
+
+                        // OBJ 加载完成，进度 +1
+                        progressManager.increment();
+                    },
+                    // OBJ 加载进度回调
+                    (xhr) => {
+                        const fileProgress = Math.round((xhr.loaded / xhr.total) * 100);
+                        console.log(`OBJ ${code} 加载中: ${fileProgress}%`);
+                    },
+                    // OBJ 加载失败处理
+                    (error) => {
+                        console.warn(`OBJ 加载失败: ${code}`, error);
+                        progressManager.increment();
+                    }
+                );
+            },
+            // MTL 加载进度回调
+            (xhr) => {
+                const fileProgress = Math.round((xhr.loaded / xhr.total) * 100);
+                console.log(`MTL ${code} 加载中: ${fileProgress}%`);
+            },
+            // MTL 加载失败处理
+            (error) => {
+                console.warn(`MTL 加载失败: ${code}`, error);
+                progressManager.increment();
+            }
+        );
     });
 }
 
@@ -414,6 +551,7 @@ function bindSingleEmoji() {
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
         clearSceneKeepRenderer();
+        progressManager.reset(); // 重置进度条
     });
 
     console.log('Bound single #emoji handlers');
@@ -452,6 +590,7 @@ function bindItemHover(item) {
         clearSceneKeepRenderer();
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
+        progressManager.reset(); // 重置进度条
     });
 }
 function bindExistingItems() {
@@ -479,6 +618,7 @@ function watchForItems() {
    Initialize bindings after DOM ready
    ------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+    createProgressBar(); // 初始化进度条
     if (!bindSingleEmoji()) {
         if (!bindExistingItems()) {
             watchForItems();
