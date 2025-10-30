@@ -66,11 +66,14 @@
     <h1>动物素材展示 🐾</h1>
 
     <div class="category-buttons">
+        <button id="bios">返回生物主页</button>
         <button onclick="renderCategory('terrestrial')">陆地动物</button>
         <button onclick="renderCategory('birds')">鸟类</button>
         <button onclick="renderCategory('insects')">昆虫</button>
         <button onclick="renderCategory('aquatic')">水生动物</button>
         <button onclick="renderCategory('fantasy')">幻想生物</button>
+        <!-- 纯按钮样式（执行函数+新窗口） -->
+        <button id="opennew">捐赠</button>
     </div>
 
     <div id="gallery" class="gallery"></div>
@@ -90,6 +93,7 @@
     </script>
 
     <script src="../js/renderCategory.js"></script>
+    <script src="../js/button.js"></script>
     <script src="../js/pop.js"></script>
     <script type="importmap">
         {

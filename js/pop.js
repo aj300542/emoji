@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const emoji = target.textContent.trim();
       const encoded = encodeURIComponent(emoji);
       // 跳转到根目录下的 download.html
-    const isGitHubPages = window.location.hostname === 'aj300542.github.io';
-    // 线上用绝对路径，本地用相对路径（../ 跳出 bios 目录）
-    const path = isGitHubPages ? '/emoji/downloadobj.html' : '../downloadobj.html';
-    window.location.href = `${path}?emoji=${encoded}`;
+      const isGitHubPages = window.location.hostname === 'aj300542.github.io';
+      // 线上用绝对路径，本地用相对路径（../ 跳出 bios 目录）
+      const path = isGitHubPages ? '/emoji/downloadobj.html' : '../downloadobj.html';
+      window.location.href = `${path}?emoji=${encoded}`;
     }
   });
 });
@@ -70,4 +70,3 @@ body {
     font-family: 'SegoeEmojiOld', 'Segoe UI Emoji', sans-serif;
 }
 `;
-document.head.appendChild(fontStyle);

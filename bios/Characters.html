@@ -95,14 +95,16 @@
 <body>
     <h1>角色展示 👥</h1>
     <div class="category-buttons">
-        <button onclick="renderCategory('face')">人脸系列</button>
-        <button onclick="renderCategory('sports')">运功系列</button>
-        <button onclick="renderCategory('urban')">城市居民</button>
-        <button onclick="renderCategory('warrior')">战士系</button>
-        <button onclick="renderCategory('mage')">法师系</button>
-        <button onclick="renderCategory('support')">辅助系</button>
-        <button onclick="renderCategory('shadow')">暗影系</button>
-        <button onclick="renderCategory('bodypart')">身体系</button>
+        <button id="bios">返回生物主页</a>
+            <button onclick="renderCategory('face')">人脸系列</button>
+            <button onclick="renderCategory('sports')">运功系列</button>
+            <button onclick="renderCategory('urban')">城市居民</button>
+            <button onclick="renderCategory('warrior')">战士系</button>
+            <button onclick="renderCategory('mage')">法师系</button>
+            <button onclick="renderCategory('support')">辅助系</button>
+            <button onclick="renderCategory('shadow')">暗影系</button>
+            <button onclick="renderCategory('bodypart')">身体系</button>
+            <button id="opennew">捐赠</a>
     </div>
 
     <div id="gallery" class="gallery"></div>
@@ -125,6 +127,7 @@
     </script>
 
     <script src="../js/renderCategory.js"></script>
+    <script src="../js/button.js"></script>
     <script src="../js/pop.js"></script>
     <script type="importmap">
         {
