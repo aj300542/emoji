@@ -151,7 +151,7 @@ const loadingManager = {
         const bar = document.getElementById('emoji-progress-bar');
         const text = document.getElementById('emoji-progress-text');
         if (bar) bar.style.width = `${progress}%`;
-        if (text) text.textContent = `加载中... ${progress}%`;
+        if (text) text.textContent = `不等直接双击下载，等待加载中... ${progress}%`;
     },
 
     // 显示/隐藏控制
