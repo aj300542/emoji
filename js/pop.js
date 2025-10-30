@@ -49,3 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// 先判断环境，和你3D文件的逻辑保持一致
+const isGitHubPages = window.location.hostname === 'aj300542.github.io';
+
+// 字体路径：本地直接指向font目录，线上加/emoji前缀
+const fontPath = isGitHubPages ? '/emoji/font/SEGUIEMJ.TTF' : './font/SEGUIEMJ.TTF';
+
+// 动态创建@font-face样式并插入页面
+const fontStyle = document.createElement('style');
+fontStyle.textContent = `
+@font-face {
+    font-family: 'SegoeEmojiOld';
+    src: url('${fontPath}') format('truetype');
+    font-display: swap;
+}
+body {
+    font-family: 'SegoeEmojiOld', 'Segoe UI', sans-serif;
+}
+.char {
+    font-family: 'SegoeEmojiOld', 'Segoe UI Emoji', sans-serif;
+}
+`;
+document.head.appendChild(fontStyle);
