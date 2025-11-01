@@ -2,21 +2,197 @@ import * as THREE from 'three';
 import { MTLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/MTLLoader.js';
 import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/OBJLoader.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/controls/OrbitControls.js';
-import { RoomEnvironment } from 'RoomEnvironment';
-
-/*
-  完整说明
-  - 自动创建或使用页面上的 #three-canvas
-  - initThree 一次
-  - mouseenter 时清场一次，mouseleave 时清场
-  - 在加入 scene 前强制覆盖材质并 computeVertexNormals
-  - 若几何不是面（Points/Lines），添加 wireframe/placeholder 回退
-  - BoxHelper 在材质替换后添加
-  - 暴露全局 THREE，暴露调试 helper __emojiAddTestCube、__emojiListMeshes、__emojiScene
-*/
+import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/environments/RoomEnvironment.js';
 
 /* -------------------------
-   Ensure canvas exists and safe DOM refs
+   UI元素创建（进度条和错误提示）
+   ------------------------- */
+function createUIElements() {
+    // 进度条容器
+    let progressContainer = document.getElementById('emoji-loading');
+    if (!progressContainer) {
+        progressContainer = document.createElement('div');
+        progressContainer.id = 'emoji-loading';
+        progressContainer.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0,0,0,0.7);
+            padding: 20px 30px;
+            border-radius: 8px;
+            color: white;
+            font-family: sans-serif;
+        `;
+
+        const progressBarBg = document.createElement('div');
+        progressBarBg.style.cssText = `
+            width: 200px;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        `;
+
+        const progressBar = document.createElement('div');
+        progressBar.id = 'emoji-progress-bar';
+        progressBar.style.cssText = `
+            width: 0%;
+            height: 100%;
+            background: #00ffcc;
+            transition: width 0.2s ease;
+        `;
+
+        const progressText = document.createElement('div');
+        progressText.id = 'emoji-progress-text';
+        progressText.textContent = '加载中... 0%';
+        progressText.style.fontSize = '14px';
+
+        progressBarBg.appendChild(progressBar);
+        progressContainer.appendChild(progressBarBg);
+        progressContainer.appendChild(progressText);
+        document.body.appendChild(progressContainer);
+    }
+
+    // 错误提示容器
+    let errorContainer = document.getElementById('emoji-error');
+    if (!errorContainer) {
+        errorContainer = document.createElement('div');
+        errorContainer.id = 'emoji-error';
+        errorContainer.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            display: none;
+            background: rgba(0,0,0,0.8);
+            color: #ff4444;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            max-width: 80%;
+            text-align: center;
+        `;
+        document.body.appendChild(errorContainer);
+    }
+}
+
+/* -------------------------
+   加载管理器（核心优化）
+   ------------------------- */
+const loadingManager = {
+    totalFiles: 0,          // 总文件数
+    loadedFiles: 0,         // 已加载文件数
+    currentFileProgress: 0, // 当前文件加载进度(0-1)
+    missingFiles: [],
+    isLoading: false,
+
+    // 初始化加载
+    start(codes) {
+        this.totalFiles = codes.length * 2; // 每个模型2个文件(MTL+OBJ)
+        this.loadedFiles = 0;
+        this.currentFileProgress = 0;
+        this.missingFiles = [];
+        this.isLoading = true;
+        this.updateDisplay();
+        this.showProgress();
+        this.hideError();
+    },
+
+    // 更新当前文件加载进度
+    updateCurrentFileProgress(progress) {
+        if (!this.isLoading) return;
+        this.currentFileProgress = progress;
+        this.updateDisplay();
+    },
+
+    // 完成一个文件加载
+    completeFile() {
+        if (!this.isLoading) return;
+        this.loadedFiles++;
+        this.currentFileProgress = 0; // 重置当前文件进度
+        this.updateDisplay();
+
+        // 全部加载完成
+        if (this.loadedFiles >= this.totalFiles) {
+            this.isLoading = false;
+            setTimeout(() => {
+                this.hideProgress();
+                if (this.missingFiles.length > 0) {
+                    this.showError(`部分模型文件缺失：\n${this.missingFiles.join(', ')}\n\n没有相关3D模型`);
+                }
+            }, 300);
+        }
+    },
+
+    // 记录缺失文件
+    addMissingFile(code) {
+        if (!this.missingFiles.includes(code)) {
+            this.missingFiles.push(code);
+        }
+    },
+
+    // 计算总进度百分比
+    getTotalProgress() {
+        if (this.totalFiles === 0) return 0;
+        // 总进度 = 已完成文件进度 + 当前文件部分进度
+        return Math.round((this.loadedFiles + this.currentFileProgress) / this.totalFiles * 100);
+    },
+
+    // 更新显示
+    updateDisplay() {
+        const progress = this.getTotalProgress();
+        const bar = document.getElementById('emoji-progress-bar');
+        const text = document.getElementById('emoji-progress-text');
+        if (bar) bar.style.width = `${progress}%`;
+        if (text) text.textContent = `不等直接双击下载，等待加载中... ${progress}%`;
+    },
+
+    // 显示/隐藏控制
+    showProgress() {
+        const container = document.getElementById('emoji-loading');
+        if (container) container.style.display = 'flex';
+    },
+
+    hideProgress() {
+        const container = document.getElementById('emoji-loading');
+        if (container) container.style.display = 'none';
+    },
+
+    showError(message) {
+        const container = document.getElementById('emoji-error');
+        if (container) {
+            container.textContent = message;
+            container.style.display = 'block';
+            setTimeout(() => this.hideError(), 5000);
+        }
+    },
+
+    hideError() {
+        const container = document.getElementById('emoji-error');
+        if (container) container.style.display = 'none';
+    },
+
+    // 重置加载状态
+    reset() {
+        this.isLoading = false;
+        this.totalFiles = 0;
+        this.loadedFiles = 0;
+        this.currentFileProgress = 0;
+        this.missingFiles = [];
+        this.hideProgress();
+        this.hideError();
+    }
+};
+
+/* -------------------------
+   Canvas初始化
    ------------------------- */
 let canvas = document.getElementById('three-canvas');
 if (!canvas) {
@@ -37,7 +213,7 @@ const singleEmojiEl = document.getElementById('emoji') || null;
 const codeDisplay = document.getElementById('code') || null;
 
 /* -------------------------
-   Three state
+   Three.js状态管理
    ------------------------- */
 let renderer = null;
 let scene = null;
@@ -48,7 +224,7 @@ let helpers = [];
 let animationFrameId = null;
 
 /* -------------------------
-   Utility functions
+   工具函数
    ------------------------- */
 function getEmojiCodeSequence(emojiChar) {
     return [...emojiChar].map(c => 'U+' + c.codePointAt(0).toString(16).toUpperCase());
@@ -103,15 +279,11 @@ function initThree() {
     scene.add(ground);
     window.addEventListener('resize', onWindowResize);
 
-    // Expose for console debugging after init
+    // 暴露调试接口
     window.__emojiScene = scene;
     window.__emojiCamera = camera;
     window.__emojiRenderer = renderer;
-
-    // Expose THREE globally so Console can use constructors directly
     window.THREE = THREE;
-
-    console.log('Three initialized. Debug handles: __emojiScene, __emojiCamera, __emojiRenderer, THREE');
 }
 
 function onWindowResize() {
@@ -122,7 +294,7 @@ function onWindowResize() {
 }
 
 /* -------------------------
-   Resource disposal
+   资源释放
    ------------------------- */
 function disposeMaterial(material) {
     if (!material) return;
@@ -147,7 +319,7 @@ function disposeObject(obj) {
 }
 
 /* -------------------------
-   Scene clearing (keep renderer)
+   场景清理
    ------------------------- */
 function clearSceneKeepRenderer() {
     pivots.forEach(p => {
@@ -162,12 +334,10 @@ function clearSceneKeepRenderer() {
         try { h.material && h.material.dispose && h.material.dispose(); } catch (e) { }
     });
     helpers = [];
-
-    console.log('Scene cleared (kept renderer).');
 }
 
 /* -------------------------
-   Force visible materials & normals (robust)
+   材质和法线处理
    ------------------------- */
 function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
     const template = new THREE.MeshStandardMaterial({
@@ -185,14 +355,8 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
         if (!child.isMesh) return;
 
         const geom = child.geometry;
-
-        if (geom) {
-            if (!geom.attributes.normal) {
-                try { geom.computeVertexNormals(); } catch (e) { console.warn('computeVertexNormals failed', e); }
-            }
-            if (!geom.attributes.position) {
-                console.warn('mesh has no position attribute', child);
-            }
+        if (geom && !geom.attributes.normal) {
+            try { geom.computeVertexNormals(); } catch (e) { console.warn('computeVertexNormals failed', e); }
         }
 
         try {
@@ -212,173 +376,124 @@ function forceVisibleMaterialsAndNormals(object, debugEmissive = 0xffffff) {
             child.material.transparent = false;
             child.material.depthTest = true;
             child.material.depthWrite = true;
-            child.material.polygonOffset = true;
-            child.material.polygonOffsetFactor = -1;
-            child.material.polygonOffsetUnits = 1;
-        }
-
-        // detect if faces likely exist
-        let hasFaces = false;
-        if (geom) {
-            if (geom.index && geom.index.count > 0) hasFaces = true;
-            if (geom.attributes.normal) hasFaces = true;
-            if (geom.attributes.uv) hasFaces = true;
-        }
-
-        if (!hasFaces) {
-            try {
-                const geo = child.geometry || new THREE.BoxGeometry(0.5, 0.5, 0.5);
-                const wf = new THREE.LineSegments(
-                    new THREE.WireframeGeometry(geo),
-                    new THREE.LineBasicMaterial({ color: 0x00ff00 })
-                );
-                wf.renderOrder = 2;
-                child.add(wf);
-            } catch (e) { console.warn('wireframe fallback failed', e); }
-
-            try {
-                if (!child.geometry || !child.geometry.boundingBox || child.geometry.boundingBox.isEmpty()) {
-                    const placeholder = new THREE.Mesh(
-                        new THREE.BoxGeometry(0.5, 0.5, 0.5),
-                        new THREE.MeshBasicMaterial({ color: 0x333333, opacity: 0.12, transparent: true })
-                    );
-                    placeholder.renderOrder = 0;
-                    child.add(placeholder);
-                }
-            } catch (e) { /* ignore */ }
         }
     });
-}
-
-function clearScene() {
-    pivots.forEach(p => scene.remove(p));
-    pivots = [];
-}
-
-function handleLoadedObject(object, code, index) {
-    clearScene();
-
-    if (!scene) { disposeObject(object); console.warn('Scene missing, skip', code); return; }
-    console.log('✅ 成功加载 OBJ：', code);
-
-    try { forceVisibleMaterialsAndNormals(object, 0xffffff); } catch (e) { console.warn('forceVisibleMaterialsAndNormals error', e); }
-
-    const box = new THREE.Box3().setFromObject(object);
-    const center = box.getCenter(new THREE.Vector3());
-    let size = box.getSize(new THREE.Vector3()).length();
-    if (size === 0) size = 1;
-
-    object.position.sub(center);
-    const scaleFactor = Math.max(1, 1.5 / size);
-    object.scale.setScalar(scaleFactor);
-    object.position.y += 0.25 * scaleFactor;
-
-    const pivot = new THREE.Object3D();
-    pivot.add(object);
-    pivot.position.x = index * (1.2 * scaleFactor);
-    scene.add(pivot);
-    pivots.push(pivot);
-
-    object.traverse(child => {
-        if (child.isMesh) {
-            try {
-                const bh = new THREE.BoxHelper(child, 0xff0000);
-                bh.renderOrder = 10;
-                scene.add(bh);
-                helpers.push(bh);
-            } catch (e) { console.warn('BoxHelper add failed', e); }
-        }
-    });
-
-    const fullGroup = new THREE.Group();
-    pivots.forEach(p => fullGroup.add(p));
-    const fullBox = new THREE.Box3().setFromObject(fullGroup);
-    const fullCenter = fullBox.getCenter(new THREE.Vector3());
-    const fullSize = fullBox.getSize(new THREE.Vector3()).length();
-    const z = Math.max(1.5, fullSize * 1.8 + 2);
-
-    camera.near = 0.001;
-    camera.far = 5000;
-    camera.updateProjectionMatrix();
-    camera.position.set(fullCenter.x, fullCenter.y, z);
-    camera.lookAt(fullCenter);
-    controls.target.copy(fullCenter);
-    controls.update();
 }
 
 /* -------------------------
-   Load sequence
+   加载序列（核心优化）
    ------------------------- */
 function loadEmojiSequence(codes) {
     const filtered = codes.filter(c => c !== 'U+200D' && c !== 'U+FE0F');
     if (filtered.length === 0) return;
 
-    const fallbackMaterial = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        specular: 0x666666,
-        shininess: 30,
-        side: THREE.DoubleSide
-    });
+    // 初始化加载管理器
+    loadingManager.start(filtered);
 
     filtered.forEach((code, index) => {
-        
-        // 判断是否是线上环境（GitHub Pages 域名）
         const isGitHubPages = window.location.hostname === 'aj300542.github.io';
-
-        // 线上路径加 /emoji 前缀，本地用相对路径
         const basePath = isGitHubPages ? '/emoji/emoji_export/' : '../emoji_export/';
-
         const mtlPath = `${basePath}${code}/${code}.mtl`;
         const objPath = `${basePath}${code}/${code}.obj`;
 
-        const mtlLoader = new MTLLoader();
-        mtlLoader.load(mtlPath, (materials) => {
-            materials.preload();
+        // 检查文件是否存在
+        const checkFileExists = (url) => {
+            return fetch(url, { method: 'HEAD', mode: 'cors' })
+                .then(response => response.ok)
+                .catch(() => false);
+        };
 
-            for (const key in materials.materials) {
-                const mat = materials.materials[key];
-                if (mat instanceof THREE.MeshPhongMaterial) {
-                    mat.specular = new THREE.Color(1, 1, 1);
-                    mat.shininess = 8;
-                    mat.reflectivity = 0.1;
-                    mat.envMap = scene.environment;
+        // 并行检查MTL和OBJ文件
+        Promise.all([checkFileExists(mtlPath), checkFileExists(objPath)])
+            .then(([mtlExists, objExists]) => {
+                if (!mtlExists || !objExists) {
+                    loadingManager.addMissingFile(code);
+                    // 标记两个文件都缺失
+                    loadingManager.completeFile();
+                    loadingManager.completeFile();
+                    return;
                 }
-            }
 
-            const objLoader = new OBJLoader();
-            objLoader.setMaterials(materials);
-            objLoader.load(objPath, (object) => {
-                object.traverse((child) => {
-                    if (child.isMesh) {
-                        child.castShadow = true;
-                        child.receiveShadow = true;
+                // 加载MTL文件
+                const mtlLoader = new MTLLoader();
+                mtlLoader.load(
+                    mtlPath,
+                    (materials) => {
+                        materials.preload();
+                        for (const key in materials.materials) {
+                            const mat = materials.materials[key];
+                            if (mat instanceof THREE.MeshPhongMaterial) {
+                                mat.specular = new THREE.Color(1, 1, 1);
+                                mat.shininess = 8;
+                                mat.reflectivity = 0.1;
+                                mat.envMap = scene.environment;
+                            }
+                        }
+                        loadingManager.completeFile();
+
+                        // 加载OBJ文件
+                        const objLoader = new OBJLoader();
+                        objLoader.setMaterials(materials);
+                        objLoader.load(
+                            objPath,
+                            (object) => {
+                                object.traverse((child) => {
+                                    if (child.isMesh) {
+                                        child.castShadow = true;
+                                        child.receiveShadow = true;
+                                    }
+                                });
+
+                                const box = new THREE.Box3().setFromObject(object);
+                                const center = box.getCenter(new THREE.Vector3());
+                                const size = box.getSize(new THREE.Vector3()).length() || 1;
+
+                                object.position.sub(center);
+                                const pivot = new THREE.Object3D();
+                                pivot.add(object);
+                                pivot.position.x = index * (size + 0.5);
+                                scene.add(pivot);
+                                pivots.push(pivot);
+
+                                const totalWidth = (filtered.length - 1) * (size + 0.5);
+                                camera.position.set(0, 0, totalWidth + 1.75);
+                                camera.lookAt(0, 0, 0);
+                                controls.target.set(0, 0, 0);
+                                controls.update();
+
+                                loadingManager.completeFile();
+                            },
+                            // OBJ加载进度回调（实时更新）
+                            (xhr) => {
+                                const progress = xhr.loaded / xhr.total;
+                                loadingManager.updateCurrentFileProgress(progress);
+                            },
+                            (error) => {
+                                console.warn(`OBJ加载失败: ${code}`, error);
+                                loadingManager.addMissingFile(code);
+                                loadingManager.completeFile();
+                            }
+                        );
+                    },
+                    // MTL加载进度回调（实时更新）
+                    (xhr) => {
+                        const progress = xhr.loaded / xhr.total;
+                        loadingManager.updateCurrentFileProgress(progress);
+                    },
+                    (error) => {
+                        console.warn(`MTL加载失败: ${code}`, error);
+                        loadingManager.addMissingFile(code);
+                        loadingManager.completeFile();
+                        // 同时标记OBJ也缺失
+                        loadingManager.completeFile();
                     }
-                });
-
-                const box = new THREE.Box3().setFromObject(object);
-                const center = box.getCenter(new THREE.Vector3());
-                const size = box.getSize(new THREE.Vector3()).length();
-
-                object.position.sub(center);
-
-                const pivot = new THREE.Object3D();
-                pivot.add(object);
-                pivot.position.x = index * (size + 0.5);
-                scene.add(pivot);
-                pivots.push(pivot);
-
-                const totalWidth = (filtered.length - 1) * (size + 0.5);
-                camera.position.set(0, 0, totalWidth + 1.75);
-                camera.lookAt(0, 0, 0);
-                controls.target.set(0, 0, 0);
-                controls.update();
+                );
             });
-        });
     });
 }
 
 /* -------------------------
-   Animation loop
+   动画循环
    ------------------------- */
 function animate() {
     cancelAnimationFrame(animationFrameId);
@@ -392,28 +507,38 @@ function animate() {
 }
 
 /* -------------------------
-   Event binding: single #emoji or .item list (async)
+   事件绑定（保留200ms延迟）
    ------------------------- */
 function bindSingleEmoji() {
     if (!singleEmojiEl) return false;
     singleEmojiEl.addEventListener('mouseenter', () => {
-        if (canvas) canvas.style.display = 'block';
-        clearSceneKeepRenderer();
+        // 保留200ms延迟，过滤快速扫过
+        const timer = setTimeout(() => {
+            if (canvas) canvas.style.display = 'block';
+            clearSceneKeepRenderer();
 
-        const emojiChar = singleEmojiEl.textContent.trim();
-        const codeSequence = getEmojiCodeSequence(emojiChar);
-        const visibleCodes = codeSequence.filter(code => code !== 'U+200D' && code !== 'U+FE0F');
-        if (codeDisplay) codeDisplay.textContent = visibleCodes.join('_');
+            const emojiChar = singleEmojiEl.textContent.trim();
+            const codeSequence = getEmojiCodeSequence(emojiChar);
+            const visibleCodes = codeSequence.filter(c => c !== 'U+200D' && c !== 'U+FE0F');
+            if (codeDisplay) codeDisplay.textContent = visibleCodes.join('_');
 
-        if (!scene) initThree();
-        loadEmojiSequence(visibleCodes);
-        animate();
+            if (!scene) initThree();
+            loadEmojiSequence(visibleCodes);
+            animate();
+        }, 200);
+
+        // 鼠标快速离开时清除定时器
+        singleEmojiEl.addEventListener('mouseleave', function cleanup() {
+            clearTimeout(timer);
+            singleEmojiEl.removeEventListener('mouseleave', cleanup);
+        }, { once: true });
     });
 
     singleEmojiEl.addEventListener('mouseleave', () => {
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
         clearSceneKeepRenderer();
+        loadingManager.reset();
     });
 
     console.log('Bound single #emoji handlers');
@@ -423,11 +548,10 @@ function bindSingleEmoji() {
 function bindItemHover(item) {
     if (item.__emojiBound) return;
     item.__emojiBound = true;
-    let hoverTimer = null; // 用于存储定时器ID
 
     item.addEventListener('mouseenter', () => {
-        // 鼠标进入时，设置200毫秒后执行的定时器
-        hoverTimer = setTimeout(() => {
+        // 200ms延迟，过滤快速扫过
+        const timer = setTimeout(() => {
             const charEl = item.querySelector('.char');
             if (!charEl) return;
             const emojiChar = charEl.textContent.trim();
@@ -440,20 +564,23 @@ function bindItemHover(item) {
             if (!scene) initThree();
             loadEmojiSequence(visibleCodes);
             animate();
-        }, 200); // 200毫秒延迟
+        }, 200);
+
+        // 快速离开时清除定时器
+        item.addEventListener('mouseleave', function cleanup() {
+            clearTimeout(timer);
+            item.removeEventListener('mouseleave', cleanup);
+        }, { once: true });
     });
 
     item.addEventListener('mouseleave', () => {
-        // 鼠标离开时，清除未执行的定时器（如果有的话）
-        if (hoverTimer) {
-            clearTimeout(hoverTimer);
-            hoverTimer = null;
-        }
         clearSceneKeepRenderer();
         if (canvas) canvas.style.display = 'none';
         cancelAnimationFrame(animationFrameId);
+        loadingManager.reset();
     });
 }
+
 function bindExistingItems() {
     const items = document.querySelectorAll('.item');
     if (items.length > 0) {
@@ -476,43 +603,34 @@ function watchForItems() {
 }
 
 /* -------------------------
-   Initialize bindings after DOM ready
+   初始化
    ------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+    createUIElements();
     if (!bindSingleEmoji()) {
         if (!bindExistingItems()) {
             watchForItems();
-            console.log('No #emoji found; watching for .item insertion');
         }
     }
 });
 
 /* -------------------------
-   Debug helpers exposed to console
+   调试工具
    ------------------------- */
 window.__emojiAddTestCube = function () {
-    if (!window.__emojiScene || !window.THREE) { console.warn('scene or THREE not ready'); return; }
+    if (!window.__emojiScene || !window.THREE) return;
     const cube = new window.THREE.Mesh(
         new window.THREE.BoxGeometry(1, 1, 1),
-        new window.THREE.MeshStandardMaterial({ color: 0x00ffcc, emissive: 0x222222 })
+        new window.THREE.MeshStandardMaterial({ color: 0x00ffcc })
     );
-    cube.position.set(0, 0, 0);
     window.__emojiScene.add(cube);
-    console.log('test cube added');
 };
 
 window.__emojiListMeshes = function () {
-    if (!window.__emojiScene) { console.warn('scene not available'); return; }
+    if (!window.__emojiScene) return;
     window.__emojiScene.traverse(n => {
-        if (n.isMesh) {
-            console.log(n, 'frustumCulled', n.frustumCulled, 'renderOrder', n.renderOrder,
-                'material', n.material && { type: n.material.type, transparent: n.material.transparent, opacity: n.material.opacity },
-                'geom attrs', Object.keys(n.geometry.attributes || {}), 'index', !!n.geometry.index);
-        }
+        if (n.isMesh) console.log(n);
     });
 };
 
-/* -------------------------
-   Resize listener
-   ------------------------- */
 window.addEventListener('resize', onWindowResize);
