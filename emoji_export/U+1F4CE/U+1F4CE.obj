@@ -1,5 +1,8 @@
 mtllib U+1F4CE.mtl
-usemtl U+1F4CE_mat_00
+
+g U+1F4CE_layer00_obj00
+# 独立物体：U+1F4CE_layer00_obj00
+usemtl mat_U+1F4CE_layer00_obj00
 v 0.146617 0.445544 0.100000
 v 0.147068 0.445733 0.100000
 v 0.148375 0.446255 0.100000
@@ -1522,7 +1525,10 @@ f 866 868 867 865
 f 868 870 869 867
 f 870 872 871 869
 f 872 438 437 871
-usemtl U+1F4CE_mat_01
+
+g U+1F4CE_layer01_obj00
+# 独立物体：U+1F4CE_layer01_obj00
+usemtl mat_U+1F4CE_layer01_obj00
 v 0.162422 0.408157 0.110000
 v 0.162723 0.408282 0.110000
 v 0.163597 0.408627 0.110000

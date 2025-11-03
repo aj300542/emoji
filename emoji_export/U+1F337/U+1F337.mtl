@@ -1,12 +1,24 @@
-newmtl U+1F337_mat_00
+
+# 物体 U+1F337_layer00_obj00 的独立材质
+newmtl mat_U+1F337_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F337_mat_01
+# 物体 U+1F337_layer01_obj00 的独立材质
+newmtl mat_U+1F337_layer01_obj00
 Kd 0.003303 0.363604 0.001687
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F337_mat_02
+# 物体 U+1F337_layer02_obj00 的独立材质
+newmtl mat_U+1F337_layer02_obj00
 Kd 0.859174 0.046149 0.242796
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F337_mat_03
+# 物体 U+1F337_layer03_obj00 的独立材质
+newmtl mat_U+1F337_layer03_obj00
 Kd 0.907547 0.306635 0.529523
-
+Ks 0.2 0.2 0.2
+d 1

@@ -1,21 +1,42 @@
-newmtl U+26F4_mat_00
+
+# 物体 U+26F4_layer00_obj00 的独立材质
+newmtl mat_U+26F4_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_01
+# 物体 U+26F4_layer01_obj00 的独立材质
+newmtl mat_U+26F4_layer01_obj00
 Kd 0.789314 0.789314 0.789314
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_02
+# 物体 U+26F4_layer02_obj00 的独立材质
+newmtl mat_U+26F4_layer02_obj00
 Kd 0.891262 0.891262 0.891262
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_03
+# 物体 U+26F4_layer03_obj00 的独立材质
+newmtl mat_U+26F4_layer03_obj00
 Kd 0.003303 0.363604 0.001687
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_04
+# 物体 U+26F4_layer04_obj00 的独立材质
+newmtl mat_U+26F4_layer04_obj00
 Kd 0.004560 0.573159 0.001202
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_05
+# 物体 U+26F4_layer05_obj00 的独立材质
+newmtl mat_U+26F4_layer05_obj00
 Kd 0.026549 0.652370 0.932277
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+26F4_mat_06
+# 物体 U+26F4_layer06_obj00 的独立材质
+newmtl mat_U+26F4_layer06_obj00
 Kd 0.000000 0.511398 0.891262
-
+Ks 0.2 0.2 0.2
+d 1

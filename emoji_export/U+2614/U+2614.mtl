@@ -1,18 +1,36 @@
-newmtl U+2614_mat_00
+
+# 物体 U+2614_layer00_obj00 的独立材质
+newmtl mat_U+2614_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+2614_mat_01
+# 物体 U+2614_layer01_obj00 的独立材质
+newmtl mat_U+2614_layer01_obj00
 Kd 0.666117 0.267358 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+2614_mat_02
+# 物体 U+2614_layer02_obj00 的独立材质
+newmtl mat_U+2614_layer02_obj00
 Kd 0.339223 0.254916 0.819964
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+2614_mat_03
+# 物体 U+2614_layer03_obj00 的独立材质
+newmtl mat_U+2614_layer03_obj00
 Kd 0.173439 0.103634 0.541798
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+2614_mat_04
+# 物体 U+2614_layer04_obj00 的独立材质
+newmtl mat_U+2614_layer04_obj00
 Kd 0.250840 0.151058 0.781751
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+2614_mat_05
+# 物体 U+2614_layer05_obj00 的独立材质
+newmtl mat_U+2614_layer05_obj00
 Kd 0.026549 0.652370 0.932277
-
+Ks 0.2 0.2 0.2
+d 1

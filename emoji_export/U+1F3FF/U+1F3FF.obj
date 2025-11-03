@@ -1,5 +1,8 @@
 mtllib U+1F3FF.mtl
-usemtl U+1F3FF_mat_00
+
+g U+1F3FF_layer00_obj00
+# 独立物体：U+1F3FF_layer00_obj00
+usemtl mat_U+1F3FF_layer00_obj00
 v 0.616386 0.252259 0.100000
 v 0.677347 0.191592 0.100000
 v 0.616386 0.130644 0.100000
@@ -822,7 +825,10 @@ f 466 468 467 465
 f 468 470 469 467
 f 470 472 471 469
 f 472 238 237 471
-usemtl U+1F3FF_mat_01
+
+g U+1F3FF_layer01_obj00
+# 独立物体：U+1F3FF_layer01_obj00
+usemtl mat_U+1F3FF_layer01_obj00
 v 0.193891 0.252259 0.110000
 v 0.133212 0.313207 0.110000
 v 0.193891 0.373873 0.110000

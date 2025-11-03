@@ -1,21 +1,42 @@
-newmtl U+1F554_mat_00
+
+# 物体 U+1F554_layer00_obj00 的独立材质
+newmtl mat_U+1F554_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_01
+# 物体 U+1F554_layer01_obj00 的独立材质
+newmtl mat_U+1F554_layer01_obj00
 Kd 0.612066 0.612066 0.612066
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_02
+# 物体 U+1F554_layer02_obj00 的独立材质
+newmtl mat_U+1F554_layer02_obj00
 Kd 1.000000 1.000000 1.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_03
+# 物体 U+1F554_layer03_obj00 的独立材质
+newmtl mat_U+1F554_layer03_obj00
 Kd 0.612066 0.612066 0.612066
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_04
+# 物体 U+1F554_layer04_obj00 的独立材质
+newmtl mat_U+1F554_layer04_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_05
+# 物体 U+1F554_layer05_obj00 的独立材质
+newmtl mat_U+1F554_layer05_obj00
 Kd 0.035614 0.035614 0.035614
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F554_mat_06
+# 物体 U+1F554_layer06_obj00 的独立材质
+newmtl mat_U+1F554_layer06_obj00
 Kd 0.812241 0.002932 0.013473
-
+Ks 0.2 0.2 0.2
+d 1

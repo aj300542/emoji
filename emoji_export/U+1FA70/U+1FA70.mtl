@@ -1,12 +1,24 @@
-newmtl U+1FA70_mat_00
+
+# 物体 U+1FA70_layer00_obj00 的独立材质
+newmtl mat_U+1FA70_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1FA70_mat_01
+# 物体 U+1FA70_layer01_obj00 的独立材质
+newmtl mat_U+1FA70_layer01_obj00
 Kd 0.907547 0.415148 0.499505
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1FA70_mat_02
+# 物体 U+1FA70_layer02_obj00 的独立材质
+newmtl mat_U+1FA70_layer02_obj00
 Kd 0.796917 0.219520 0.259027
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1FA70_mat_03
+# 物体 U+1FA70_layer03_obj00 的独立材质
+newmtl mat_U+1FA70_layer03_obj00
 Kd 0.812241 0.060032 0.093876
-
+Ks 0.2 0.2 0.2
+d 1

@@ -1,12 +1,24 @@
-newmtl U+1F376_mat_00
+
+# 物体 U+1F376_layer00_obj00 的独立材质
+newmtl mat_U+1F376_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F376_mat_01
+# 物体 U+1F376_layer01_obj00 的独立材质
+newmtl mat_U+1F376_layer01_obj00
 Kd 0.932277 0.687031 0.560499
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F376_mat_02
+# 物体 U+1F376_layer02_obj00 的独立材质
+newmtl mat_U+1F376_layer02_obj00
 Kd 0.891262 0.891262 0.891262
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F376_mat_03
+# 物体 U+1F376_layer03_obj00 的独立材质
+newmtl mat_U+1F376_layer03_obj00
 Kd 0.694081 0.442323 0.302125
-
+Ks 0.2 0.2 0.2
+d 1

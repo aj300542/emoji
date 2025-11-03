@@ -1,12 +1,24 @@
-newmtl U+1F41C_mat_00
-Kd 0.000000 0.000000 0.000000
 
-newmtl U+1F41C_mat_01
+# 物体 U+1F41C_layer00_obj00 的独立材质
+newmtl mat_U+1F41C_layer00_obj00
+Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
+
+# 物体 U+1F41C_layer01_obj00 的独立材质
+newmtl mat_U+1F41C_layer01_obj00
 Kd 0.598942 0.078057 0.002263
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F41C_mat_02
+# 物体 U+1F41C_layer02_obj00 的独立材质
+newmtl mat_U+1F41C_layer02_obj00
 Kd 0.932277 0.124741 0.001202
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F41C_mat_03
+# 物体 U+1F41C_layer03_obj00 的独立材质
+newmtl mat_U+1F41C_layer03_obj00
 Kd 0.000000 0.000000 0.000000
-
+Ks 0.2 0.2 0.2
+d 1

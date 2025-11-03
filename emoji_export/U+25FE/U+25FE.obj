@@ -1,5 +1,8 @@
 mtllib U+25FE.mtl
-usemtl U+25FE_mat_00
+
+g U+25FE_layer00_obj00
+# 独立物体：U+25FE_layer00_obj00
+usemtl mat_U+25FE_layer00_obj00
 v 0.072250 0.231942 0.100000
 v 0.275172 0.231942 0.100000
 v 0.275172 0.029063 0.100000
@@ -24,7 +27,10 @@ f 10 12 11 9
 f 12 14 13 11
 f 14 16 15 13
 f 16 10 9 15
-usemtl U+25FE_mat_01
+
+g U+25FE_layer01_obj00
+# 独立物体：U+25FE_layer01_obj00
+usemtl mat_U+25FE_layer01_obj00
 v 0.234531 0.191592 0.110000
 v 0.234531 0.069696 0.110000
 v 0.112891 0.069696 0.110000

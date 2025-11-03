@@ -1,18 +1,36 @@
-newmtl U+1F570_mat_00
+
+# 物体 U+1F570_layer00_obj00 的独立材质
+newmtl mat_U+1F570_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F570_mat_01
+# 物体 U+1F570_layer01_obj00 的独立材质
+newmtl mat_U+1F570_layer01_obj00
 Kd 0.119264 0.042987 0.025371
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F570_mat_02
+# 物体 U+1F570_layer02_obj00 的独立材质
+newmtl mat_U+1F570_layer02_obj00
 Kd 0.891262 0.891262 0.891262
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F570_mat_03
+# 物体 U+1F570_layer03_obj00 的独立材质
+newmtl mat_U+1F570_layer03_obj00
 Kd 0.835528 0.373615 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F570_mat_04
+# 物体 U+1F570_layer04_obj00 的独立材质
+newmtl mat_U+1F570_layer04_obj00
 Kd 0.035614 0.035614 0.035614
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F570_mat_05
+# 物体 U+1F570_layer05_obj00 的独立材质
+newmtl mat_U+1F570_layer05_obj00
 Kd 0.666117 0.267358 0.000000
-
+Ks 0.2 0.2 0.2
+d 1

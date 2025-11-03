@@ -1,42 +1,84 @@
-newmtl U+1F54D_mat_00
+
+# 物体 U+1F54D_layer00_obj00 的独立材质
+newmtl mat_U+1F54D_layer00_obj00
 Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_01
+# 物体 U+1F54D_layer01_obj00 的独立材质
+newmtl mat_U+1F54D_layer01_obj00
 Kd 0.436813 0.001433 0.006585
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_02
+# 物体 U+1F54D_layer02_obj00 的独立材质
+newmtl mat_U+1F54D_layer02_obj00
 Kd 0.612066 0.612066 0.612066
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_03
+# 物体 U+1F54D_layer03_obj00 的独立材质
+newmtl mat_U+1F54D_layer03_obj00
 Kd 0.789314 0.789314 0.789314
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_04
+# 物体 U+1F54D_layer04_obj00 的独立材质
+newmtl mat_U+1F54D_layer04_obj00
 Kd 0.388910 0.388910 0.388910
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_05
+# 物体 U+1F54D_layer05_obj00 的独立材质
+newmtl mat_U+1F54D_layer05_obj00
 Kd 0.436813 0.001433 0.006585
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_06
+# 物体 U+1F54D_layer06_obj00 的独立材质
+newmtl mat_U+1F54D_layer06_obj00
 Kd 0.180144 0.180144 0.180144
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_07
+# 物体 U+1F54D_layer07_obj00 的独立材质
+newmtl mat_U+1F54D_layer07_obj00
 Kd 0.612066 0.612066 0.612066
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_08
+# 物体 U+1F54D_layer08_obj00 的独立材质
+newmtl mat_U+1F54D_layer08_obj00
 Kd 0.891262 0.891262 0.891262
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_09
+# 物体 U+1F54D_layer09_obj00 的独立材质
+newmtl mat_U+1F54D_layer09_obj00
 Kd 0.612066 0.612066 0.612066
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_10
+# 物体 U+1F54D_layer10_obj00 的独立材质
+newmtl mat_U+1F54D_layer10_obj00
 Kd 0.019918 0.019918 0.019918
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_11
+# 物体 U+1F54D_layer11_obj00 的独立材质
+newmtl mat_U+1F54D_layer11_obj00
 Kd 0.907547 0.415148 0.499505
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_12
+# 物体 U+1F54D_layer12_obj00 的独立材质
+newmtl mat_U+1F54D_layer12_obj00
 Kd 0.180144 0.180144 0.180144
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F54D_mat_13
+# 物体 U+1F54D_layer13_obj00 的独立材质
+newmtl mat_U+1F54D_layer13_obj00
 Kd 1.000000 0.493616 0.000000
-
+Ks 0.2 0.2 0.2
+d 1

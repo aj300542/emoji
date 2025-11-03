@@ -2,7 +2,7 @@ import os
 import shutil
 
 # 源目录（存放GIF文件的地方）
-source_dir = r"Z:\work\emoji\new"
+source_dir = r"Z:\2025\gif\new"
 # 目标根目录（存放emojicode目录的地方）
 target_root = r"Z:\work\emoji\emoji_export"
 

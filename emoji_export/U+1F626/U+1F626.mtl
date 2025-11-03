@@ -1,9 +1,18 @@
-newmtl U+1F626_mat_00
-Kd 0.000000 0.000000 0.000000
 
-newmtl U+1F626_mat_01
+# 物体 U+1F626_layer00_obj00 的独立材质
+newmtl mat_U+1F626_layer00_obj00
+Kd 0.000000 0.000000 0.000000
+Ks 0.2 0.2 0.2
+d 1
+
+# 物体 U+1F626_layer01_obj00 的独立材质
+newmtl mat_U+1F626_layer01_obj00
 Kd 1.000000 0.585973 0.042987
+Ks 0.2 0.2 0.2
+d 1
 
-newmtl U+1F626_mat_02
+# 物体 U+1F626_layer02_obj00 的独立材质
+newmtl mat_U+1F626_layer02_obj00
 Kd 0.000000 0.000000 0.000000
-
+Ks 0.2 0.2 0.2
+d 1
