@@ -4,16 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>素材分类首页</title>
+    <title>素材分类首页 (Google 主题·修复版)</title>
+    <!-- 引入 Google Fonts: Noto Sans SC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="js/emoji-font.css">
     <script src="js/wakelock.js"></script>
     <link rel="shortcut icon" href="js/emoji_128x128.ico">
     <style>
+        /* 全局样式重置与基础设定 */
         body {
             margin: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: linear-gradient(to bottom, #eaeaea, #d4d4d4);
-            color: #333;
+            font-family: 'Noto Sans SC', sans-serif; /* 谷歌无衬线字体 */
+            background: #ffffff; /* 谷歌风格纯白背景 */
+            color: #202124; /* 谷歌标准深灰色文字 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -21,64 +26,72 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         h1 {
             margin-bottom: 6vh;
             font-size: 4vh;
-            color: #333;
+            color: #4285F4; /* 谷歌蓝色标题 */
             animation: zoomIn 1.5s ease-out;
-            text-shadow: 0 0.5vh 1vh rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            text-align: center;
         }
 
+        /* 保留原始的两个按钮容器布局 */
         .buttons {
             display: flex;
-            gap: 6vh;
+            gap: 6vh; /* 保持原始间距 */
             z-index: 1;
-            margin-bottom: 6vh;
-            /* 添加底部间距 */
+            margin-bottom: 6vh; /* 保持原始底部间距 */
         }
 
         .category-btn {
             text-decoration: none;
             display: inline-block;
-            padding: 3vh 6vh;
+            padding: 3vh 6vh; /* 保持原始按钮大小 */
             font-size: 2.5vh;
             border: none;
-            border-radius: 2vh;
+            border-radius: 2vh; /* 稍作圆角优化，符合谷歌风格 */
             cursor: pointer;
-            background: #f4f4f4;
-            color: #444;
-            box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+            color: white; /* 白色文字，提高对比度 */
+            box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1); /* 谷歌风格轻微阴影 */
             transform: scaleY(0.8);
             animation: riseUp 1.2s ease-out forwards;
-            transition: background 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-weight: 500;
         }
 
+        /* --- 核心修改：使用直接的类名来设置颜色 --- */
+        .btn-blue { background-color: #4285F4; }
+        .btn-red { background-color: #EA4335; }
+        .btn-yellow { background-color: #FBBC05; }
+        .btn-green { background-color: #34A853; }
+        
+        /* Hover 效果也针对颜色类名设置，确保覆盖 */
+        .btn-blue:hover { background-color: #3367D6; }
+        .btn-red:hover { background-color: #D93025; }
+        .btn-yellow:hover { background-color: #F29900; }
+        .btn-green:hover { background-color: #2D9F46; }
+        
         .category-btn:hover {
-            background: #e0e0e0;
             transform: scale(1.05);
-            color: #000;
+            box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.15);
         }
 
+        /* 保留原始标题动画 */
         @keyframes zoomIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
+        /* 保留原始按钮升起动画 */
         @keyframes riseUp {
-            to {
-                transform: scaleY(1);
-            }
+            to { transform: scaleY(1); }
         }
 
+        /* 背景图标层 */
         .floating-icons {
             position: absolute;
             top: 0;
@@ -90,25 +103,19 @@
             align-content: flex-start;
             justify-content: center;
             font-size: 7.5vh;
-            opacity: 0.16;
+            opacity: 0.08;
             line-height: 1;
             animation: fadeInIcons 2s ease-out;
             z-index: 0;
+            pointer-events: none;
         }
-
 
         @keyframes fadeInIcons {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 0.1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 0.08; transform: scale(1); }
         }
 
+        /* 下落 emoji 层 */
         .emoji-rain {
             position: absolute;
             top: 0;
@@ -128,15 +135,8 @@
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 0.0;
-            }
-
-            100% {
-                transform: translateY(120vh) rotate(360deg);
-                opacity: 1;
-            }
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            100% { transform: translateY(120vh) rotate(360deg); opacity: 1; }
         }
     </style>
 </head>
@@ -144,17 +144,20 @@
 <body>
     <h1>选择分类进入emoji素材世界 ✨</h1>
     <h1>单击复制表情😊 双击下载3D文档😙</h1>
+    
+    <!-- 保留原始的两个按钮容器，并为每个按钮添加颜色类名 -->
     <div class="buttons">
-        <a href="bios.html" class="category-btn">🐾 生物</a>
-        <a href="objects.html" class="category-btn">🧺 物品</a>
-        <a href="knowledge.html" class="category-btn">📚 知识</a>
+        <a href="bios.html" class="category-btn btn-blue">🐾 生物</a>
+        <a href="objects.html" class="category-btn btn-red">🧺 物品</a>
+        <a href="knowledge.html" class="category-btn btn-yellow">📚 知识</a>
     </div>
     <div class="buttons">
-        <a href="index2.html" class="category-btn" target="_blank" rel="noopener noreferrer">📐 画画</a>
-        <a href="https://aj300542.github.io/download.html" class="category-btn" target="_blank"
-            rel="noopener noreferrer">🍎支持aj300542</a>
-        <a href="bios/expressions.html" class="category-btn">🤪 表情</a>
+        <a href="index2.html" class="category-btn btn-green" target="_blank" rel="noopener noreferrer">📐 画画</a>
+        <a href="https://aj300542.github.io/download.html" class="category-btn btn-blue" target="_blank" rel="noopener noreferrer">🍎支持aj300542</a>
+        <a href="bios/expressions.html" class="category-btn btn-red">🤪 表情</a>
+        <a href="http://aj300542.github.io/emoji2/index.html" class="category-btn btn-yellow">转到谷歌emoji</a>
     </div>
+    
     <div class="emoji-rain"></div>
 
     <!-- 图标背景层 -->
@@ -171,7 +174,6 @@
         🐹 🛹 🎮 🧨 🐱 🦊
         🍋 🍚 🐓 📐 🍔 🌹 🧄 👩‍💻 🍞 📱 🛴 📷 🥯 🎺 🍵 🍫 🦉 🧮 🚀 🧊 🥣 🛫 🧀 🕶️ 🍡 🌿 🪥 🍎 🚂 🧊 🐰 🚐 👨‍⚖️ 🍳 🧫
         🧠 🚠 🌺 🌉 🌇 🐚 🎻
-
     </div>
     <script>
         const icons = [
