@@ -17,60 +17,71 @@
         body {
             margin: 0;
             font-family: 'Noto Sans SC', sans-serif;
-            /* 谷歌无衬线字体 */
             background: #ffffff;
-            /* 谷歌风格纯白背景 */
             color: #202124;
-            /* 谷歌标准深灰色文字 */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            /* 使用 min-height 确保内容少时也占满屏幕 */
+            overflow-x: hidden;
+            /* 防止水平溢出 */
             position: relative;
             padding: 20px;
             box-sizing: border-box;
         }
 
         h1 {
-            margin-bottom: 6vh;
+            margin-bottom: 1vh;
             font-size: 4vh;
             color: #4285F4;
-            /* 谷歌蓝色标题 */
+            /* 谷歌蓝色 */
             animation: zoomIn 1.5s ease-out;
             font-weight: 500;
-            text-align: center;
+            /* 稍微加粗 */
+        }
+
+        /* 副标题样式 */
+        h1+h1 {
+            font-size: 2.5vh;
+            color: #5f6368;
+            /* 浅一些的灰色 */
+            margin-top: 0;
+            margin-bottom: 8vh;
         }
 
         /* 保留原始的两个按钮容器布局 */
         .buttons {
             display: flex;
             gap: 6vh;
-            /* 保持原始间距 */
             z-index: 1;
             margin-bottom: 6vh;
-            /* 保持原始底部间距 */
+            width: 100%;
+            /* 让容器宽度自适应 */
+            justify-content: center;
+            /* 按钮居中 */
+            align-items: center;
         }
 
         .category-btn {
             text-decoration: none;
             display: inline-block;
             padding: 3vh 6vh;
-            /* 保持原始按钮大小 */
             font-size: 2.5vh;
             border: none;
             border-radius: 2vh;
-            /* 稍作圆角优化，符合谷歌风格 */
             cursor: pointer;
             color: white;
-            /* 白色文字，提高对比度 */
             box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
-            /* 谷歌风格轻微阴影 */
             transform: scaleY(0.8);
             animation: riseUp 1.2s ease-out forwards;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
             font-weight: 500;
+            text-align: center;
+            /* 确保文字居中 */
+            flex-shrink: 0;
+            /* 防止按钮被压缩 */
         }
 
         /* --- 核心修改：使用直接的类名来设置颜色 --- */
@@ -193,6 +204,42 @@
                 opacity: 1;
             }
         }
+
+        /* --- 核心改动：媒体查询 - 适配竖屏 --- */
+        @media (orientation: portrait) {
+            body {
+                /* 竖屏时增加顶部内边距，防止内容顶到边缘 */
+                padding-top: 40px;
+            }
+
+            h1 {
+                /* 竖屏时减小标题下方的间距 */
+                margin-bottom: 2vh;
+                /* 可选：减小标题字体大小 */
+                font-size: 3.5vh;
+            }
+
+            .buttons {
+                /* 1. 允许按钮在必要时换行 */
+                flex-wrap: wrap;
+                /* 2. 减小按钮之间的间距 */
+                gap: 2vh;
+                /* 减小按钮组下方的间距 */
+                margin-bottom: 3vh;
+            }
+
+            .category-btn {
+                /* 3. 减小按钮的左右内边距，使其变窄 */
+                padding: 2.5vh 3vh;
+                /* 可选：减小按钮字体大小 */
+                font-size: 2vh;
+                /* 让按钮在换行后能均匀分布宽度 */
+                width: calc(35% - 1vh);
+                /* 宽度为50%减去一半的gap，确保两行两列时对齐 */
+                max-width: 180px;
+                /* 设置一个最大宽度，防止在特别宽的平板竖屏上过宽 */
+            }
+        }
     </style>
 </head>
 
@@ -200,19 +247,22 @@
     <h1>选择分类进入emoji素材世界 ✨</h1>
     <h1>单击复制表情😊 双击下载3D文档😙</h1>
 
-    <!-- 保留原始的两个按钮容器，并为每个按钮添加颜色类名 -->
+    <!-- 保留原始的两个按钮容器，并新增搜索按钮 -->
     <div class="buttons">
-        <a href="bios.html" class="category-btn btn-blue">🐾 生物</a>
+        <a href="bios.html" class="category-btn btn-yellow">🐾 生物</a>
         <a href="objects.html" class="category-btn btn-red">🧺 物品</a>
-        <a href="knowledge.html" class="category-btn btn-yellow">📚 知识</a>
-        <a href="http://aj300542.github.io/emoji3/index.html" class="category-btn btn-blue">转到1.35emoji</a>
+        <a href="knowledge.html" class="category-btn btn-blue">📚 知识</a>
+        <a href="bios/expressions.html" class="category-btn btn-yellow">🤪 表情</a>
+        <a href="search.html" class="category-btn btn-green">🔍 Emoji搜索</a>
+
     </div>
     <div class="buttons">
-        <a href="index2.html" class="category-btn btn-green" target="_blank" rel="noopener noreferrer">📐 画画</a>
-        <a href="https://aj300542.github.io/download.html" class="category-btn btn-blue" target="_blank"
+                <a href="index2.html" class="category-btn btn-blue" target="_blank" rel="noopener noreferrer">📐 画画</a>
+        <a href="https://aj300542.github.io/download.html" class="category-btn btn-red" target="_blank"
             rel="noopener noreferrer">🍎支持aj300542</a>
-        <a href="bios/expressions.html" class="category-btn btn-red">🤪 表情</a>
         <a href="http://aj300542.github.io/emoji2/index.html" class="category-btn btn-yellow">转到谷歌emoji</a>
+        <a href="http://aj300542.github.io/emoji3/index.html" class="category-btn btn-blue">转到1.35emoji</a>
+
     </div>
 
     <div class="emoji-rain"></div>
